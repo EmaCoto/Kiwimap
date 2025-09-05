@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // (Opcional) Roles con Spatie
+        foreach (['Admin','Front Desk','Doctor','Medical Assistant'] as $r) {
+            Role::findOrCreate($r);
+        }
+        
         // User::factory(10)->create();
 
         User::factory()->create([
@@ -20,5 +26,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'desarrollokiwimed@gmail.com',
             'password' => 123456789,
         ]);
+
+        
+        
+        $this->call([
+            StatesTableSeeder::class,
+            DoctorsTableSeeder::class,
+            LicensesTableSeeder::class,
+        ]);
+        
     }
 }
