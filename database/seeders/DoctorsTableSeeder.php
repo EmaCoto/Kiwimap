@@ -14,6 +14,13 @@ class DoctorsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Doctor::factory()->count(3)->create(); // crea users asociados por factory
+         Doctor::factory()->count(3)->create()->each(function ($doc) {
+            if ($doc->user) {
+                $doc->user->assignRole('Doctor');
+                if (!$doc->user->email_verified_at) {
+                    $doc->user->forceFill(['email_verified_at' => now()])->save();
+                }
+            }
+        });
     }
 }

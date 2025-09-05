@@ -17,6 +17,12 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Licenses Information')" class="grid">
+                    <flux:navlist.item icon="id-card" :href="route('licenses.index')" :current="request()->routeIs('licenses.index')" wire:navigate>{{ __('Licenses') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
             
 
             <flux:spacer />
