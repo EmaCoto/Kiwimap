@@ -23,6 +23,12 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Doctors Information')" class="grid">
+                    <flux:navlist.item icon="doctor" :href="route('doctors.index')" :current="request()->routeIs('doctors.index')" wire:navigate>{{ __('Doctors') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
             
 
             <flux:spacer />

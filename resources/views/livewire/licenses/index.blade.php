@@ -82,9 +82,11 @@
 
               @can('delete', $l)
               <button
-                wire:click="delete({{ $l->id }})"
-                onclick="return confirm('Eliminar esta licencia?')"
-                class="text-rose-600 hover:underline text-xs">
+                x-data
+                @click.prevent="if (confirm('Eliminar esta licencia?')) { $wire.delete({{ $l->id }}) }"
+                type="button"
+                class="text-rose-600 hover:underline text-xs"
+              >
                 Eliminar
               </button>
               @endcan
