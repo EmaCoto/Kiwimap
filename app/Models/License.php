@@ -10,22 +10,32 @@ class License extends Model
     use HasFactory;
 
     protected $fillable = [
-        'doctor_id','state_id','license_number','license_type','issued_date',
-        'expiration_date','active_license_link','expired_license_link',
-        'dea_number','notes','cost','mal_praxis_required','forms',
-        'need_physical_office','insurance','status'
+        'doctor_id',
+        'state_id',
+        'issued_date',
+        'expiration_date',
+        'has_active_link',
+        'expired_license_link',
+        'notes',
+        'cost',
+        'mal_praxis_required',
+        'forms',
+        'need_physical_office',
+        'insurance',
+        'status',
     ];
 
     protected $casts = [
-        'issued_date' => 'date',
-        'expiration_date' => 'date',
-        'forms' => 'array',
-        'insurance' => 'array',
-        'mal_praxis_required' => 'boolean',
+        'issued_date'          => 'date',
+        'expiration_date'      => 'date',
+        'has_active_link'      => 'boolean',
+        'mal_praxis_required'  => 'boolean',
         'need_physical_office' => 'boolean',
+        'forms'                => 'array',
+        'insurance'            => 'array',
+        'cost'                 => 'decimal:2',
     ];
 
     public function doctor(){ return $this->belongsTo(Doctor::class); }
     public function state(){ return $this->belongsTo(State::class); }
 }
-

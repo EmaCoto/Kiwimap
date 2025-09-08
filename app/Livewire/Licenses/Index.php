@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 
 class Index extends Component
 {
-    use WithPagination,AuthorizesRequests;
+    use WithPagination, AuthorizesRequests;
 
     #[Url(as: 'state')] public string $stateCode = '';
     #[Url] public string $status = 'all';
@@ -43,18 +43,18 @@ class Index extends Component
         $license->delete();
 
         session()->flash('ok', 'License eliminada.');
-        // Mantén en la página actual
     }
 
     public function render()
     {
         $query = License::query()
-            ->when($this->stateCode, fn($q) => $q->whereHas('state', fn($s) => $s->where('code', strtoupper($this->stateCode))))
+            ->when($this->stateCode, fn($q) =>
+                $q->whereHas('state', fn($s) => $s->where('code', strtoupper($this->stateCode)))
+            )
             ->when($this->status !== 'all', fn($q) => $q->where('status', $this->status))
             ->when($this->search, function ($q) {
                 $term = "%{$this->search}%";
-                $q->where('license_number', 'like', $term)
-                  ->orWhereHas('doctor.user', fn($u) => $u->where('name','like',$term))
+                $q->whereHas('doctor.user', fn($u) => $u->where('name','like',$term))
                   ->orWhereHas('state', fn($s) => $s->where('name','like',$term)->orWhere('code','like',$term));
             })
             ->with(['doctor.user','state'])

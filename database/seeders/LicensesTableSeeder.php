@@ -2,23 +2,28 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Doctor;
+use App\Models\License;
+use App\Models\State;
 use Illuminate\Database\Seeder;
-use App\Models\{Doctor, License, State};
 
 class LicensesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Asegura estados poblados antes
-        if (State::count() === 0) $this->call(StatesTableSeeder::class);
+        // Ejemplo: crea 1-3 licencias por doctor, usando estados aleatorios
+        $stateIds = State::pluck('id')->all();
 
-        // Para cada doctor, 3-6 licencias aleatorias
-        Doctor::all()->each(function($doc){
-            License::factory()->count(rand(3,6))->create(['doctor_id'=>$doc->id]);
+        Doctor::query()->each(function (Doctor $doc) use ($stateIds) {
+            $n = rand(1, 3);
+            $picked = collect($stateIds)->shuffle()->take($n);
+
+            foreach ($picked as $stateId) {
+                License::factory()->create([
+                    'doctor_id' => $doc->id,
+                    'state_id'  => $stateId,
+                ]);
+            }
         });
     }
 }

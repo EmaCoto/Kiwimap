@@ -6,35 +6,33 @@ use App\Models\Doctor;
 use App\Models\State;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\License>
- */
 class LicenseFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition()
+    public function definition(): array
     {
+        $issued = $this->faker->optional()->dateTimeBetween('-3 years', 'now');
+        $expires = $issued ? (clone $issued)->modify('+'.mt_rand(6,36).' months') : null;
+
         return [
             'doctor_id'           => Doctor::factory(),
             'state_id'            => State::inRandomOrder()->value('id') ?? State::factory(),
-            'license_number'      => strtoupper(fake()->bothify('??#####')),
-            'license_type'        => fake()->randomElement(['MD','DO','APRN','PA']),
-            'issued_date'         => fake()->dateTimeBetween('-8 years','-1 year'),
-            'expiration_date'     => fake()->dateTimeBetween('+1 month','+2 years'),
-            'active_license_link' => fake()->url(),
-            'dea_number'          => fake()->optional()->bothify('AB#######'),
-            'notes'               => fake()->optional()->sentence(),
-            'cost'                => fake()->optional()->randomFloat(2,50,1200),
-            'mal_praxis_required' => fake()->boolean(30),
-            'forms'               => ['app'=>'tebra','ids'=>[fake()->uuid()]],
-            'need_physical_office'=> fake()->boolean(10),
-            'insurance'           => ['carrier'=>'MedPro','policy'=>fake()->bothify('POL-####')],
-            'status'              => fake()->randomElement(['active','pending','expired']),
+            'issued_date'         => $issued ? $issued->format('Y-m-d') : null,
+            'expiration_date'     => $expires ? $expires->format('Y-m-d') : null,
+            'has_active_link'     => $this->faker->boolean(60),
+            'expired_license_link'=> null,
+            'notes'               => $this->faker->optional()->sentence(),
+            'cost'                => $this->faker->optional()->randomFloat(2, 100, 900),
+            'mal_praxis_required' => $this->faker->boolean(30),
+            'forms'               => $this->faker->optional()->randomElement([
+                ['app'=>'tebra','ids'=>[$this->faker->uuid()]],
+                null,
+            ]),
+            'need_physical_office'=> $this->faker->boolean(20),
+            'insurance'           => $this->faker->optional()->randomElement([
+                ['carrier'=>'MedPro','policy'=>'POL-'.mt_rand(1000,9999)],
+                null,
+            ]),
+            'status'              => $this->faker->randomElement(['active','pending','expired']),
         ];
     }
-
 }

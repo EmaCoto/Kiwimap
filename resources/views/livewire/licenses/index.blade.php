@@ -12,7 +12,6 @@
     <div class="p-3 rounded bg-green-100 text-green-800 text-sm">{{ session('ok') }}</div>
   @endif
 
-  {{-- Filtros --}}
   <div class="grid grid-cols-1 md:grid-cols-4 gap-3 items-end">
     <div>
       <label class="block text-xs font-medium mb-1">Estado</label>
@@ -36,7 +35,7 @@
 
     <div class="md:col-span-2">
       <label class="block text-xs font-medium mb-1">Búsqueda</label>
-      <input type="text" wire:model.live.debounce.300ms="search" placeholder="Doctor, número, estado…" class="w-full border rounded p-2 text-sm">
+      <input type="text" wire:model.live.debounce.300ms="search" placeholder="Doctor o estado…" class="w-full border rounded p-2 text-sm">
     </div>
   </div>
 
@@ -45,17 +44,16 @@
     <span class="text-xs text-gray-500">Resultados: {{ $licenses->total() }}</span>
   </div>
 
-  {{-- Tabla --}}
   <div class="overflow-auto rounded border">
     <table class="min-w-full text-sm">
       <thead class="bg-gray-50 text-left">
         <tr>
           <th class="p-2">Doctor</th>
           <th class="p-2">Estado</th>
-          <th class="p-2">License #</th>
-          <th class="p-2">Tipo</th>
+          <th class="p-2">Emitida</th>
           <th class="p-2">Expira</th>
           <th class="p-2">Status</th>
+          <th class="p-2">Link</th>
           <th class="p-2 w-32 text-right">Acciones</th>
         </tr>
       </thead>
@@ -64,8 +62,7 @@
           <tr class="hover:bg-gray-50">
             <td class="p-2 whitespace-nowrap">{{ $l->doctor?->user?->name ?? '—' }}</td>
             <td class="p-2 whitespace-nowrap">{{ $l->state?->name }} ({{ $l->state?->code }})</td>
-            <td class="p-2">{{ $l->license_number }}</td>
-            <td class="p-2">{{ $l->license_type ?? '—' }}</td>
+            <td class="p-2">{{ optional($l->issued_date)->toDateString() ?? '—' }}</td>
             <td class="p-2">{{ optional($l->expiration_date)->toDateString() ?? '—' }}</td>
             <td class="p-2">
               @php
@@ -76,6 +73,13 @@
                 ][$l->status] ?? 'bg-gray-100 text-gray-800';
               @endphp
               <span class="px-2 py-0.5 rounded text-xs {{ $badge }}">{{ ucfirst($l->status) }}</span>
+            </td>
+            <td class="p-2">
+              @if($l->has_active_link)
+                <span class="px-2 py-0.5 rounded text-xs bg-emerald-100 text-emerald-800">Sí</span>
+              @else
+                <span class="px-2 py-0.5 rounded text-xs bg-gray-100 text-gray-800">No</span>
+              @endif
             </td>
             <td class="p-2 text-right space-x-2">
               <a href="{{ route('licenses.edit', $l) }}" class="text-blue-600 hover:underline text-xs">Editar</a>

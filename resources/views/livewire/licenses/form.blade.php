@@ -13,14 +13,14 @@
   <form wire:submit.prevent="save" class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div>
       <label class="block text-xs font-medium mb-1">Doctor</label>
-        <select wire:model="doctor_id" class="w-full border rounded p-2 text-sm">
-          <option value="">Seleccione…</option>
-          @foreach($doctors as $d)
-            <option value="{{ $d->id }}">
-              {{ $d->user?->name }}{{ $d->specialty ? ' — '.$d->specialty : '' }}
-            </option>
-          @endforeach
-        </select>
+      <select wire:model="doctor_id" class="w-full border rounded p-2 text-sm">
+        <option value="">Seleccione…</option>
+        @foreach($doctors as $d)
+          <option value="{{ $d->id }}">
+            {{ $d->user?->name }}{{ $d->specialty ? ' — '.$d->specialty : '' }}
+          </option>
+        @endforeach
+      </select>
       @error('doctor_id') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
     </div>
 
@@ -33,18 +33,6 @@
         @endforeach
       </select>
       @error('state_id') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
-    </div>
-
-    <div>
-      <label class="block text-xs font-medium mb-1">License #</label>
-      <input type="text" wire:model.defer="license_number" class="w-full border rounded p-2 text-sm">
-      @error('license_number') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
-    </div>
-
-    <div>
-      <label class="block text-xs font-medium mb-1">Tipo (MD/DO/APRN/PA)</label>
-      <input type="text" wire:model.defer="license_type" class="w-full border rounded p-2 text-sm">
-      @error('license_type') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
     </div>
 
     <div>
@@ -69,16 +57,9 @@
       @error('status') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
     </div>
 
-    <div>
-      <label class="block text-xs font-medium mb-1">Link verificación</label>
-      <input type="url" wire:model.defer="active_license_link" placeholder="https://..." class="w-full border rounded p-2 text-sm">
-      @error('active_license_link') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
-    </div>
-
-    <div class="md:col-span-2">
-      <label class="block text-xs font-medium mb-1">DEA # (opcional)</label>
-      <input type="text" wire:model.defer="dea_number" class="w-full border rounded p-2 text-sm">
-      @error('dea_number') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
+    <div class="flex items-center gap-2 mt-6">
+      <input id="has_link" type="checkbox" wire:model="has_active_link" class="rounded border-gray-300">
+      <label for="has_link" class="text-sm">Tiene link de verificación</label>
     </div>
 
     <div class="md:col-span-2 flex items-center gap-3">
