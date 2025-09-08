@@ -13,21 +13,18 @@
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                    <flux:navlist.item icon="dash" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Licenses Information')" class="grid">
+                    <flux:navlist.item icon="doctor" :href="route('doctors.index')" :current="request()->routeIs('doctors.index')" wire:navigate>{{ __('Doctors') }}</flux:navlist.item>
+                    <flux:navlist.item icon="states" :href="route('states.index')" :current="request()->routeIs('states.index')" wire:navigate>{{ __('States') }}</flux:navlist.item>
                     <flux:navlist.item icon="id-card" :href="route('licenses.index')" :current="request()->routeIs('licenses.index')" wire:navigate>{{ __('Licenses') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
-            <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Doctors Information')" class="grid">
-                    <flux:navlist.item icon="doctor" :href="route('doctors.index')" :current="request()->routeIs('doctors.index')" wire:navigate>{{ __('Doctors') }}</flux:navlist.item>
-                </flux:navlist.group>
-            </flux:navlist>
 
             
 

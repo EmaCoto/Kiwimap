@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Livewire\Licenses\{Index as LicensesIndex, Form as LicensesForm};
 use App\Livewire\Doctors\{Index as DoctorsIndex, Form as DoctorsForm};
+use App\Livewire\States\{Index as StatesIndex, Form as StatesForm};
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,6 +45,19 @@ Route::middleware(['auth','verified'])->group(function () {
         ->whereNumber('doctor')
         ->name('doctors.edit');
 });
+
+
+Route::middleware(['auth','verified'])->group(function () {
+    Route::get('/states', StatesIndex::class)->name('states.index');
+
+    // Wrapper Blade para crear (evita conflictos de ruteo)
+    Route::view('/states/create', 'livewire.states.creates')->name('states.create');
+
+    Route::get('/states/{state}/edit', StatesForm::class)
+        ->whereNumber('state')
+        ->name('states.edit');
+});
+
 
 
 require __DIR__.'/auth.php';
