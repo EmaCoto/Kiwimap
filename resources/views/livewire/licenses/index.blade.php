@@ -1,6 +1,6 @@
 <div class="p-6 space-y-6">
   <div class="flex items-center justify-between gap-3">
-    <h1 class="text-xl font-semibold">Licenses</h1>
+    <h1 class="text-xl font-semibold">Licencias</h1>
     @can('create', \App\Models\License::class)
       <a href="{{ route('licenses.create') }}" class="px-3 py-2 rounded bg-gray-900 text-white text-sm">
         Nueva licencia

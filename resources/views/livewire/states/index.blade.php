@@ -1,6 +1,6 @@
 <div class="p-6 space-y-6">
   <div class="flex items-center justify-between gap-3">
-    <h1 class="text-xl font-semibold">States</h1>
+    <h1 class="text-xl font-semibold">Estados</h1>
     @can('create', \App\Models\State::class)
       <a href="{{ route('states.create') }}" class="px-3 py-2 rounded bg-gray-900 text-white text-sm">
         Nuevo estado

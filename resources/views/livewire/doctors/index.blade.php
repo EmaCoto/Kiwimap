@@ -1,6 +1,6 @@
 <div class="p-6 space-y-6">
   <div class="flex items-center justify-between gap-3">
-    <h1 class="text-xl font-semibold">Doctors</h1>
+    <h1 class="text-xl font-semibold">Doctores</h1>
     @can('create', \App\Models\Doctor::class)
       <a href="{{ route('doctors.create') }}" class="px-3 py-2 rounded bg-gray-900 text-white text-sm">
         Nuevo doctor
