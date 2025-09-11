@@ -15,7 +15,7 @@ class LicensesTableSeeder extends Seeder
         $stateIds = State::pluck('id')->all();
 
         Doctor::query()->each(function (Doctor $doc) use ($stateIds) {
-            $n = rand(1, 3);
+            $n = rand(1, 20);
             $picked = collect($stateIds)->shuffle()->take($n);
 
             foreach ($picked as $stateId) {
