@@ -3,10 +3,10 @@
 namespace App\Livewire\Licenses;
 
 use App\Models\{Doctor, License, State};
-use Illuminate\Validation\Rule;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Artisan;
 
 class Form extends Component
 {
@@ -14,7 +14,6 @@ class Form extends Component
 
     public ?License $license = null;
 
-    // Campos del formulario (minimalistas)
     public $doctor_id = '';
     public $state_id = '';
     public $issued_date = '';
@@ -64,8 +63,8 @@ class Form extends Component
     }
 
     protected $messages = [
-        'doctor_id.required' => 'Selecciona un doctor.',
-        'state_id.required'  => 'Selecciona un estado.',
+        'doctor_id.required'             => 'Selecciona un doctor.',
+        'state_id.required'              => 'Selecciona un estado.',
         'expiration_date.after_or_equal' => 'La fecha de expiración no puede ser anterior a la de emisión.',
     ];
 
@@ -76,7 +75,7 @@ class Form extends Component
         $data['doctor_id'] = (int) $data['doctor_id'];
         $data['state_id']  = (int) $data['state_id'];
         $data['has_active_link'] = (bool) $data['has_active_link'];
-
+        
         if ($this->license && $this->license->exists) {
             $this->license->update($data);
             session()->flash('ok', 'Licencia actualizada.');
@@ -85,7 +84,14 @@ class Form extends Component
             session()->flash('ok', 'Licencia creada.');
         }
 
+        $this->runNotificationCommand($this->license);
+
         redirect()->to($this->redirect ?? route('licenses.index'));
+    }
+
+    private function runNotificationCommand(License $license): void
+    {
+        Artisan::call('licenses:send-reminders', ['--id' => $license->id]);
     }
 
     public function render()

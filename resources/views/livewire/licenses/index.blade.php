@@ -48,6 +48,7 @@
     <table class="min-w-full text-sm">
       <thead class="bg-gray-50 text-left">
         <tr>
+          <th class="p-2">ID</th>
           <th class="p-2">Doctor</th>
           <th class="p-2">Estado</th>
           <th class="p-2">Emitida</th>
@@ -60,6 +61,7 @@
       <tbody class="divide-y">
         @forelse($licenses as $l)
           <tr class="hover:bg-gray-50">
+            <td class="p-2 whitespace-nowrap">{{ $l->id ?? '—' }}</td>
             <td class="p-2 whitespace-nowrap">{{ $l->doctor?->user?->name ?? '—' }}</td>
             <td class="p-2 whitespace-nowrap">{{ $l->state?->name }} ({{ $l->state?->code }})</td>
             <td class="p-2">{{ optional($l->issued_date)->toDateString() ?? '—' }}</td>

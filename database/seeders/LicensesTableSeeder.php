@@ -11,19 +11,9 @@ class LicensesTableSeeder extends Seeder
 {
     public function run(): void
     {
-        // Ejemplo: crea 1-3 licencias por doctor, usando estados aleatorios
-        $stateIds = State::pluck('id')->all();
+        License::factory()->active()->count(10)->create();
+        License::factory()->pending()->count(5)->create();
+        License::factory()->expired()->count(5)->create();
 
-        Doctor::query()->each(function (Doctor $doc) use ($stateIds) {
-            $n = rand(1, 20);
-            $picked = collect($stateIds)->shuffle()->take($n);
-
-            foreach ($picked as $stateId) {
-                License::factory()->create([
-                    'doctor_id' => $doc->id,
-                    'state_id'  => $stateId,
-                ]);
-            }
-        });
     }
 }

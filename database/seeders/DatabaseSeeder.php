@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 
         // 3) (Opcional) Usuario Front Desk para pruebas
         $front = User::firstOrCreate(
-            ['email' => 'frontdesk@kiwimap.local'],
+            ['email' => 'frontdesk@kiwimap.com'],
             [
                 'name' => 'Front Desk',
                 'password' => Hash::make('Password123!'),

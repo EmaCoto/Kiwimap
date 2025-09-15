@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Notifications\LicenseExpiringNotification;
+use App\Models\License;
+use App\Models\User;
 use App\Livewire\Licenses\{Index as LicensesIndex, Form as LicensesForm};
 use App\Livewire\Doctors\{Index as DoctorsIndex, Form as DoctorsForm};
 use App\Livewire\States\{Index as StatesIndex, Form as StatesForm};
@@ -9,6 +12,28 @@ use App\Livewire\States\{Index as StatesIndex, Form as StatesForm};
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/send-test-email', function () {
+    $license = License::first(); // Asegúrate de que exista una licencia en tu base de datos
+    if (!$license) {
+        return 'No se encontró ninguna licencia para enviar el correo.';
+    }
+
+    // Simula los días que faltan, por ejemplo, 90 días
+    $daysUntil = 90; 
+
+    $recipients = User::role('Admin')->get();
+
+    if ($recipients->isEmpty()) {
+        return 'No hay usuarios con el rol Admin.';
+    }
+
+    foreach ($recipients as $user) {
+        $user->notify(new LicenseExpiringNotification($license, $daysUntil));
+    }
+
+    return 'Correo de prueba enviado. Revisa tu bandeja de entrada.';
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
