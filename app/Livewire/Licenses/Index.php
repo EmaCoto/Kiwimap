@@ -48,21 +48,24 @@ class Index extends Component
     public function render()
     {
         $query = License::query()
+            ->whereHas('state', fn($s) => $s->where('is_operational', true))
             ->when($this->stateCode, fn($q) =>
-                $q->whereHas('state', fn($s) => $s->where('code', strtoupper($this->stateCode)))
+                $q->whereHas('state', fn($s) => $s->where('code', strtoupper($this->stateCode))->where('is_operational', true))
             )
             ->when($this->status !== 'all', fn($q) => $q->where('status', $this->status))
             ->when($this->search, function ($q) {
                 $term = "%{$this->search}%";
-                $q->whereHas('doctor.user', fn($u) => $u->where('name','like',$term))
-                  ->orWhereHas('state', fn($s) => $s->where('name','like',$term)->orWhere('code','like',$term));
+                $q->where(function ($qq) use ($term) {
+                    $qq->whereHas('doctor.user', fn($u) => $u->where('name','like',$term))
+                       ->orWhereHas('state', fn($s) => $s->where('name','like',$term)->orWhere('code','like',$term));
+                });
             })
             ->with(['doctor.user','state'])
             ->orderByDesc('expiration_date');
 
         return view('livewire.licenses.index', [
             'licenses' => $query->paginate(15),
-            'states'   => State::orderBy('name')->get(['id','name','code']),
+            'states'   => State::where('is_operational', true)->orderBy('name')->get(['id','name','code']),
         ]);
     }
 }

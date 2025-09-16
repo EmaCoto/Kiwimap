@@ -3,10 +3,11 @@
 namespace App\Livewire\Licenses;
 
 use App\Models\{Doctor, License, State};
-use Livewire\Attributes\Url;
-use Livewire\Component;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Validation\Rule;
+use Livewire\Attributes\Url;
+use Livewire\Component;
 
 class Form extends Component
 {
@@ -54,7 +55,10 @@ class Form extends Component
     {
         return [
             'doctor_id'       => ['required','integer','exists:doctors,id'],
-            'state_id'        => ['required','integer','exists:states,id'],
+            'state_id'        => [
+                'required','integer',
+                Rule::exists('states','id')->where(fn($q) => $q->where('is_operational', true)),
+            ],
             'issued_date'     => ['nullable','date'],
             'expiration_date' => ['nullable','date','after_or_equal:issued_date'],
             'status'          => ['required','in:active,pending,expired'],
@@ -65,6 +69,7 @@ class Form extends Component
     protected $messages = [
         'doctor_id.required'             => 'Selecciona un doctor.',
         'state_id.required'              => 'Selecciona un estado.',
+        'state_id.exists'                => 'El estado seleccionado no está operacional.',
         'expiration_date.after_or_equal' => 'La fecha de expiración no puede ser anterior a la de emisión.',
     ];
 
@@ -75,7 +80,7 @@ class Form extends Component
         $data['doctor_id'] = (int) $data['doctor_id'];
         $data['state_id']  = (int) $data['state_id'];
         $data['has_active_link'] = (bool) $data['has_active_link'];
-        
+
         if ($this->license && $this->license->exists) {
             $this->license->update($data);
             session()->flash('ok', 'Licencia actualizada.');
@@ -98,7 +103,7 @@ class Form extends Component
     {
         return view('livewire.licenses.form', [
             'doctors' => Doctor::with('user:id,name')->orderBy('id')->get(),
-            'states'  => State::orderBy('name')->get(),
+            'states'  => State::where('is_operational', true)->orderBy('name')->get(),
             'isEdit'  => (bool) ($this->license && $this->license->exists),
         ]);
     }
