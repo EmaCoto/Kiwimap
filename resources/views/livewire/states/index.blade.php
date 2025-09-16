@@ -2,14 +2,14 @@
   <div class="flex items-center justify-between gap-3">
     <h1 class="text-xl font-semibold">Estados</h1>
     @can('create', \App\Models\State::class)
-      <a href="{{ route('states.create') }}" class="px-3 py-2 rounded bg-gray-900 text-white text-sm">
-        Nuevo estado
+      <a href="{{ route('states.create') }}" class="flex items-center px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105  font-semibold">
+        <flux:icon name="globe-americas" class="h-4 w-4 mr-2" />Agregar estado
       </a>
     @endcan
   </div>
 
   @if (session('ok'))
-    <div class="p-3 rounded bg-green-100 text-green-800 text-sm">{{ session('ok') }}</div>
+    <div class="p-3 rounded border-l-2 border-green-800 bg-green-100 text-green-800 text-sm flex items-center"><flux:icon name="bell" class="h-4 w-4 mr-4" />{{ session('ok') }}</div>
   @endif
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
@@ -30,17 +30,17 @@
 
   <div class="overflow-auto rounded border">
     <table class="min-w-full text-sm">
-      <thead class="bg-gray-50 text-left">
+      <thead class="bg-gray-100 text-left">
         <tr>
           <th class="p-2">Nombre</th>
           <th class="p-2">Código</th>
           <th class="p-2">Operacional</th>
-          <th class="p-2 w-32 text-right">Acciones</th>
+          <th class="p-2 w-32">Acciones</th>
         </tr>
       </thead>
       <tbody class="divide-y">
         @forelse($states as $s)
-          <tr class="hover:bg-gray-50">
+          <tr class="hover:bg-gray-100">
             <td class="p-2 whitespace-nowrap">{{ $s->name }}</td>
             <td class="p-2 whitespace-nowrap">{{ $s->code }}</td>
             <td class="p-2">
@@ -50,8 +50,8 @@
                 <span class="px-2 py-0.5 rounded text-xs bg-gray-100 text-gray-800">No</span>
               @endif
             </td>
-            <td class="p-2 text-right space-x-2">
-              <a href="{{ route('states.edit', $s) }}" class="text-blue-600 hover:underline text-xs">Editar</a>
+            <td class="p-2 space-x-2 flex">
+              <a href="{{ route('states.edit', $s) }}" class="text-blue-600 hover:underline text-xs"><flux:icon name="pencil-square" class="h-4 w-4" /></a>
 
               @can('delete', $s)
               <button
@@ -60,7 +60,7 @@
                 type="button"
                 class="text-rose-600 hover:underline text-xs"
               >
-                Eliminar
+                <flux:icon name="trash" class="h-4 w-4" />
               </button>
               @endcan
             </td>

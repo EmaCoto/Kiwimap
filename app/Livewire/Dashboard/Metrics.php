@@ -11,7 +11,7 @@ class Metrics extends Component
 {
     use AuthorizesRequests;
 
-    #[Url] public int $soonDays = 30; // configurable por query: /dashboard?soonDays=45
+    #[Url] public int $soonDays = 90; // configurable por query: /dashboard?soonDays=45
 
     public int $operationalStates = 0;
     public int $doctorsCount = 0;
