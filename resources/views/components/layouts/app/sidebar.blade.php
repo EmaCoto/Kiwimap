@@ -25,6 +25,12 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('gestión de usuarios')" class="grid">
+                    <flux:navlist.item icon="group-user" :href="route('users.index')" :current="request()->routeIs('users.index')" wire:navigate>{{ __('Usuarios') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
 
             
 

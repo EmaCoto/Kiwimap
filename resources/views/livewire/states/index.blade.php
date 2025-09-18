@@ -30,7 +30,7 @@
 
   <div class="overflow-auto rounded border">
     <table class="min-w-full text-sm">
-      <thead class="bg-gray-100 text-left">
+      <thead class="bg-gray-100 text-left dark:text-black">
         <tr>
           <th class="p-2">Nombre</th>
           <th class="p-2">Código</th>
@@ -40,7 +40,7 @@
       </thead>
       <tbody class="divide-y">
         @forelse($states as $s)
-          <tr class="hover:bg-gray-100">
+          <tr class="hover:bg-gray-100 dark:hover:text-black">
             <td class="p-2 whitespace-nowrap">{{ $s->name }}</td>
             <td class="p-2 whitespace-nowrap">{{ $s->code }}</td>
             <td class="p-2">

@@ -19,7 +19,7 @@
 
   <div class="overflow-auto rounded border">
     <table class="min-w-full text-sm">
-      <thead class="bg-gray-100 text-left">
+      <thead class="bg-gray-100 dark:text-black text-left">
         <tr>
           <th class="p-2">Nombre</th>
           <th class="p-2">Email</th>
@@ -29,7 +29,7 @@
       </thead>
       <tbody class="divide-y">
         @forelse($doctors as $d)
-          <tr class="hover:bg-gray-100">
+          <tr class="hover:bg-gray-100 dark:hover:text-black">
             <td class="p-2 whitespace-nowrap">{{ $d->user?->name ?? '—' }}</td>
             <td class="p-2 whitespace-nowrap">{{ $d->user?->email ?? '—' }}</td>
             <td class="p-2">{{ $d->specialty ?? '—' }}</td>

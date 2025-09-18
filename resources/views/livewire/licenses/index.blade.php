@@ -46,7 +46,7 @@
 
   <div class="overflow-auto rounded border">
     <table class="min-w-full text-sm">
-      <thead class="bg-gray-100 text-left">
+      <thead class="bg-gray-100 text-left dark:text-black">
         <tr>
           <th class="p-2">ID</th>
           <th class="p-2">Doctor</th>
@@ -60,7 +60,7 @@
       </thead>
       <tbody class="divide-y">
         @forelse($licenses as $l)
-          <tr class="hover:bg-gray-100">
+          <tr class="hover:bg-gray-100 dark:hover:text-black">
             <td class="p-2 whitespace-nowrap">{{ $l->id ?? '—' }}</td>
             <td class="p-2 whitespace-nowrap">{{ $l->doctor?->user?->name ?? '—' }}</td>
             <td class="p-2 whitespace-nowrap">{{ $l->state?->name }} ({{ $l->state?->code }})</td>

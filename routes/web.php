@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Livewire\Licenses\{Index as LicensesIndex, Form as LicensesForm};
 use App\Livewire\Doctors\{Index as DoctorsIndex, Form as DoctorsForm};
 use App\Livewire\States\{Index as StatesIndex, Form as StatesForm};
+use App\Livewire\Users\{Index as UsersIndex, Form as UsersForm};
 
 Route::get('/', function () {
     return view('welcome');
@@ -58,6 +59,19 @@ Route::middleware(['auth','verified'])->group(function () {
         ->whereNumber('license')
         ->name('licenses.edit');
 });
+
+
+
+Route::middleware(['auth','verified'])->group(function () {
+    Route::get('/users', UsersIndex::class)->name('users.index');
+
+    Route::view('/users/create', 'livewire.users.creates')->name('users.create');
+
+    Route::get('/users/{user}/edit', UsersForm::class)
+        ->whereNumber('user')
+        ->name('users.edit');
+});
+
 
 Route::middleware(['auth','verified'])->group(function () {
     // DOCTORS
