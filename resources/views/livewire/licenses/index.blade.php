@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between gap-3">
     <h1 class="text-xl font-semibold">Licencias</h1>
     @can('create', \App\Models\License::class)
-      <a href="{{ route('licenses.create') }}" class="flex items-center px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105  font-semibold">
+      <a href="{{ route('licenses.create') }}" class="flex items-center px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105  font-semibold">
         <flux:icon name="folder-plus" class="h-4 w-4 mr-2" />Agregar licencia
       </a>
     @endcan
@@ -40,7 +40,12 @@
   </div>
 
   <div class="flex justify-between items-center">
-    <button wire:click="clearFilters" class="text-xs underline">Limpiar filtros</button>
+    <button wire:click="clearFilters" class="bg-white text-center w-42 rounded-2xl h-14 relative text-black text-sm font-semibold group cursor-pointer" type="button">
+      <div class="bg-gradient-to-b active:bg-gradient-to-t from-[#6fa31c] to-[#123338] rounded-lg h-10 w-1/5 flex items-center justify-center absolute left-1 top-[10px] group-hover:w-[150px] z-10 hover:shadow transform duration-500 ease-in-out">
+        <flux:icon name="paint-brush" class="h-4 w-4 text-white" />
+      </div>
+      <p class="translate-x-2">Limpiar filtro</p>
+    </button>
     <span class="text-xs text-gray-500">Resultados: {{ $licenses->total() }}</span>
   </div>
 

@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // 1) Roles (forzamos guard 'web' para evitar desajustes)
-        foreach (['Admin','Front Desk','Doctor','Medical Assistant'] as $r) {
+        foreach (['Admin', 'Front Desk', 'Doctor', 'Medical Assistant', 'Office Manager'] as $r) {
             Role::findOrCreate($r, 'web');
         }
 
@@ -27,17 +27,6 @@ class DatabaseSeeder extends Seeder
             ]
         );
         $admin->assignRole('Admin');
-
-        // 3) (Opcional) Usuario Front Desk para pruebas
-        $front = User::firstOrCreate(
-            ['email' => 'frontdesk@kiwimap.com'],
-            [
-                'name' => 'Front Desk',
-                'password' => Hash::make('Password123!'),
-                'email_verified_at' => now(),
-            ]
-        );
-        $front->assignRole('Front Desk');
 
         // 4) Semillas de catálogo y datos de negocio
         $this->call([

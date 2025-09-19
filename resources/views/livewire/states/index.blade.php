@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between gap-3">
     <h1 class="text-xl font-semibold">Estados</h1>
     @can('create', \App\Models\State::class)
-      <a href="{{ route('states.create') }}" class="flex items-center px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105  font-semibold">
+      <a href="{{ route('states.create') }}" class="flex items-center px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105  font-semibold">
         <flux:icon name="globe-americas" class="h-4 w-4 mr-2" />Agregar estado
       </a>
     @endcan

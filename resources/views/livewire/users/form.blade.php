@@ -34,55 +34,62 @@
       <input type="password" wire:model.defer="password_confirmation" class="w-full border rounded p-2 text-sm" autocomplete="new-password">
     </div>
 
-    <div class="md:col-span-2 flex items-center gap-2 mt-2">
-      <input id="email_verified" type="checkbox" wire:model="email_verified" class="rounded border-gray-300">
-      <label for="email_verified" class="text-sm">Email verificado</label>
-    </div>
 
+    {{-- Roles --}}
     <div>
       <label class="block text-xs font-medium mb-1">Roles</label>
       <div class="border rounded p-2 max-h-40 overflow-auto space-y-1">
-        @foreach($allRoles as $r)
+        @forelse($allRoles as $r)
           <label class="flex items-center gap-2 text-sm">
+            {{-- al cambiar, Livewire llamará updatedRoles() --}}
             <input type="checkbox" value="{{ $r }}" wire:model="roles" class="rounded border-gray-300">
             <span>{{ $r }}</span>
           </label>
-        @endforeach
+        @empty
+          <div class="text-xs text-gray-500">No hay roles creados.</div>
+        @endforelse
       </div>
-      @error('roles.*') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
     </div>
 
+    {{-- Permisos heredados por rol (solo lectura) --}}
     <div>
-    <label class="block text-xs font-medium mb-1">Permisos</label>
+      <label class="block text-xs font-medium mb-1">Permisos heredados por rol</label>
+      <div class="border rounded p-2 max-h-40 overflow-auto space-y-1 bg-neutral-50">
+        @forelse($inheritedOptions as $op)
+          <div class="flex items-center gap-2 text-sm opacity-75">
+            <input type="checkbox" checked disabled class="rounded border-gray-300">
+            <span>{{ $op['label'] }}</span>
+            <span class="text-[10px] uppercase px-1.5 py-0.5 rounded bg-gray-200 text-gray-700">heredado</span>
+          </div>
+        @empty
+          <div class="text-xs text-gray-500">Ninguno</div>
+        @endforelse
+      </div>
+      <p class="mt-1 text-[11px] text-gray-500">Estos permisos vienen de los roles seleccionados.</p>
+    </div>
 
-    @if (empty($allPerms))
-        <div class="p-3 rounded border text-sm bg-amber-50 border-amber-200 text-amber-900">
-        No hay permisos creados. Crea permisos con Spatie antes de asignarlos.
-        <div class="mt-2 text-xs">
-            Tip: ejecuta <code>php artisan db:seed --class=PermissionsSeeder</code> y luego
-            <code>php artisan permission:cache-reset</code>.
-        </div>
-        </div>
-    @else
-        <div class="border rounded p-2 max-h-40 overflow-auto space-y-1">
-        @foreach($allPerms as $p)
-            <label class="flex items-center gap-2 text-sm">
-            <input type="checkbox" value="{{ $p }}" wire:model="permissions" class="rounded border-gray-300">
-            <span>{{ $p }}</span>
-            </label>
-        @endforeach
-        </div>
-    @endif
-
-    @error('permissions.*') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
+    {{-- Permisos directos (no incluye los heredados) --}}
+    <div class="md:col-span-2">
+      <label class="block text-xs font-medium mb-1">Permisos directos</label>
+      <div class="border rounded p-2 max-h-56 overflow-auto grid grid-cols-1 md:grid-cols-2 gap-1">
+        @forelse($permOptions as $op)
+          <label class="flex items-center gap-2 text-sm">
+            <input type="checkbox" value="{{ $op['name'] }}" wire:model="permissions" class="rounded border-gray-300">
+            <span>{{ $op['label'] }}</span>
+          </label>
+        @empty
+          <div class="text-xs text-gray-500">No hay permisos creados.</div>
+        @endforelse
+      </div>
+      @error('permissions.*') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
     </div>
 
 
-    <div class="md:col-span-2 flex items-center gap-3">
-      <button type="submit" class="px-4 py-2 rounded bg-gray-900 text-white text-sm">
+    <div class="md:col-span-2 flex items-center gap-3 mt-5 justify-end">
+      <button type="submit" class="flex items-center cursor-pointer px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">
         {{ $isEdit ? 'Guardar cambios' : 'Crear usuario' }}
       </button>
-      <a href="{{ $redirect ?? route('users.index') }}" class="text-sm underline">Cancelar</a>
+      <a href="{{ $redirect ?? route('users.index') }}" class="px-4 py-2 rounded-lg bg-gray-900 text-white transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">Cancelar</a>
     </div>
   </form>
 </div>
