@@ -101,10 +101,24 @@ class Form extends Component
 
     public function render()
     {
+        $user = auth()->user();
+
+        if ($user->hasRole('Doctor')) {
+            // Doctor: solo se asigna a sí mismo
+            $doctors = \App\Models\Doctor::where('user_id', $user->id)->with('user:id,name')->get();
+            if (! $this->doctor_id) {
+                $this->doctor_id = $doctors->first()?->id ?? '';
+            }
+        } else {
+            // Admin / Front Desk / etc.
+            $doctors = \App\Models\Doctor::with('user:id,name')->orderBy('id')->get();
+        }
+
         return view('livewire.licenses.form', [
-            'doctors' => Doctor::with('user:id,name')->orderBy('id')->get(),
+            'doctors' => $doctors,
             'states'  => State::where('is_operational', true)->orderBy('name')->get(),
             'isEdit'  => (bool) ($this->license && $this->license->exists),
         ]);
     }
+
 }

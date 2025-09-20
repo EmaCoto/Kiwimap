@@ -57,7 +57,7 @@
                   x-data
                   @click.prevent="if (confirm('¿Eliminar este usuario?')) { $wire.delete({{ $u->id }}) }"
                   type="button"
-                  class="text-rose-600 hover:underline text-xs">
+                  class="text-rose-600 hover:underline text-xs cursor-pointer">
                   <flux:icon name="trash" class="h-4 w-4" />
                 </button>
               @endcan

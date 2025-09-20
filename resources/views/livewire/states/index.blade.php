@@ -51,14 +51,17 @@
               @endif
             </td>
             <td class="p-2 space-x-2 flex">
-              <a href="{{ route('states.edit', $s) }}" class="text-blue-600 hover:underline text-xs"><flux:icon name="pencil-square" class="h-4 w-4" /></a>
-
+              @can('update', $s)
+                <a href="{{ route('states.edit', $s) }}" class="text-blue-600 hover:underline text-xs">
+                  <flux:icon name="pencil-square" class="h-4 w-4" />
+                </a>
+              @endcan
               @can('delete', $s)
               <button
                 x-data
                 @click.prevent="if (confirm('Eliminar este estado?')) { $wire.delete({{ $s->id }}) }"
                 type="button"
-                class="text-rose-600 hover:underline text-xs"
+                class="text-rose-600 hover:underline text-xs cursor-pointer"
               >
                 <flux:icon name="trash" class="h-4 w-4" />
               </button>

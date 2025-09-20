@@ -7,59 +7,45 @@ use App\Models\User;
 
 class StatePolicy
 {
-    /**
-     * Ver listado de estados
-     */
+    /** Listado */
     public function viewAny(User $user): bool
     {
-        return $user->hasAnyRole(['Admin', 'Front Desk', 'Doctor', 'Medical Assistant']);
+        return $user->can('states.view');
     }
 
-    /**
-     * Ver un estado en particular
-     */
+    /** Ver uno */
     public function view(User $user, State $state): bool
     {
-        return $user->hasAnyRole(['Admin', 'Front Desk', 'Doctor', 'Medical Assistant']);
+        return $user->can('states.view');
     }
 
-    /**
-     * Crear estados
-     */
+    /** Crear */
     public function create(User $user): bool
     {
-        return $user->hasRole('Admin');
+        return $user->can('states.create');
     }
 
-    /**
-     * Actualizar estados
-     */
+    /** Editar */
     public function update(User $user, State $state): bool
     {
-        return $user->hasRole('Admin');
+        return $user->can('states.update');
     }
 
-    /**
-     * Eliminar estados
-     */
+    /** Eliminar */
     public function delete(User $user, State $state): bool
     {
-        return $user->hasRole('Admin');
+        return $user->can('states.delete');
     }
 
-    /**
-     * Restaurar (si usas SoftDeletes)
-     */
+    /** Restaurar (si usas SoftDeletes) */
     public function restore(User $user, State $state): bool
     {
-        return $user->hasRole('Admin');
+        return $user->can('states.delete');
     }
 
-    /**
-     * Eliminar permanentemente
-     */
+    /** Eliminar permanente */
     public function forceDelete(User $user, State $state): bool
     {
-        return $user->hasRole('Admin');
+        return $user->can('states.delete');
     }
 }

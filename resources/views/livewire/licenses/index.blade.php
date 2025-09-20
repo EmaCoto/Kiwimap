@@ -96,7 +96,7 @@
                 x-data
                 @click.prevent="if (confirm('Eliminar esta licencia?')) { $wire.delete({{ $l->id }}) }"
                 type="button"
-                class="text-rose-600 hover:underline text-xs"
+                class="text-rose-600 hover:underline text-xs cursor-pointer"
               >
                 <flux:icon name="trash" class="h-4 w-4" />
               </button>

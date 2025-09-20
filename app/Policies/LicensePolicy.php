@@ -7,65 +7,56 @@ use App\Models\User;
 
 class LicensePolicy
 {
-    /**
-     * Ver listado de licencias
-     */
     public function viewAny(User $user): bool
     {
-        return $user->hasAnyRole(['Admin', 'Front Desk', 'Doctor']);
+        return $user->can('licenses.view');
     }
 
-    /**
-     * Ver una licencia en particular
-     */
     public function view(User $user, License $license): bool
     {
-        // Admin y Front Desk ven todo
-        if ($user->hasAnyRole(['Admin','Front Desk'])) {
-            return true;
+        if (! $user->can('licenses.view')) {
+            return false;
         }
 
-        // Un doctor puede ver sus propias licencias
-        return $user->hasRole('Doctor') && $license->doctor->user_id === $user->id;
+        // Si es doctor: solo sus propias licencias
+        if ($user->hasRole('Doctor')) {
+            return $license->doctor->user_id === $user->id;
+        }
+
+        return true;
     }
 
-    /**
-     * Crear licencias
-     */
     public function create(User $user): bool
     {
-        return $user->hasAnyRole(['Admin','Front Desk']);
+        return $user->can('licenses.create');
     }
 
-    /**
-     * Actualizar licencias
-     */
     public function update(User $user, License $license): bool
     {
-        return $user->hasAnyRole(['Admin','Front Desk']);
+        if (! $user->can('licenses.update')) {
+            return false;
+        }
+
+        // Si es doctor: solo puede actualizar sus propias licencias
+        if ($user->hasRole('Doctor')) {
+            return $license->doctor->user_id === $user->id;
+        }
+
+        return true;
     }
 
-    /**
-     * Eliminar licencias
-     */
     public function delete(User $user, License $license): bool
     {
-        return $user->hasRole('Admin');
+        return $user->can('licenses.delete');
     }
 
-    /**
-     * Restaurar (si usas SoftDeletes)
-     */
     public function restore(User $user, License $license): bool
     {
-        return $user->hasRole('Admin');
+        return $user->can('licenses.delete');
     }
 
-    /**
-     * Eliminar permanentemente
-     */
     public function forceDelete(User $user, License $license): bool
     {
-        return $user->hasRole('Admin');
+        return $user->can('licenses.delete');
     }
 }

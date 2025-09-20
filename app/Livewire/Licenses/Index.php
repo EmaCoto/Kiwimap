@@ -57,15 +57,21 @@ class Index extends Component
                 $term = "%{$this->search}%";
                 $q->where(function ($qq) use ($term) {
                     $qq->whereHas('doctor.user', fn($u) => $u->where('name','like',$term))
-                       ->orWhereHas('state', fn($s) => $s->where('name','like',$term)->orWhere('code','like',$term));
+                    ->orWhereHas('state', fn($s) => $s->where('name','like',$term)->orWhere('code','like',$term));
                 });
             })
             ->with(['doctor.user','state'])
             ->orderByDesc('expiration_date');
+
+        // 🔒 Si el usuario es Doctor → solo sus licencias
+        if (auth()->user()->hasRole('Doctor')) {
+            $query->whereHas('doctor', fn($d) => $d->where('user_id', auth()->id()));
+        }
 
         return view('livewire.licenses.index', [
             'licenses' => $query->paginate(15),
             'states'   => State::where('is_operational', true)->orderBy('name')->get(['id','name','code']),
         ]);
     }
+
 }

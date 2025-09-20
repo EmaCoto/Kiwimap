@@ -41,7 +41,7 @@ class Index extends Component
             ->when($this->search, function ($q) use ($term) {
                 $q->whereHas('user', fn($u) => $u->where('name','like',$term)
                                                 ->orWhere('email','like',$term))
-                  ->orWhere('specialty','like',$term);
+                ->orWhere('specialty','like',$term);
             })
             ->orderBy('id','desc');
 
@@ -49,4 +49,5 @@ class Index extends Component
             'doctors' => $query->paginate(15),
         ]);
     }
+
 }

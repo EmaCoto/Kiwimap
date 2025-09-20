@@ -12,50 +12,59 @@ class PermissionsSeeder extends Seeder
     {
         $guard = config('auth.defaults.guard', 'web');
 
-        // Permisos CRUD de usuarios
-        $perms = [
+        // 1) Definir todos los permisos del sistema (CRUDs básicos)
+        $allPerms = [
+            // Users
             'users.view', 'users.create', 'users.update', 'users.delete',
+            // Doctors
             'doctors.view','doctors.create','doctors.update','doctors.delete',
+            // Licenses
             'licenses.view','licenses.create','licenses.update','licenses.delete',
+            // States
             'states.view','states.create','states.update','states.delete',
         ];
 
-        foreach ($perms as $p) {
+        foreach ($allPerms as $p) {
             Permission::findOrCreate($p, $guard);
         }
 
-        // Asegura roles base con el guard correcto
-        $roles = ['Admin','Front Desk','Doctor','Medical Assistant', 'Office Manager'];
+        // 2) Crear roles
+        $roles = ['Admin','Office Manager','Front Desk','Doctor','Medical Assistant'];
         foreach ($roles as $r) {
             Role::findOrCreate($r, $guard);
         }
 
+        // 3) Asignaciones exactas por rol (usamos syncPermissions)
         $admin = Role::findByName('Admin', $guard);
-        $admin->givePermissionTo(Permission::all());
+        $admin->syncPermissions($allPerms); // Admin = todo
 
-        
-        $front = Role::findByName('Office Manager', $guard);
-        $front->givePermissionTo([
-            'users.view'
+        $office = Role::findByName('Office Manager', $guard);
+        $office->syncPermissions([
+            'users.view','users.create','users.update',
+            'doctors.view','doctors.create','doctors.update',
+            'licenses.view','licenses.create','licenses.update',
+            'states.view','states.create','states.update',
         ]);
 
-        
         $front = Role::findByName('Front Desk', $guard);
-        $front->givePermissionTo([
-            'users.view'
+        $front->syncPermissions([
+            'doctors.view',
+            'licenses.view','licenses.create',
+            'states.view','states.create',
         ]);
 
-        
-        $front = Role::findByName('Doctor', $guard);
-        $front->givePermissionTo([
-            'users.view',
+        $doctor = Role::findByName('Doctor', $guard);
+        $doctor->syncPermissions([
+            'doctors.view',
+            'licenses.view','licenses.create','licenses.update',
+            'states.view',
         ]);
 
-       
-        $front = Role::findByName('Medical Assistant', $guard);
-        $front->givePermissionTo([
-            'users.view',
+        $ma = Role::findByName('Medical Assistant', $guard);
+        $ma->syncPermissions([
+            'doctors.view',
+            'licenses.view',
+            'states.view',
         ]);
-
     }
 }
