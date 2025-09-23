@@ -7,7 +7,7 @@
   </div>
 
   @if (session('ok'))
-    <div class="p-3 rounded border-l-2 border-green-800 bg-green-100 text-green-800 text-sm flex items-center"><flux:icon name="bell" class="h-4 w-4 mr-4" />sdsd{{ session('ok') }}</div>
+    <div class="p-3 rounded border-l-2 border-green-800 bg-green-100 text-green-800 text-sm flex items-center"><flux:icon name="bell" class="h-4 w-4 mr-4" />{{ session('ok') }}</div>
   @endif
 
   <form wire:submit.prevent="save" class="grid grid-cols-1 md:grid-cols-2 gap-4">

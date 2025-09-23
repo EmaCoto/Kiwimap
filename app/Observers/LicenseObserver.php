@@ -21,56 +21,37 @@ class LicenseObserver
         // Solo si cambió expiración o status
         if (! $license->wasChanged(['expiration_date', 'status'])) return;
 
-        $today     = Carbon::today();
-        $daysUntil = $today->diffInDays($license->expiration_date, false);
-
-        if (! in_array($daysUntil, $this->offsets, true)) return;
-
-        // Si ya venció pero sigue "active", no avisamos
-        if ($daysUntil < 0 && $license->status === 'active') return;
-
-        $already = LicenseNotificationLog::where('license_id', $license->id)
-            ->where('offset_days', $daysUntil)
-            ->exists();
-        if ($already) return;
-
-        $recipients = $this->recipientsFor($license);
-
-        if ($recipients->isEmpty()) {
-            Log::warning("No recipients found (Admin/Office Manager/Doctor owner). Notification not sent.");
-            return;
-        }
-
-        foreach ($recipients as $user) {
-            $user->notify(new LicenseExpiringNotification($license, $daysUntil));
-        }
-
-        LicenseNotificationLog::create([
-            'license_id'  => $license->id,
-            'offset_days' => $daysUntil,
-            'sent_at'     => now(),
-        ]);
+        $this->maybeNotify($license);
     }
 
     public function created(License $license): void
     {
         if (blank($license->expiration_date)) return;
 
+        $this->maybeNotify($license);
+    }
+
+    private function maybeNotify(License $license): void
+    {
         $today     = Carbon::today();
         $daysUntil = $today->diffInDays($license->expiration_date, false);
 
+        // Solo en los offsets que definiste
         if (! in_array($daysUntil, $this->offsets, true)) return;
+
+        // Si ya venció pero sigue en active, no notificar
         if ($daysUntil < 0 && $license->status === 'active') return;
 
+        // Evitar reenvíos para el mismo offset
         $already = LicenseNotificationLog::where('license_id', $license->id)
             ->where('offset_days', $daysUntil)
             ->exists();
         if ($already) return;
 
-        $recipients = $this->recipientsFor($license);
+        $recipients = $this->collectRecipients($license);
 
         if ($recipients->isEmpty()) {
-            Log::warning("No recipients found (Admin/Office Manager/Doctor owner). Notification not sent.");
+            Log::warning("No recipients (Admin/Office Manager/Doctor) found for license {$license->id}. Notification not sent.");
             return;
         }
 
@@ -86,19 +67,25 @@ class LicenseObserver
     }
 
     /**
-     * Admins + Office Managers + el doctor dueño de la licencia (si lo hay).
+     * Admins + Office Managers + doctor dueño de la licencia.
+     * Filtra duplicados y emails vacíos.
      */
-    private function recipientsFor(License $license): Collection
+    private function collectRecipients(License $license): Collection
     {
-        $recipients = User::role(['Admin', 'Office Manager'])->get();
+        $guard = config('auth.defaults.guard', 'web');
 
-        // Agrega al doctor dueño de la licencia (si existe user asociado)
-        $doctorUser = $license->doctor?->user;
-        if ($doctorUser) {
-            $recipients->push($doctorUser);
-        }
+        $admins = User::role('Admin', $guard)->get();
+        $offices = User::role('Office Manager', $guard)->get();
 
-        // Evita duplicados por id
-        return $recipients->unique('id')->values();
+        $doctorUser = optional($license->doctor)->user; // puede ser null
+
+        $all = $admins
+            ->merge($offices)
+            ->when($doctorUser, fn ($c) => $c->push($doctorUser));
+
+        return $all
+            ->filter(fn ($u) => filled($u->email))
+            ->unique('id')
+            ->values();
     }
 }

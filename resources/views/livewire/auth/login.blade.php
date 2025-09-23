@@ -114,7 +114,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <flux:checkbox wire:model="remember" :label="__('Recuérdame')" />
 
         <div class="flex items-center justify-end">
-            <button variant="primary" type="submit" class="w-full bg-linear-to-b from-[#23252b] to-[#351d5b] py-2 rounded cursor-pointer">{{ __('Ingresar') }}</button>
+            <button variant="primary" type="submit" class="w-full bg-linear-to-b from-[#23252b] to-[#351d5b] py-2 rounded cursor-pointer text-white">{{ __('Ingresar') }}</button>
         </div>
     </form>
 
