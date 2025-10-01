@@ -1,4 +1,18 @@
 <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
+  @if (session('ok'))
+    <div class="p-3 rounded border-l-2 border-green-800 bg-green-100 text-green-800 text-sm flex items-center"><flux:icon name="bell" class="h-4 w-4 mr-4" />{{ session('ok') }}</div>
+  @endif
+
+  @if(auth()->user()?->hasAnyRole(['Admin','Office Manager']))
+    <div class="flex justify-end">
+      <button x-data @click.prevent="if (confirm('¿Seguro que quieres limpiar todas las cachés?')) { $wire.clearCaches() }" wire:loading.attr="disabled" wire:target="clearCaches" class="flex items-center gap-2 px-3 py-2 rounded-lg text-white bg-gray-900 hover:opacity-90 text-sm" type="button">
+        <flux:icon name="bolt" class="h-4 w-4" />
+        <span wire:loading.remove wire:target="clearCaches">Limpiar caché</span>
+        <span wire:loading wire:target="clearCaches">Procesando…</span>
+      </button>
+    </div>
+  @endif
+  
   {{-- Cards métricas --}}
   <div class="grid auto-rows-min gap-4 md:grid-cols-4">
     <div class="relative overflow-hidden rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t dark:bg-gradient-to-b from-[#6fa31c] to-[#123338] hover:bg-none transition ease-in-out duration-300 p-5">

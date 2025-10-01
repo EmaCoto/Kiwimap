@@ -5,6 +5,8 @@ namespace App\Livewire\Dashboard;
 use App\Models\{Doctor, License, State};
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Url;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Metrics extends Component
@@ -59,6 +61,34 @@ class Metrics extends Component
         $this->expiringSoonCount = License::whereNotNull('expiration_date')
             ->whereBetween('expiration_date', [$today, $until])
             ->count();
+    }
+
+    public function clearCaches(): void
+    {
+        // ✅ Seguridad: solo Admin u Office Manager
+        if (! auth()->user()?->hasAnyRole(['Admin','Office Manager'])) {
+            abort(403);
+        }
+
+        // (Opcional) extra seguridad en producción
+        // if (app()->isProduction()) { abort(403, 'Solo en entornos autorizados.'); }
+
+        $commands = [
+            'optimize:clear', // limpia todo (config, route, view, cache, etc.)
+            'event:clear',
+            'queue:restart',  // reinicia workers de colas
+        ];
+
+        foreach ($commands as $cmd) {
+            try {
+                Artisan::call($cmd);
+            } catch (\Throwable $e) {
+                Log::error("Fallo ejecutando {$cmd}: ".$e->getMessage());
+            }
+        }
+
+        // Feedback en UI
+        session()->flash('ok', 'Cachés limpiadas.');
     }
 
     public function render()
