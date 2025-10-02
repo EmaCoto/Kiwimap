@@ -31,6 +31,12 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Herramientas')" class="grid">
+                    <flux:navlist.item icon="clock" :href="route('time_difference')" :current="request()->routeIs('time_difference')" wire:navigate>{{ __('Diferencia Horaria') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
 
             
 

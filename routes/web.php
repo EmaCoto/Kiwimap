@@ -16,6 +16,10 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+    Route::view('time_difference', 'time_difference')
+    ->middleware(['auth', 'verified'])
+    ->name('time_difference');
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
