@@ -33,8 +33,8 @@ class Form extends Component
             $this->fill([
                 'doctor_id'       => $this->license->doctor_id,
                 'state_id'        => $this->license->state_id,
-                'issued_date'     => optional($this->license->issued_date)->format('Y-m-d'),
-                'expiration_date' => optional($this->license->expiration_date)->format('Y-m-d'),
+                'issued_date'     => optional($this->license->issued_date)->format('d-m-y'),
+                'expiration_date' => optional($this->license->expiration_date)->format('d-m-y'),
                 'status'          => $this->license->status,
                 'has_active_link' => (bool) $this->license->has_active_link,
             ]);

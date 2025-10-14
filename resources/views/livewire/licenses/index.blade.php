@@ -69,8 +69,9 @@
             <td class="p-2 whitespace-nowrap">{{ $l->id ?? '—' }}</td>
             <td class="p-2 whitespace-nowrap">{{ $l->doctor?->user?->name ?? '—' }}</td>
             <td class="p-2 whitespace-nowrap">{{ $l->state?->name }} ({{ $l->state?->code }})</td>
-            <td class="p-2">{{ optional($l->issued_date)->toDateString() ?? '—' }}</td>
-            <td class="p-2">{{ optional($l->expiration_date)->toDateString() ?? '—' }}</td>
+            <td class="p-2">{{ optional($l->issued_date)->format('M d, Y') ?? '—' }}</td>
+            <td class="p-2">{{ optional($l->expiration_date)->format('M d, Y') ?? '—' }}</td>
+
             <td class="p-2">
               @php
                 $badge = [
