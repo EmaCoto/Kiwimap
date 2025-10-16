@@ -6,6 +6,7 @@ use App\Livewire\Licenses\{Index as LicensesIndex, Form as LicensesForm};
 use App\Livewire\Doctors\{Index as DoctorsIndex, Form as DoctorsForm};
 use App\Livewire\States\{Index as StatesIndex, Form as StatesForm};
 use App\Livewire\Users\{Index as UsersIndex, Form as UsersForm};
+use App\Livewire\Attendance\Tracker;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,6 +51,11 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/users/{user}/edit', UsersForm::class)
         ->whereNumber('user')
         ->name('users.edit');
+
+    Route::middleware(['auth','verified'])->group(function () {
+        Route::get('/my-attendance', Tracker::class)->name('attendance.tracker');
+    });
+
 });
 
 

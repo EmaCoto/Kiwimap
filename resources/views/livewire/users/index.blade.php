@@ -38,7 +38,14 @@
       <tbody class="divide-y">
         @forelse($users as $u)
           <tr class="hover:bg-gray-100 dark:hover:text-black">
-            <td class="p-2 whitespace-nowrap">{{ $u->name }}</td>
+            <td class="p-2 whitespace-nowrap">
+              <button
+                type="button"
+                wire:click="$dispatch('open-attendance', { userId: {{ $u->id }} })"
+                class="hover:cursor-pointer hover:text-[#4b4a4a] font-medium">
+                {{ $u->name }}
+              </button>
+            </td>
             <td class="p-2">{{ $u->email }}</td>
             <td class="p-2 whitespace-nowrap">
               @if($u->roles->isEmpty())
@@ -69,7 +76,7 @@
       </tbody>
     </table>
   </div>
-
+  <livewire:users.attendance-modal :key="'users-attendance-modal'" />
   <div>
     {{ $users->links() }}
   </div>

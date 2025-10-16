@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Livewire\Users\AttendanceModal;
 use Illuminate\Support\Facades\Auth; // 👈 importa esto
 
 class Index extends Component
@@ -39,6 +40,15 @@ class Index extends Component
         $user->delete();
         session()->flash('ok', 'Usuario eliminado.');
     }
+
+
+    public function openAttendance(int $userId): void
+    {
+        // enviamos el evento directamente al componente AttendanceModal
+        $this->dispatch('open-attendance', userId: $userId)
+            ->to(AttendanceModal::class);
+    }
+
 
     public function render()
     {

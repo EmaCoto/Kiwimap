@@ -26,14 +26,15 @@
             </flux:navlist>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Gestión de usuarios')" class="grid">
-                    <flux:navlist.item icon="group-user" :href="route('users.index')" :current="request()->routeIs('users.index')" wire:navigate>{{ __('Usuarios') }}</flux:navlist.item>
+                <flux:navlist.group :heading="__('Herramientas')" class="grid">
+                    <flux:navlist.item icon="clock" :href="route('time_difference')" :current="request()->routeIs('time_difference')" wire:navigate>{{ __('Diferencia Horaria') }}</flux:navlist.item>
+                    <flux:navlist.item icon="calendar-days" :href="route('attendance.tracker')" :current="request()->routeIs('attendance.tracker')" wire:navigate>{{ __('Asistencia') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Herramientas')" class="grid">
-                    <flux:navlist.item icon="clock" :href="route('time_difference')" :current="request()->routeIs('time_difference')" wire:navigate>{{ __('Diferencia Horaria') }}</flux:navlist.item>
+                <flux:navlist.group :heading="__('Gestión de usuarios')" class="grid">
+                    <flux:navlist.item icon="group-user" :href="route('users.index')" :current="request()->routeIs('users.index')" wire:navigate>{{ __('Usuarios') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

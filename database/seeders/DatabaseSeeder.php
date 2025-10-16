@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // 1) Roles (forzamos guard 'web' para evitar desajustes)
-        foreach (['Admin', 'Front Desk', 'Doctor', 'Medical Assistant', 'Office Manager'] as $r) {
+        foreach (['Admin', 'Front Desk', 'Doctor', 'Medical Assistant', 'Office Manager', 'IT', 'Web Developer', 'Graphic Designer'] as $r) {
             Role::findOrCreate($r, 'web');
         }
 
