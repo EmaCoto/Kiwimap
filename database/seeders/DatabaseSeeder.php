@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 
         // 4) Semillas de catálogo y datos de negocio
         $this->call([
-            // PermissionsSeeder::class,
+            PermissionsSeeder::class,
             StatesTableSeeder::class,
             // DoctorsTableSeeder::class,
             // LicensesTableSeeder::class,

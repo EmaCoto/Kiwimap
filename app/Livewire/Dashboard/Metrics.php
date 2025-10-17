@@ -29,11 +29,7 @@ class Metrics extends Component
     public $expiringSoon; // collection
 
     public function mount(): void
-    {
-        // Permisos generales (ajusta según tus policies)
-        $this->authorize('viewAny', State::class);
-        $this->authorize('viewAny', Doctor::class);
-        $this->authorize('viewAny', License::class);
+    {    
 
         $this->operationalStates = State::where('is_operational', true)->count();
         $this->doctorsCount      = Doctor::count();

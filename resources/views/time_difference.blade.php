@@ -49,15 +49,15 @@
                 </div>
             </div>
 
-            <div class="flex justify-between">
-                <div class="mt-10 bg-blue-200 p-3 pr-10 border-t-4 border-blue-600 w-fit flex items-center rounded">
+            <div class="">
+                <div class="mt-10 bg-blue-200 p-3 pr-10 border-t-4 border-blue-600 w-full flex items-center rounded">
                     <flux:icon name="information-circle" class="h-10 w-10 mr-10" />
                     <div>
                         <h2 class="text-xl font-semibold mb-1">¡Estamos para atenderte!</h2>
                         <p class="text-gray-800">De lunes a viernes, de 9:00 a.m. a 5:30 p.m. <br> <span class="text-sm">Hora del Este (ET/EDT)</span></p>
                     </div>
                 </div>
-                <div class="mt-10 bg-blue-200 p-3 pr-10 border-t-4 border-blue-600 w-fit flex items-center rounded">
+                <div class="mt-10 bg-blue-200 p-3 pr-10 border-t-4 border-blue-600 w-full flex items-center rounded">
                     <flux:icon name="information-circle" class="h-10 w-10 mr-10" />
                     <div>
                         <h2 class="text-xl font-semibold mb-1">¡Información!</h2>

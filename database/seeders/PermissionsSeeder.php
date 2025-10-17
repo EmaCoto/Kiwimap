@@ -29,7 +29,7 @@ class PermissionsSeeder extends Seeder
         }
 
         // 2) Crear roles
-        $roles = ['Admin','Office Manager','Front Desk','Doctor','Medical Assistant'];
+        $roles = ['Admin', 'Front Desk', 'Doctor', 'Medical Assistant', 'Office Manager', 'IT', 'Web Developer', 'Graphic Designer'];
         foreach ($roles as $r) {
             Role::findOrCreate($r, $guard);
         }
@@ -37,6 +37,9 @@ class PermissionsSeeder extends Seeder
         // 3) Asignaciones exactas por rol (usamos syncPermissions)
         $admin = Role::findByName('Admin', $guard);
         $admin->syncPermissions($allPerms); // Admin = todo
+
+        $IT = Role::findByName('IT', $guard);
+        $IT->syncPermissions($allPerms); // IT = todo
 
         $office = Role::findByName('Office Manager', $guard);
         $office->syncPermissions([
