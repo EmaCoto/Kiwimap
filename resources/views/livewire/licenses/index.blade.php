@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between gap-3">
     <h1 class="text-xl font-semibold">Licencias</h1>
     @can('create', \App\Models\License::class)
-      <a href="{{ route('licenses.create') }}" class="flex items-center px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105  font-semibold">
+      <a href="{{ route('licenses.create') }}" class="flex items-center px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105  font-semibold">
         <flux:icon name="folder-plus" class="h-4 w-4 mr-2" />Agregar licencia
       </a>
     @endcan
@@ -35,7 +35,8 @@
 
     <div class="md:col-span-2">
       <label class="block text-xs font-medium mb-1">Búsqueda</label>
-      <input type="text" wire:model.live.debounce.300ms="search" placeholder="Doctor o estado…" class="w-full border rounded p-2 text-sm">
+      {{-- Placeholder actualizado para incluir ID y rol --}}
+      <input type="text" wire:model.live.debounce.300ms="search" placeholder="Doctor, ID, rol o estado…" class="w-full border rounded p-2 text-sm">
     </div>
   </div>
 
@@ -53,7 +54,8 @@
     <table class="min-w-full text-sm">
       <thead class="bg-gray-100 text-left dark:text-black">
         <tr>
-          <th class="p-2">ID</th>
+          <th class="p-2">ID</th> {{-- MOVIDO AL PRINCIPIO --}}
+          <th class="p-2">Foto</th> {{-- NUEVA COLUMNA --}}
           <th class="p-2">Doctor</th>
           <th class="p-2">Estado</th>
           <th class="p-2">Emitida</th>
@@ -66,7 +68,26 @@
       <tbody class="divide-y">
         @forelse($licenses as $l)
           <tr class="hover:bg-gray-100 dark:hover:text-black">
-            <td class="p-2 whitespace-nowrap">{{ $l->id ?? '—' }}</td>
+            <td class="p-2 whitespace-nowrap">{{ $l->id ?? '—' }}</td> {{-- ID DE LICENCIA --}}
+            
+            {{-- CELDA DE LA FOTO DEL DOCTOR --}}
+            <td class="p-2 whitespace-nowrap">
+                @php
+                    // Accedemos a la información del usuario a través de Doctor
+                    $user = $l->doctor?->user; 
+                    $src = $user->avatar_url ?? null;
+                    // Genera placeholder seguro
+                    $placeholder = 'https://ui-avatars.com/api/?name='.urlencode($user->name ?? 'D').'&background=E5E7EB&color=111827';
+                @endphp
+                <img
+                    src="{{ $src ?: $placeholder }}"
+                    alt="{{ $user->name ?? 'Doctor' }} Avatar"
+                    class="h-8 w-8 rounded-full object-cover border"
+                >
+            </td>
+            {{-- FIN CELDA FOTO --}}
+
+            {{-- Nombre del Doctor --}}
             <td class="p-2 whitespace-nowrap">{{ $l->doctor?->user?->name ?? '—' }}</td>
             <td class="p-2 whitespace-nowrap">{{ $l->state?->name }} ({{ $l->state?->code }})</td>
             <td class="p-2">{{ optional($l->issued_date)->format('M d, Y') ?? '—' }}</td>
@@ -105,7 +126,8 @@
             </td>
           </tr>
         @empty
-          <tr><td colspan="7" class="p-4 text-center text-gray-500">Sin resultados.</td></tr>
+          {{-- Colspan ajustado a 9 columnas --}}
+          <tr><td colspan="9" class="p-4 text-center text-gray-500">Sin resultados.</td></tr>
         @endforelse
       </tbody>
     </table>

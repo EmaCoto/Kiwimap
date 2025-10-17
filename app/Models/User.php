@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar_path',
     ];
 
     /**
@@ -62,6 +63,10 @@ class User extends Authenticatable
 
     public function attendances() {
         return $this->hasMany(\App\Models\Attendance::class);
+    }
+
+    public function getAvatarUrlAttribute(): ?string {
+        return $this->avatar_path ? \Illuminate\Support\Facades\Storage::disk('public')->url($this->avatar_path) : null;
     }
 
 }

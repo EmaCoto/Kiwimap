@@ -54,8 +54,11 @@
                 <flux:profile
                     :name="auth()->user()->name"
                     :initials="auth()->user()->initials()"
+                    :avatar="auth()->user()->avatar_url"
                     icon:trailing="chevrons-up-down"
+                    circle="true"
                 />
+
 
                 <flux:menu class="w-[220px]">
                     <flux:menu.radio.group>
