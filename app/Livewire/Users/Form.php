@@ -22,12 +22,19 @@ class Form extends Component
     public string $password = '';
     public string $password_confirmation = '';
 
-    // Selecciones del formulario
-    public array $roles = [];        // nombres de rol
-    public array $permissions = [];  // permisos directos (checkbox editables)
+    // ⬇️ nuevos campos
+    public ?string $employee_number = null;
+    public bool $has_id_badge = false;
+    public ?string $birthday = null;               // YYYY-MM-DD
+    public ?string $anniversary_kiwimed = null;    // YYYY-MM-DD
+    public ?string $anniversary_group = null;      // YYYY-MM-DD
+    public ?string $country_code = null;           // 'us','co','mx'...
+    public ?string $spruce_number = null;
+    public ?string $crecer_number = null;
 
-    // Derivados (para la vista)
-    public array $inheritedPerms = []; // permisos heredados por roles (solo lectura)
+    public array $roles = [];
+    public array $permissions = [];
+    public array $inheritedPerms = [];
 
     #[Url] public ?string $redirect = null;
 
@@ -42,8 +49,17 @@ class Form extends Component
                 'name'        => $this->user->name,
                 'email'       => $this->user->email,
                 'roles'       => $this->user->roles()->pluck('name')->toArray(),
-                // Directos únicamente (no incluye heredados por rol)
                 'permissions' => $this->user->getDirectPermissions()->pluck('name')->toArray(),
+
+                // nuevos
+                'employee_number'     => $this->user->employee_number,
+                'has_id_badge'        => (bool) $this->user->has_id_badge,
+                'birthday'            => optional($this->user->birthday)->toDateString(),
+                'anniversary_kiwimed' => optional($this->user->anniversary_kiwimed)->toDateString(),
+                'anniversary_group'   => optional($this->user->anniversary_group)->toDateString(),
+                'country_code'        => $this->user->country_code,
+                'spruce_number'       => $this->user->spruce_number,
+                'crecer_number'       => $this->user->crecer_number,
             ]);
         } else {
             $this->authorize('create', User::class);
@@ -51,7 +67,6 @@ class Form extends Component
         }
 
         $this->recomputeInheritedPerms();
-        // Nota: NO mezclamos heredados dentro de "permissions" (directos).
     }
 
     protected function rules(): array
@@ -60,11 +75,21 @@ class Form extends Component
 
         $base = [
             'name'         => ['required','string','max:190'],
-            'email'        => ['required','email','max:190', $emailRule],
+            'email'        => ['required','email','max:190',$emailRule],
             'roles'        => ['array'],
             'roles.*'      => ['string','exists:roles,name'],
             'permissions'  => ['array'],
             'permissions.*'=> ['string','exists:permissions,name'],
+
+            // nuevos (opcionales salvo formatos)
+            'employee_number'     => ['nullable','string','max:50'],
+            'has_id_badge'        => ['boolean'],
+            'birthday'            => ['nullable','date'],
+            'anniversary_kiwimed' => ['nullable','date'],
+            'anniversary_group'   => ['nullable','date'],
+            'country_code'        => ['nullable','string','size:2'], // ISO-2
+            'spruce_number'       => ['nullable','string','max:50'],
+            'crecer_number'       => ['nullable','string','max:50'],
         ];
 
         if ($this->user && $this->user->exists) {
@@ -77,91 +102,73 @@ class Form extends Component
     }
 
     protected $messages = [
-        'name.required'      => 'Ingresa un nombre.',
-        'email.required'     => 'Ingresa un email.',
-        'email.email'        => 'Email inválido.',
-        'email.unique'       => 'Este email ya está registrado.',
-        'password.required'  => 'Ingresa una contraseña.',
-        'password.min'       => 'La contraseña debe tener al menos 8 caracteres.',
-        'password.confirmed' => 'Las contraseñas no coinciden.',
+        'email.unique' => 'Este email ya está registrado.',
     ];
 
-    /**
-     * Livewire hook: al cambiar roles, recalculamos heredados
-     * y quitamos de "directos" los que ahora sean heredados (no duplicar).
-     */
     public function updatedRoles(): void
     {
         $this->recomputeInheritedPerms();
-
-        // Quitar de permisos directos los que ya vengan heredados por rol:
         $this->permissions = array_values(array_diff($this->permissions, $this->inheritedPerms));
     }
 
     private function recomputeInheritedPerms(): void
     {
         $guard = config('auth.defaults.guard', 'web');
+        if (empty($this->roles)) { $this->inheritedPerms = []; return; }
 
-        if (empty($this->roles)) {
-            $this->inheritedPerms = [];
-            return;
-        }
-
-        $rolePerms = Role::query()
-            ->whereIn('name', $this->roles)
-            ->where('guard_name', $guard)
-            ->with(['permissions' => function ($q) use ($guard) {
-                $q->where('guard_name', $guard)->select('permissions.id','permissions.name','permissions.guard_name');
-            }])
-            ->get()
-            ->flatMap(fn($r) => $r->permissions->pluck('name'))
-            ->unique()
-            ->values()
-            ->toArray();
-
-        $this->inheritedPerms = $rolePerms;
+        $this->inheritedPerms = Role::query()
+            ->whereIn('name',$this->roles)->where('guard_name',$guard)
+            ->with(['permissions'=>fn($q)=>$q->where('guard_name',$guard)->select('permissions.id','permissions.name','permissions.guard_name')])
+            ->get()->flatMap(fn($r)=>$r->permissions->pluck('name'))->unique()->values()->toArray();
     }
 
     public function save(): void
     {
         $data = $this->validate();
-
-        // 1) Sincroniza roles.
-        // 2) Asigna directos = seleccionados MENOS los heredados por rol.
         $directToAssign = array_values(array_diff($data['permissions'] ?? [], $this->inheritedPerms));
 
         if ($this->user && $this->user->exists) {
-            $this->user->name  = $data['name'];
-            $this->user->email = $data['email'];
+            $u = $this->user;
+            $u->name  = $data['name'];
+            $u->email = $data['email'];
+            if (!empty($data['password'])) $u->password = Hash::make($data['password']);
+            if (is_null($u->email_verified_at)) $u->email_verified_at = now();
 
-            if (!empty($data['password'])) {
-                $this->user->password = Hash::make($data['password']);
-            }
+            // nuevos
+            $u->employee_number     = $data['employee_number'] ?? null;
+            $u->has_id_badge        = (bool)($data['has_id_badge'] ?? false);
+            $u->birthday            = $data['birthday'] ?? null;
+            $u->anniversary_kiwimed = $data['anniversary_kiwimed'] ?? null;
+            $u->anniversary_group   = $data['anniversary_group'] ?? null;
+            $u->country_code        = $data['country_code'] ? strtolower($data['country_code']) : null;
+            $u->spruce_number       = $data['spruce_number'] ?? null;
+            $u->crecer_number       = $data['crecer_number'] ?? null;
 
-            // Si por alguna razón no está verificado, lo marcamos ahora
-            if (is_null($this->user->email_verified_at)) {
-                $this->user->email_verified_at = now();
-            }
-
-            $this->user->save();
-
-            $this->user->syncRoles($data['roles'] ?? []);
-            $this->user->syncPermissions($directToAssign);
-
-            session()->flash('ok', 'Usuario actualizado.');
+            $u->save();
+            $u->syncRoles($data['roles'] ?? []);
+            $u->syncPermissions($directToAssign);
+            session()->flash('ok','Usuario actualizado.');
         } else {
             $u = new User();
             $u->name  = $data['name'];
             $u->email = $data['email'];
             $u->password = Hash::make($data['password']);
-            $u->email_verified_at = now(); // ✅ siempre verificado al crearlo
-            $u->save();
+            $u->email_verified_at = now();
 
+            $u->employee_number     = $data['employee_number'] ?? null;
+            $u->has_id_badge        = (bool)($data['has_id_badge'] ?? false);
+            $u->birthday            = $data['birthday'] ?? null;
+            $u->anniversary_kiwimed = $data['anniversary_kiwimed'] ?? null;
+            $u->anniversary_group   = $data['anniversary_group'] ?? null;
+            $u->country_code        = $data['country_code'] ? strtolower($data['country_code']) : null;
+            $u->spruce_number       = $data['spruce_number'] ?? null;
+            $u->crecer_number       = $data['crecer_number'] ?? null;
+
+            $u->save();
             $u->syncRoles($data['roles'] ?? []);
             $u->syncPermissions($directToAssign);
-
             $this->user = $u;
-            session()->flash('ok', 'Usuario creado.');
+            session()->flash('ok','Usuario creado.');
         }
 
         redirect()->to($this->redirect ?? route('users.index'));

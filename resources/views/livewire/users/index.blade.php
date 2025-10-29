@@ -60,6 +60,7 @@
           <th class="p-2">Nombre</th>
           <th class="p-2">Email</th>
           <th class="p-2">Roles</th>
+          <th class="p-2">País</th>
           <th class="p-2 w-36">Acciones</th>
         </tr>
       </thead>
@@ -98,21 +99,29 @@
                     <span class="text-xs text-gray-500">—</span>
                 @endforelse
             </td>
-            <td class="p-2 space-x-2 flex">
-              @can('update', $u)
-                <a href="{{ route('users.edit', $u) }}" class="text-blue-600 hover:underline text-xs"><flux:icon name="pencil-square" class="h-4 w-4" /></a>
-              @endcan
 
-              @can('delete', $u)
-                <button
-                  x-data
-                  @click.prevent="if (confirm('¿Eliminar este usuario?')) { $wire.delete({{ $u->id }}) }"
-                  type="button"
-                  class="text-rose-600 hover:underline text-xs cursor-pointer">
-                  <flux:icon name="trash" class="h-4 w-4" />
-                </button>
-              @endcan
+            <td class="p-2 whitespace-nowrap">
+              @php $flag = $u->country_flag_url; @endphp
+              @if($flag)
+                <img src="{{ $flag }}" alt="{{ strtoupper($u->country_code) }}" title="{{ strtoupper($u->country_code) }}">
+              @else
+                <span class="text-xs text-gray-500">—</span>
+              @endif
             </td>
+
+
+            <td class="p-2 align-middle">
+              <div class="flex items-center space-x-2">
+                @can('update', $u)
+                  <a href="{{ route('users.edit', $u) }}" class="text-blue-600 hover:text-black text-xs"><flux:icon name="pencil-square" class="h-4 w-4" /></a>
+                @endcan
+                <button type="button" class="text-green-700 hover:text-black text-xs cursor-pointer" wire:click="$dispatch('open-user-details', { userId: {{ $u->id }} })" title="Ver detalles"><flux:icon name="eye" class="h-4 w-4" /></button>
+                @can('delete', $u)
+                  <button x-data @click.prevent="if (confirm('¿Eliminar este usuario?')) { $wire.delete({{ $u->id }}) }" type="button" class="text-rose-600 hover:text-black text-xs cursor-pointer"> <flux:icon name="trash" class="h-4 w-4" /> </button>
+                @endcan
+              </div>
+            </td>
+
           </tr>
         @empty
           {{-- El colspan debe ser 6 --}}
@@ -122,6 +131,8 @@
     </table>
   </div>
   <livewire:users.attendance-modal :key="'users-attendance-modal'" />
+  <livewire:users.user-details-modal :key="'users-user-details-modal'" />
+
   <div>
     {{ $users->links() }}
   </div>

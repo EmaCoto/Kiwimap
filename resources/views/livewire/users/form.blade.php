@@ -13,13 +13,13 @@
   <form wire:submit.prevent="save" class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="md:col-span-2">
       <label class="block text-xs font-medium mb-1">Nombre</label>
-      <input type="text" wire:model.defer="name" class="w-full border rounded p-2 text-sm">
+      <input type="text" wire:model.defer="name" class="w-full border rounded p-2 text-sm" placeholder="Ej: Emanuel Cortes Ochoa o Dr. Sergio Angel">
       @error('name') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
     </div>
 
     <div class="md:col-span-2">
       <label class="block text-xs font-medium mb-1">Email</label>
-      <input type="email" wire:model.defer="email" class="w-full border rounded p-2 text-sm">
+      <input type="email" wire:model.defer="email" class="w-full border rounded p-2 text-sm" placeholder="Ej: example@drkiwimed.com">
       @error('email') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
     </div>
 
@@ -34,6 +34,57 @@
       <input type="password" wire:model.defer="password_confirmation" class="w-full border rounded p-2 text-sm" autocomplete="new-password">
     </div>
 
+    <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-xs font-medium mb-1">Número de empleado</label>
+        <input type="text" wire:model.defer="employee_number" class="w-full border rounded p-2 text-sm" placeholder="120301">
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium mb-1">Cumpleaños</label>
+        <input type="date" wire:model.defer="birthday" class="w-full border rounded p-2 text-sm">
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium mb-1">Aniversario en Dr. Kiwimed</label>
+        <input type="date" wire:model.defer="anniversary_kiwimed" class="w-full border rounded p-2 text-sm">
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium mb-1">Aniversario Grupo Empresarial</label>
+        <input type="date" wire:model.defer="anniversary_group" class="w-full border rounded p-2 text-sm">
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium mb-1">País</label>
+        <select wire:model.defer="country_code" class="w-full border rounded p-2 text-sm">
+          <option value="">—</option>
+          {{-- agrega los que uses más; ISO-2 minúsculas --}}
+          <option value="co">Colombia</option>
+          <option value="mx">México</option>
+          <option value="cr">Costa Rica</option>
+          <option value="pr">Puerto Rico</option>
+          <option value="us">Estados Unidos</option>
+          <!-- añade los que necesites -->
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium mb-1">Número Spruce (opcional)</label>
+        <input type="text" wire:model.defer="spruce_number" class="w-full border rounded p-2 text-sm" placeholder="+1 (###) ###-####">
+      </div>
+
+      <div>
+        <label class="block text-xs font-medium mb-1">Número Crecer (opcional)</label>
+        <input type="text" wire:model.defer="crecer_number" class="w-full border rounded p-2 text-sm" placeholder="+1 (###) ###-####">
+      </div>
+
+      
+      <div class="flex items-center gap-2 mt-6 md:mt-0">
+        <input type="checkbox" wire:model.defer="has_id_badge" class="rounded border-gray-300">
+        <label class="text-sm">Tiene ID Badge</label>
+      </div>
+    </div>
 
     {{-- Roles --}}
     <div>
