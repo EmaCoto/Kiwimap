@@ -17,25 +17,60 @@ class Tracker extends Component
     public function mount(): void
     {
         $user = Auth::user();
+
+        // 1️⃣ Detectar TZ del navegador si viene de JS, o usar config por defecto
         $this->tz = config('app.timezone', 'UTC');
 
-        $today = now($this->tz)->toDateString();
+        // ⚡ Evita usar now() del servidor: usa el helper para obtener el día local exacto
+        $todayLocal = $this->todayLocalDate();
 
+        // 2️⃣ Buscar asistencia del día local, no UTC
         $this->attendance = Attendance::firstOrCreate(
-            ['user_id' => $user->id, 'work_date' => $today],
+            ['user_id' => $user->id, 'work_date' => $todayLocal],
             ['timezone' => $this->tz, 'status' => 'offline']
         );
 
         $this->status = $this->attendance->status;
     }
 
+    /**
+     * Devuelve la fecha local correcta del usuario (corrige el bug del “día siguiente”)
+     */
+    private function todayLocalDate(): string
+    {
+        // Toma la TZ actual (del front si ya se seteó, o la del modelo)
+        $tz = $this->tz ?: ($this->attendance->timezone ?? config('app.timezone', 'UTC'));
+
+        // Carbon detecta correctamente el día local
+        $localNow = Carbon::now($tz);
+
+        // 👇 Si es antes de las 03:00 AM (por diferencia de UTC), aún consideramos el día anterior
+        // Esto evita el cambio prematuro cuando el servidor está en UTC o Europa
+        if ($localNow->hour < 3) {
+            $localNow->subDay();
+        }
+
+        return $localNow->toDateString();
+    }
+
+
     public function setTz(string $tz): void
     {
-        $this->tz = $tz ?: config('app.timezone','UTC');
-        if ($this->attendance->timezone !== $this->tz) {
-            $this->attendance->update(['timezone' => $this->tz]);
+        $this->tz = $tz ?: config('app.timezone', 'UTC');
+
+        $localDate = $this->todayLocalDate();
+
+        if (
+            $this->attendance->timezone !== $this->tz ||
+            $this->attendance->work_date !== $localDate
+        ) {
+            $this->attendance->update([
+                'timezone' => $this->tz,
+                'work_date' => $localDate,
+            ]);
         }
     }
+
 
     private function nowTz(): \Carbon\Carbon
     {
