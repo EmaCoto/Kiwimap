@@ -42,6 +42,83 @@ class User extends Authenticatable
         ];
     }
 
+
+
+    
+    public function primaryRoleName(): string
+    {
+        $r = $this->roles()->first();
+        return $r ? ucfirst($r->name) : '—';
+    }
+
+    /** Devuelve Carbon con la PRÓXIMA ocurrencia (desde hoy) para una fecha MM-DD (ignora año) */
+    public function nextOccurrenceOf(?string $date, string $tz = null): ?Carbon
+    {
+        if (!$date) return null;
+
+        $tz = $tz ?: config('app.timezone', 'UTC');
+        // Acepta 'YYYY-MM-DD' o 'MM-DD'
+        $base = Carbon::parse($date, $tz);
+        $now  = Carbon::now($tz);
+
+        $cand = Carbon::createSafe(
+            $now->year,
+            (int) $base->format('m'),
+            (int) $base->format('d'),
+            0, 0, 0,
+            $tz
+        );
+
+        if ($cand->isBefore($now->startOfDay())) {
+            $cand->addYear();
+        }
+        return $cand;
+    }
+
+    /** Próximos */
+    public function nextBirthday(?string $tz = null): ?Carbon
+    {
+        return $this->nextOccurrenceOf($this->birthday, $tz);
+    }
+
+    public function nextAnnivKiwimed(?string $tz = null): ?Carbon
+    {
+        return $this->nextOccurrenceOf($this->anniversary_kiwimed, $tz);
+    }
+
+    public function nextAnnivGroup(?string $tz = null): ?Carbon
+    {
+        return $this->nextOccurrenceOf($this->anniversary_group, $tz);
+    }
+
+    /** URL de bandera a partir del country_code si no tienes country_flag_url persistido */
+    public function getCountryFlagUrlAttribute(): ?string
+    {
+        if (!empty($this->attributes['country_flag_url'])) {
+            return $this->attributes['country_flag_url'];
+        }
+        $code = strtolower((string) ($this->country_code ?? ''));
+        return $code ? "https://flagcdn.com/24x18/{$code}.png" : null;
+    }
+
+    /** Etiqueta legible del hito */
+    public static function humanMilestoneLabel(string $key): string
+    {
+        return match ($key) {
+            'birthday'       => 'Cumpleaños',
+            'kiwimed'        => 'Aniversario Dr. Kiwimed',
+            'group'          => 'Aniversario Grupo Empresarial',
+            default          => '—',
+        };
+    }
+
+
+
+
+
+
+
+
     // Iniciales para avatar placeholder
     public function initials(): string
     {
@@ -59,14 +136,6 @@ class User extends Authenticatable
         return $this->avatar_path ? Storage::disk('public')->url($this->avatar_path) : null;
     }
 
-    // URL de bandera (flagcdn). Requiere country_code ISO-3166-1 alpha-2 minúsculas.
-    public function getCountryFlagUrlAttribute(): ?string
-    {
-        if (!$this->country_code) return null;
-        $cc = strtolower($this->country_code);
-        // 24x18; usa 32x24 si prefieres mayor tamaño
-        return "https://flagcdn.com/24x18/{$cc}.png";
-    }
 
     // Fechas formateadas “23, diciembre de 2004”
     public function formatLongEs(?Carbon $date): ?string

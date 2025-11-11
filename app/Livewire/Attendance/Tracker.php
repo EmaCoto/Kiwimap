@@ -189,14 +189,8 @@ class Tracker extends Component
         ]);
         $this->attendance->refresh();
         $this->status = $this->attendance->status;
-
-        $this->snapshotMonthIfNeeded();
     }
 
-    private function snapshotMonthIfNeeded(): void
-    {
-        // … (tu lógica existente, sin cambios)
-    }
 
     public function render()
     {
