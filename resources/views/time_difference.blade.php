@@ -4,78 +4,108 @@
     <h1 class="text-3xl font-extrabold mb-2 text-center">Diferencia Horaria</h1>
     <p class="text-gray-500 text-center">Calcula la diferencia de hora entre tu ubicación y la de tu paciente</p>
 
-    <div class="grid grid-cols-3 gap-8 mt-8">
-        <div class="space-y-6 col-span-2 flex flex-col">
+    {{-- GRID PRINCIPAL RESPONSIVE --}}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+        {{-- COLUMNA PRINCIPAL --}}
+        <div class="space-y-6 lg:col-span-2 flex flex-col">
+
             <div>
-                <label for="weekSelector" class="block text-xs font-medium mb-1">Seleccionar Cita por Semana (basado en el día de hoy)</label>
-                <select id="weekSelector" onchange="handleWeekSelection(this.value)" class="w-full border rounded p-2 text-sm"></select>
+                <div>
+                    <label for="patientZone" class="block text-xs font-medium mb-1">
+                        Ubicación del Paciente (Estado de EE. UU.)
+                    </label>
+                    <select
+                        id="patientZone"
+                        onchange="calculateTimeDifference()"
+                        class="w-full border rounded p-2 text-sm"
+                    ></select>
+                </div>
+            </div>
+
+            <div>
+                <label for="weekSelector" class="block text-xs font-medium mb-1">
+                    Seleccionar Cita por Semana (basado en el día de hoy)
+                </label>
+                <select
+                    id="weekSelector"
+                    onchange="handleWeekSelection(this.value)"
+                    class="w-full border rounded p-2 text-sm"
+                ></select>
             </div>
         
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <!-- FECHA con visual overlay Mes Día, Año -->
                 <div class="relative">
-                    <label for="targetDate" class="block text-xs font-medium mb-1">Fecha de la Cita/Referencia</label>
+                    <label for="targetDate" class="block text-xs font-medium mb-1">
+                        Fecha de la Cita/Referencia
+                    </label>
                     <input
                         type="date"
                         id="targetDate"
                         onchange="clearWeekSelection(); checkWeekend(); calculateTimeDifference(); paintPrettyDate();"
-                        class="w-full border rounded p-2 text-sm bg-white"
+                        class="w-full border p-2 rounded text-sm bg-white"
                         style="color: transparent; caret-color: transparent;"
                     >
                     <!-- Texto formateado encima del input -->
-                    <span
-                        id="prettyDateInside"
-                        class="pointer-events-none absolute left-3 top-[38px] text-sm text-gray-900"
-                    >—</span>
+                    <span id="prettyDateInside" class="pointer-events-none absolute top-7 left-3 text-sm text-gray-900">—</span>
 
-                    <p id="weekStatus" class="text-sm mt-3 font-medium text-gray-700"></p>
+                    <p id="weekStatus" class="text-sm mt-1 font-medium text-gray-700"></p>
+                    <p class="text-sm mt-1 font-medium text-gray-300">Si seleccionan <strong>sábado o domingo</strong> en el calendario marcará automáticamente el <strong>lúnes</strong> siguiente</p>
                 </div>
 
                 <div>
-                    <label for="myTimeInput" class="block text-xs font-medium mb-1"> Tu Hora (ET) para la cita</label>
-                    <input type="time" id="myTimeInput" step="60" class="w-full border rounded p-2 text-sm" onchange="calculateTimeDifference()">
+                    {{-- AHORA ESTA ES LA HORA DEL PACIENTE --}}
+                    <label for="myTimeInput" class="block text-xs font-medium mb-1">
+                        Hora del Paciente para la cita
+                    </label>
+                    <input
+                        type="time"
+                        id="myTimeInput"
+                        step="60"
+                        class="w-full border rounded p-2 text-sm"
+                        onchange="calculateTimeDifference()"
+                    >
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-8">
-                <div>
-                    <label class="block text-xs font-medium mb-1">Mi Ubicación (Estado de EE. UU.)</label>
-                    <div class="w-full border rounded p-2 text-sm">Hora del Este (ET/EDT)</div>
-                </div>
-                
-                <div>
-                    <label for="patientZone" class="block text-xs font-medium mb-1">Ubicación del Paciente (Estado de EE. UU.)</label>
-                    <select id="patientZone" onchange="calculateTimeDifference()" class="w-full border rounded p-2 text-sm"></select>
-                </div>
-            </div>
-
-            <div class="">
-                <div class="mt-10 bg-blue-200 p-3 pr-10 border-t-4 border-blue-600 w-full flex items-center rounded">
-                    <flux:icon name="information-circle" class="h-10 w-10 mr-10" />
+            <div>
+                <div class="mt-10 bg-blue-200 p-3 pr-10 border-t-4 border-blue-600 w-full flex flex-col sm:flex-row sm:items-center gap-3 rounded">
+                    <flux:icon name="information-circle" class="h-10 w-10 sm:mr-6" />
                     <div>
                         <h2 class="text-xl font-semibold mb-1">¡Estamos para atenderte!</h2>
-                        <p class="text-gray-800">De lunes a viernes, de 9:00 a.m. a 5:30 p.m. <br> <span class="text-sm">Hora del Este (ET/EDT)</span></p>
+                        <p class="text-gray-800">
+                            De lunes a viernes, de 9:00 a.m. a 5:30 p.m. <br>
+                            <span class="text-sm">Hora del Este (ET/EDT)</span>
+                        </p>
                     </div>
                 </div>
-                <div class="mt-10 bg-blue-200 p-3 pr-10 border-t-4 border-blue-600 w-full flex items-center rounded">
-                    <flux:icon name="information-circle" class="h-10 w-10 mr-10" />
+
+                <div class="mt-10 bg-blue-200 p-3 pr-10 border-t-4 border-blue-600 w-full flex flex-col sm:flex-row sm:items-center gap-3 rounded">
+                    <flux:icon name="information-circle" class="h-10 w-10 sm:mr-6" />
                     <div>
                         <h2 class="text-xl font-semibold mb-1">¡Información!</h2>
-                        <p class="text-gray-800">No planeamos dar servicios en New York, Wisconsin y Kansas</p>
+                        <p class="text-gray-800">
+                            No planeamos dar servicios en New York, Wisconsin y Kansas
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="results" class="space-y-6">
+        {{-- COLUMNA DE RESULTADOS --}}
+        <div id="results" class="space-y-6 mt-4 lg:mt-0">
             <div id="myTimeCard" class="flex flex-col px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">
-                <p class="text-sm font-semibold opacity-80"><span id="myZoneName">...</span></p>
+                <p class="text-sm font-semibold opacity-80">
+                    <span id="myZoneName">...</span>
+                </p>
                 <p id="myTime" class="text-4xl font-bold mt-1">--:--</p>
                 <p id="myDate" class="text-md opacity-90"></p>
             </div>
 
             <div id="patientTimeCard" class="flex flex-col px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#351d5b] to-[#31353d] transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">
-                <p class="text-sm font-semibold opacity-80">Hora del Paciente (<span id="patientZoneName">...</span>)</p>
+                <p class="text-sm font-semibold opacity-80">
+                    Hora del Paciente (<span id="patientZoneName">...</span>)
+                </p>
                 <p id="patientTime" class="text-4xl font-bold mt-1">--:--</p>
                 <p id="patientDate" class="text-md opacity-90"></p>
             </div>
@@ -188,8 +218,6 @@
     ];
 
     let intervalId = null;
-
-    // --- Estado para sincronizar correctamente el selector de semanas ---
     let selectedWeeks = null; // null = no elegido por el usuario; número = semanas elegidas
 
     function clearWeekSelection() {
@@ -199,8 +227,8 @@
     }
 
     // ======= Config visual del formato de fecha dentro del input =======
-    const PRETTY_LOCALE = 'es-ES';         // 'en-US' -> "Oct 11, 2025"; 'es-ES' -> "11 de octubre de 2025"
-    const PRETTY_TZ     = 'America/Bogota'; // Ajusta si prefieres otra TZ para mostrar
+    const PRETTY_LOCALE = 'es-ES';
+    const PRETTY_TZ     = 'America/Bogota';
 
     function paintPrettyDate() {
         const input = document.getElementById('targetDate');
@@ -308,8 +336,8 @@
         const targetDateInput = document.getElementById('targetDate');
 
         const weeksInt = parseInt(weeks, 10);
-        selectedWeeks = weeksInt;                // <<< Guarda elección del usuario
-        weekSelector.value = String(weeksInt);   // <<< Fija visualmente la selección
+        selectedWeeks = weeksInt;
+        weekSelector.value = String(weeksInt);
 
         const today = new Date();
         const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()); 
@@ -320,12 +348,10 @@
         const dd = String(targetDate.getDate()).padStart(2, '0');
         targetDateInput.value = `${yyyy}-${mm}-${dd}`;
 
-        // Ajusta a lunes si cae en fin de semana y recalcula TODO
         checkWeekend();
         calculateTimeDifference(true);
         paintPrettyDate();
 
-        // Reafirma la selección aunque checkWeekend haya movido la fecha
         weekSelector.value = String(selectedWeeks);
     }
 
@@ -340,7 +366,7 @@
                 const optionPatient = document.createElement('option');
                 optionPatient.value = state.zone; 
                 optionPatient.textContent = state.name; 
-                if (groupIndex === 4 && stateIndex === 0) { 
+                if (groupIndex === 0 && stateIndex === 0) { // por defecto algo en ET
                     optionPatient.selected = true;
                 }
                 optgroupPatient.appendChild(optionPatient);
@@ -396,20 +422,19 @@
         return result;
     }
 
+    // AHORA LA HORA DE ENTRADA ES HORA DEL PACIENTE
     function calculateTimeDifference(forceWeekStatusUpdate = false) {
         const patientZoneSelect = document.getElementById('patientZone');
         const targetDateInput = document.getElementById('targetDate');
         const myTimeInput = document.getElementById('myTimeInput');
 
         const myZone = "America/New_York"; 
-        const patientZone = patientZoneSelect.value;
+        const patientZone = patientZoneSelect.value || myZone;
         const selectedDateString = targetDateInput.value;
 
         if (!selectedDateString) return;
 
-        // NO hacemos return si cae fin de semana; checkWeekend ya corrige.
-
-        // ---- Obtener hora base (tu hora en ET) ----
+        // ---- Obtener hora base (HORA DEL PACIENTE) ----
         let hour, minute;
         if (myTimeInput.value) {
             const [hh, mm] = myTimeInput.value.split(':').map(Number);
@@ -421,16 +446,16 @@
 
         const [year, month, day] = selectedDateString.split('-').map(Number);
 
-        // Instante real que corresponde a esa fecha/hora en ET
-        const etInstant = makeZonedInstant(year, month, day, hour, minute, myZone);
+        // Instante real que corresponde a esa fecha/hora en la zona del PACIENTE
+        const patientInstant = makeZonedInstant(year, month, day, hour, minute, patientZone);
 
-        // Mostrar mi hora/fecha y la del paciente
-        const myData = getLocalTimeData(myZone, etInstant);
-        const patientData = getLocalTimeData(patientZone, etInstant);
+        // Mostrar mi hora/fecha (ET) y la del paciente
+        const myData = getLocalTimeData(myZone, patientInstant);
+        const patientData = getLocalTimeData(patientZone, patientInstant);
 
-        // Diferencia horaria
-        const offMy = getTzOffsetMinutesAt(etInstant, myZone) / 60;
-        const offPatient = getTzOffsetMinutesAt(etInstant, patientZone) / 60;
+        // Diferencia horaria paciente vs yo
+        const offMy = getTzOffsetMinutesAt(patientInstant, myZone) / 60;
+        const offPatient = getTzOffsetMinutesAt(patientInstant, patientZone) / 60;
         const diffHours = offPatient - offMy;
 
         let differenceText;
@@ -470,7 +495,6 @@
         weekStatusEl.textContent = weekStatusText;
         
         // --- Sincronización del selector de semanas ---
-        // Solo auto-ajustamos si el usuario NO eligió semanas manualmente.
         const weekSelector = document.getElementById('weekSelector');
         const todayDay = today.getDay();
         const targetDay = targetDate.getDay();
@@ -483,9 +507,7 @@
             if (matchedOption) {
                 weekSelector.value = syncValue;
             }
-            // Importante: ya NO vaciamos el selector si no coincide.
         } else {
-            // Si el usuario eligió semanas, respetamos su selección.
             weekSelector.value = String(selectedWeeks);
         }
 
