@@ -8,9 +8,9 @@
       <div>
         <label class="block text-xs font-medium mb-1">Mes</label>
         <select wire:model.live="month" class="border rounded p-2 text-sm">
-          <option value="">Mes actual</option>
+          <option value="" class="dark:text-black">Mes actual</option>
           @foreach($monthNames as $num => $name)
-            <option value="{{ $num }}">{{ $name }}</option>
+            <option value="{{ $num }}" class="dark:text-black">{{ $name }}</option>
           @endforeach
         </select>
       </div>
@@ -19,10 +19,10 @@
       <div>
         <label class="block text-xs font-medium mb-1">Tipo</label>
         <select wire:model.live="type" class="border rounded p-2 text-sm">
-          <option value="all">Todos</option>
-          <option value="birthday">Cumpleaños</option>
-          <option value="kiwimed">Aniversario Dr. Kiwimed</option>
-          <option value="group">Aniversario Grupo</option>
+          <option value="all" class="dark:text-black">Todos</option>
+          <option value="birthday" class="dark:text-black">Cumpleaños</option>
+          <option value="kiwimed" class="dark:text-black">Aniversario Dr. Kiwimed</option>
+          <option value="group" class="dark:text-black">Aniversario Grupo</option>
         </select>
       </div>
 
@@ -39,7 +39,7 @@
     <h2 class="text-lg">Cumpleaniversarios de {{ $monthNames[$currentMonthNum] }}</h2>
 
     @if(empty($upcomingCurrentMonth))
-      <div class="p-4 rounded border text-gray-600 text-sm">
+      <div class="p-4 rounded border text-gray-600 text-sm dark:text-gray-400">
         No hay próximos hitos para el resto del mes.
       </div>
     @else
@@ -119,7 +119,7 @@
                   @endif
                 </div>
                 @if($rol)
-                  <div class="text-xs text-gray-600">
+                  <div class="text-xs text-gray-600 dark:text-gray-400">
                     <span class="font-medium">{{ $rol }}</span>
                   </div>
                 @endif
@@ -127,8 +127,8 @@
             </div>
 
             <div class="mt-3">
-              <div class="px-2 py-1 rounded bg-[#6fa31c1c] text-[#123338] text-[11px] inline-block">{{ $which }}</div>
-              <div class="text-sm mt-1 text-gray-800">{{ $fecha }}</div>
+              <div class="px-2 py-1 rounded bg-[#6fa31c1c] dark:text-gray-200 text-[#123338] text-[11px] inline-block">{{ $which }}</div>
+              <div class="text-sm mt-1 text-gray-800 dark:text-gray-200">{{ $fecha }}</div>
             </div>
           </div>
         @endforeach

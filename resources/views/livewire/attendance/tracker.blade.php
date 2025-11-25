@@ -1,46 +1,46 @@
 <div x-data x-init="$wire.setTz(Intl.DateTimeFormat().resolvedOptions().timeZone)" class="space-y-4">
   <h1 class="font-semibold">Marcador de asistencia</h1>
-  <p class="text-sm text-gray-600">
+  <p class="text-sm text-gray-600 dark:text-gray-400">
     {{ $today }} — TZ: {{ $tz }}
   </p>
 
   <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-    <button wire:click="clockIn" @disabled($closed || $a->clock_in) class="px-3 py-2 rounded text-sm flex items-center justify-between  {{ ($closed || $a->clock_in) ? 'opacity-30 cursor-not-allowed bg-gradient-to-t from-[#6fa31c] to-[#123338] text-white' : 'bg-gradient-to-t from-[#6fa31c] to-[#123338] text-white cursor-pointer' }}">
+    <button wire:click="clockIn" @disabled($closed || $a->clock_in) class="px-3 py-2 rounded text-sm flex items-center justify-between border-white border  {{ ($closed || $a->clock_in) ? 'opacity-30 cursor-not-allowed bg-gradient-to-t from-[#6fa31c] to-[#123338] text-white' : 'bg-gradient-to-t from-[#6fa31c] to-[#123338] text-white cursor-pointer' }}">
       <flux:icon name="arrow-right-end-on-rectangle" class="h-4 w-4 mr-1" /> Entrada
       <span></span>
     </button>
 
-    <button wire:click="break1Start" @disabled($closed || $a->break1_start) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between {{ ($closed || $a->break1_start) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
+    <button wire:click="break1Start" @disabled($closed || $a->break1_start) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || $a->break1_start) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
       <flux:icon name="clock" class="h-4 w-4 mr-1" /> Break 1 — Inicio (COL - CR)
       <span></span>
     </button>
 
-    <button wire:click="break2Start" @disabled($closed || $a->break2_start) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between {{ ($closed || $a->break2_start) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
+    <button wire:click="break2Start" @disabled($closed || $a->break2_start) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || $a->break2_start) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
       <flux:icon name="clock" class="h-4 w-4 mr-1" /> Break 2 — Inicio (COL - CR)
       <span></span>
     </button>
 
-    <button wire:click="lunchStart" @disabled($closed || $a->lunch_start) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between {{ ($closed || $a->lunch_start) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
+    <button wire:click="lunchStart" @disabled($closed || $a->lunch_start) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || $a->lunch_start) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
       <flux:icon name="pause-circle" class="h-4 w-4 mr-1" />Lunch — Inicio
       <span></span>
     </button>
 
-    <button wire:click="clockOut" @disabled($closed || !$a->clock_in || $a->clock_out) class="px-3 py-2 rounded text-sm flex items-center justify-between {{ ($closed || !$a->clock_in || $a->clock_out) ? 'opacity-30 cursor-not-allowed bg-gradient-to-t from-[#351d5b] to-[#31353d] text-white' : 'bg-gradient-to-t from-[#351d5b] to-[#31353d] text-white cursor-pointer' }}">
+    <button wire:click="clockOut" @disabled($closed || !$a->clock_in || $a->clock_out) class="px-3 py-2 rounded text-sm flex items-center justify-between dark:border-white border {{ ($closed || !$a->clock_in || $a->clock_out) ? 'opacity-30 cursor-not-allowed bg-gradient-to-t from-[#351d5b] to-[#31353d] text-white' : 'bg-gradient-to-t from-[#351d5b] to-[#31353d] text-white cursor-pointer' }}">
       <flux:icon name="arrow-right-start-on-rectangle" class="h-4 w-4 mr-1" />Salida
       <span></span>
     </button>
 
-    <button wire:click="break1End" @disabled($closed || !$a->break1_start || $a->break1_end) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between {{ ($closed || !$a->break1_start || $a->break1_end) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
+    <button wire:click="break1End" @disabled($closed || !$a->break1_start || $a->break1_end) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || !$a->break1_start || $a->break1_end) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
       <flux:icon name="clock" class="h-4 w-4 mr-1" /> Break 1 — Fin
       <span></span>
     </button>
 
-    <button wire:click="break2End" @disabled($closed || !$a->break2_start || $a->break2_end) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between {{ ($closed || !$a->break2_start || $a->break2_end) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
+    <button wire:click="break2End" @disabled($closed || !$a->break2_start || $a->break2_end) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || !$a->break2_start || $a->break2_end) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
       <flux:icon name="clock" class="h-4 w-4 mr-1" /> Break 2 — Fin
       <span></span>
     </button>
 
-    <button wire:click="lunchEnd" @disabled($closed || !$a->lunch_start || $a->lunch_end) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between {{ ($closed || !$a->lunch_start || $a->lunch_end) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
+    <button wire:click="lunchEnd" @disabled($closed || !$a->lunch_start || $a->lunch_end) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || !$a->lunch_start || $a->lunch_end) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
       <flux:icon name="play-circle" class="h-4 w-4 mr-1" /> Lunch — Fin
       <span></span>
     </button>

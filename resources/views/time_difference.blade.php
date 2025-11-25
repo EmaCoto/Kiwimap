@@ -17,7 +17,7 @@
                     <select
                         id="patientZone"
                         onchange="calculateTimeDifference()"
-                        class="w-full border rounded p-2 text-sm"
+                        class="w-full border rounded p-2 text-sm dark:text-black dark:bg-white"
                     ></select>
                 </div>
             </div>
@@ -29,28 +29,46 @@
                 <select
                     id="weekSelector"
                     onchange="handleWeekSelection(this.value)"
-                    class="w-full border rounded p-2 text-sm"
+                    class="w-full border rounded p-2 text-sm dark:text-black dark:bg-white"
                 ></select>
             </div>
         
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- FECHA con visual overlay Mes Día, Año -->
-                <div class="relative">
+                <!-- FECHA con disparador custom pero usando input date nativo oculto -->
+                <div>
                     <label for="targetDate" class="block text-xs font-medium mb-1">
                         Fecha de la Cita/Referencia
                     </label>
+
+                    {{-- Caja visible que muestra la fecha en formato bonito --}}
+                    <button
+                        type="button"
+                        onclick="openNativeDatePicker()"
+                        class="w-full border p-2 rounded text-sm bg-white dark:bg-white text-left flex items-center justify-between"
+                    >
+                        <span
+                            id="targetDateDisplayText"
+                            class="text-gray-900 dark:text-black text-sm truncate"
+                        >
+                            —
+                        </span>
+
+                        {{-- Ícono de calendario, negro en dark mode --}}
+                        <flux:icon name="calendar" class="h-5 w-5 text-gray-500 dark:text-black ml-2" />
+                    </button>
+
+                    {{-- Input nativo type="date" oculto visualmente, pero usado para el datepicker y la lógica --}}
                     <input
                         type="date"
                         id="targetDate"
-                        onchange="clearWeekSelection(); checkWeekend(); calculateTimeDifference(); paintPrettyDate();"
-                        class="w-full border p-2 rounded text-sm bg-white"
-                        style="color: transparent; caret-color: transparent;"
+                        class="sr-only"
+                        onchange="onTargetDateChange()"
                     >
-                    <!-- Texto formateado encima del input -->
-                    <span id="prettyDateInside" class="pointer-events-none absolute top-7 left-3 text-sm text-gray-900">—</span>
 
-                    <p id="weekStatus" class="text-sm mt-1 font-medium text-gray-700"></p>
-                    <p class="text-sm mt-1 font-medium text-gray-300">Si seleccionan <strong>sábado o domingo</strong> en el calendario marcará automáticamente el <strong>lúnes</strong> siguiente</p>
+                    <p id="weekStatus" class="text-sm mt-1 font-medium text-gray-700 dark:text-gray-500"></p>
+                    <p class="text-sm mt-1 font-medium text-gray-300">
+                        Si seleccionan <strong>sábado o domingo</strong> en el calendario marcará automáticamente el <strong>lunes</strong> siguiente
+                    </p>
                 </div>
 
                 <div>
@@ -62,7 +80,7 @@
                         type="time"
                         id="myTimeInput"
                         step="60"
-                        class="w-full border rounded p-2 text-sm"
+                        class="w-full border rounded p-2 text-sm dark:text-black dark:bg-white"
                         onchange="calculateTimeDifference()"
                     >
                 </div>
@@ -226,17 +244,42 @@
         if (weekSelector) weekSelector.value = "";
     }
 
-    // ======= Config visual del formato de fecha dentro del input =======
+    // ======= Disparador del datepicker nativo =======
+    function openNativeDatePicker() {
+        const input = document.getElementById('targetDate');
+        if (!input) return;
+
+        if (typeof input.showPicker === 'function') {
+            input.showPicker();
+        } else {
+            // Fallback para navegadores sin showPicker
+            input.focus();
+            input.click();
+        }
+    }
+
+    // ======= Manejo centralizado del cambio de fecha =======
+    function onTargetDateChange() {
+        clearWeekSelection();
+        checkWeekend();
+        calculateTimeDifference();
+        paintPrettyDate();
+    }
+
+    // ======= Config visual del formato de fecha dentro de la caja visible =======
     const PRETTY_LOCALE = 'es-ES';
     const PRETTY_TZ     = 'America/Bogota';
 
     function paintPrettyDate() {
         const input = document.getElementById('targetDate');
-        const out = document.getElementById('prettyDateInside');
+        const out = document.getElementById('targetDateDisplayText');
         if (!input || !out) return;
 
         const iso = input.value; // "YYYY-MM-DD"
-        if (!iso) { out.textContent = '—'; return; }
+        if (!iso) {
+            out.textContent = '—';
+            return;
+        }
 
         const date = new Date(iso + 'T00:00:00');
         const formatted = new Intl.DateTimeFormat(PRETTY_LOCALE, {
@@ -246,7 +289,8 @@
             day: '2-digit'
         }).format(date);
 
-        out.textContent = formatted;
+        // Capitalizar la primera letra (por si viene en minúsculas)
+        out.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
     }
     // ================================================================
 
@@ -396,7 +440,7 @@
         };
     }
 
-    // ---- Utilidades de zona horaria (precisas con DST para la fecha/hora elegida) ----
+    // ---- Utilidades de zona horaria ----
     function getTzOffsetMinutesAt(date, timeZone) {
         const dtf = new Intl.DateTimeFormat('en-US', {
             timeZone, hour12: false,
@@ -408,7 +452,6 @@
         return (asUTC - date.getTime()) / 60000; // minutos
     }
 
-    // Construye un Date (instante real) que corresponde a "YYYY-MM-DD HH:mm" en la zona indicada
     function makeZonedInstant(year, month, day, hour, minute, timeZone) {
         let guess = new Date(Date.UTC(year, month - 1, day, hour, minute, 0));
         const off1 = getTzOffsetMinutesAt(guess, timeZone);

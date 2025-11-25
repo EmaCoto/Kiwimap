@@ -21,9 +21,9 @@
     <div>
         <label class="block text-xs font-medium mb-1">Rol</label>
         <select wire:model.live="roleName" class="w-full border rounded p-2 text-sm">
-            <option value="">Todos</option>
+            <option value="" class="dark:text-black">Todos</option>
             @foreach($roles as $r)
-                <option value="{{ $r->name }}">{{ ucfirst($r->name) }}</option>
+                <option value="{{ $r->name }}" class="dark:text-black">{{ ucfirst($r->name) }}</option>
             @endforeach
         </select>
     </div>
@@ -38,11 +38,11 @@
 
   <div class="flex justify-between items-center">
     {{-- BOTÓN DE LIMPIAR FILTROS (usando el nuevo método) --}}
-    <button wire:click="clearFilters" class="bg-white text-center w-42 rounded-2xl h-14 relative text-black text-sm font-semibold group cursor-pointer" type="button">
+    <button wire:click="clearFilters" class="bg-white dark:bg-transparent text-center w-42 rounded-2xl h-14 relative text-black text-sm font-semibold group cursor-pointer" type="button">
         <div class="bg-gradient-to-b active:bg-gradient-to-t from-[#6fa31c] to-[#123338] rounded-lg h-10 w-1/5 flex items-center justify-center absolute left-1 top-[10px] group-hover:w-[150px] z-10 hover:shadow transform duration-500 ease-in-out">
             <flux:icon name="paint-brush" class="h-4 w-4 text-white" />
         </div>
-        <p class="translate-x-2">Limpiar filtro</p>
+        <p class="translate-x-2 dark:text-white">Limpiar filtro</p>
     </button>
     
     <div class="text-xs text-gray-500">

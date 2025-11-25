@@ -16,9 +16,9 @@
     <div>
       <label class="block text-xs font-medium mb-1">Estado</label>
       <select wire:model.live="stateCode" class="w-full border rounded p-2 text-sm">
-        <option value="">Todos</option>
+        <option value="" class="dark:text-black">Todos</option>
         @foreach($states as $s)
-          <option value="{{ $s->code }}">{{ $s->name }} ({{ $s->code }})</option>
+          <option value="{{ $s->code }}" class="dark:text-black">{{ $s->name }} ({{ $s->code }})</option>
         @endforeach
       </select>
     </div>
@@ -26,10 +26,10 @@
     <div>
       <label class="block text-xs font-medium mb-1">Status</label>
       <select wire:model.live="status" class="w-full border rounded p-2 text-sm">
-        <option value="all">Todos</option>
-        <option value="active">Activa</option>
-        <option value="pending">Pendiente</option>
-        <option value="expired">Vencida</option>
+        <option value="all" class="dark:text-black">Todos</option>
+        <option value="active" class="dark:text-black">Activa</option>
+        <option value="pending" class="dark:text-black">Pendiente</option>
+        <option value="expired" class="dark:text-black">Vencida</option>
       </select>
     </div>
 
@@ -41,11 +41,11 @@
   </div>
 
   <div class="flex justify-between items-center">
-    <button wire:click="clearFilters" class="bg-white text-center w-42 rounded-2xl h-14 relative text-black text-sm font-semibold group cursor-pointer" type="button">
+    <button wire:click="clearFilters" class="bg-white dark:bg-transparent text-center w-42 rounded-2xl h-14 relative text-black text-sm font-semibold group cursor-pointer" type="button">
       <div class="bg-gradient-to-b active:bg-gradient-to-t from-[#6fa31c] to-[#123338] rounded-lg h-10 w-1/5 flex items-center justify-center absolute left-1 top-[10px] group-hover:w-[150px] z-10 hover:shadow transform duration-500 ease-in-out">
         <flux:icon name="paint-brush" class="h-4 w-4 text-white" />
       </div>
-      <p class="translate-x-2">Limpiar filtro</p>
+      <p class="translate-x-2 dark:text-white">Limpiar filtro</p>
     </button>
     <span class="text-xs text-gray-500">Resultados: {{ $licenses->total() }}</span>
   </div>

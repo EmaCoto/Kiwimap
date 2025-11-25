@@ -21,9 +21,9 @@
     <div>
       <label class="block text-xs font-medium mb-1">Operacional</label>
       <select wire:model.live="operational" class="w-full border rounded p-2 text-sm">
-        <option value="all">Todos</option>
-        <option value="yes">Sí</option>
-        <option value="no">No</option>
+        <option value="all" class="dark:text-black">Todos</option>
+        <option value="yes" class="dark:text-black">Sí</option>
+        <option value="no" class="dark:text-black">No</option>
       </select>
     </div>
   </div>
