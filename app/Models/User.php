@@ -16,14 +16,12 @@ class User extends Authenticatable
 
     protected $fillable = [
         'name','email','password','avatar_path',
-
-        // 👇 nuevos campos (ya existentes en DB)
         'employee_number',
         'has_id_badge',
         'birthday',
         'anniversary_kiwimed',
         'anniversary_group',
-        'country_code',      // ej: 'us','co','mx'
+        'country_code',
         'spruce_number',
         'crecer_number',
     ];
@@ -42,9 +40,6 @@ class User extends Authenticatable
         ];
     }
 
-
-
-    
     public function primaryRoleName(): string
     {
         $r = $this->roles()->first();
@@ -52,7 +47,7 @@ class User extends Authenticatable
     }
 
     /** Devuelve Carbon con la PRÓXIMA ocurrencia (desde hoy) para una fecha MM-DD (ignora año) */
-    public function nextOccurrenceOf(?string $date, string $tz = null): ?Carbon
+        public function nextOccurrenceOf(?string $date, ?string $tz = null): ?Carbon
     {
         if (!$date) return null;
 
@@ -113,12 +108,6 @@ class User extends Authenticatable
     }
 
 
-
-
-
-
-
-
     // Iniciales para avatar placeholder
     public function initials(): string
     {
@@ -133,7 +122,7 @@ class User extends Authenticatable
     // URL del avatar público
     public function getAvatarUrlAttribute(): ?string
     {
-        return $this->avatar_path ? Storage::disk('public')->url($this->avatar_path) : null;
+        return $this->avatar_path? Storage::url($this->avatar_path): null;
     }
 
 

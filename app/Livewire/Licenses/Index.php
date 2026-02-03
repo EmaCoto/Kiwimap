@@ -4,6 +4,7 @@ namespace App\Livewire\Licenses;
 
 use App\Models\{License, State};
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -64,10 +65,9 @@ class Index extends Component
             ->orderByDesc('expiration_date');
 
         // 🔒 Si el usuario es Doctor → solo sus licencias
-        if (auth()->user()->hasRole('Doctor')) {
-            $query->whereHas('doctor', fn($d) => $d->where('user_id', auth()->id()));
-        }
-
+            if (Auth::user()?->hasRole('Doctor')) {
+                $query->whereHas('doctor', fn($d) => $d->where('user_id', Auth::id()));
+            }
         return view('livewire.licenses.index', [
             'licenses' => $query->paginate(15),
             'states'   => State::where('is_operational', true)->orderBy('name')->get(['id','name','code']),

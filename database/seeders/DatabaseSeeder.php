@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             ['email' => 'desarrollokiwimed@gmail.com'],
             [
                 'name' => 'Emanuel Cortés',
-                'password' => Hash::make('123456789'), // seguro y válido
+                'password' => Hash::make('password'), // seguro y válido
                 'email_verified_at' => now(),
             ]
         );
