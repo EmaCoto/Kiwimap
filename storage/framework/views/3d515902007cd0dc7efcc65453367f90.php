@@ -64,7 +64,7 @@
                         
                         <tr class="group hover:bg-[#123338]/[0.02] dark:hover:bg-white/[0.02] transition-colors">
                             <td class="px-6 py-6 text-[11px] font-black text-[#123338] dark:text-gray-200 uppercase  tracking-widest">Bronze Membership</td>
-                            <td class="px-6 py-6 text-[11px] tracking-widest font-black text-[#02a676]">$99/month</td>
+                            <td class="px-6 py-6 text-[11px] tracking-widest font-black text-[#02a676]">$149 / Initial Visit <br> $89/month</td>
                             <td class="px-6 py-6 text-[10px] font-bold text-gray-500 dark:text-gray-200 uppercase leading-relaxed tracking-widest">
                                 - Perfect for those seeking essential care <br> - Includes one visit per month
                             </td>
@@ -119,19 +119,19 @@
                         <?php
                             $services = [
                                 ['Weight Loss Initial Visit', '$245 per visit', 'Will usually need to see provider every 4-6 weeks', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
-                                ['Weight Loss Follow up', '$168 per visit', 'Always review the forms for initial visit are completed', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
-                                ['Sick Visit', '$155 per visit', 'Sick patients with urinary symptoms, cough, cold, sore throats, rash, sinus/nasal concerns or other sick symptoms', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
-                                ['Mental Health (Anxiety/Depression) Initial visit', '$155 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
-                                ['Mental Health Follow up', '$150 per visit', '', 'PHQ-9, GAD-7'],
-                                ['Insomnia (difficulty sleeping)', '$150 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Weight Loss Follow up', '$145 per visit', 'Always review the forms for initial visit are completed', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['General Health', '$148.50 per visit', 'Sick patients with urinary symptoms, cough, cold, sore throats, rash, sinus/nasal concerns or other sick symptoms', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Mental Health (Anxiety/Depression) Initial visit', '$149 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Mental Health Follow up', '$149 per visit', '', 'PHQ-9, GAD-7'],
+                                ['Insomnia (difficulty sleeping)', '$149 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
                                 ['Erectile Dysfunction', '$195 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
-                                ['Acne', '$155 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Acne', '$148 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
                                 ['Hair Loss', '$165 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
-                                ['Sexually Transmitted infections', '$150 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
-                                ['Contraception', '$150 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Sexually Transmitted infections', '$147 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Contraception', '$99 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
                                 ['Follow up', 'same as per visit', 'Patient has a second different visit reason. Everything must be fully written on english.', 'Always review the corresponding forms are completed. Still the forms can be sent in spanish (patient preferred language).'],
                                 ['Patient with multiple health concerns', '$??? per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
-                                ['Comprehensive Appointment', '$200', 'This service evaluates whether a medical condition may qualify a patient for a USCIS medical disability exception. USCIS determines if the medical condition actually prevent the person from learning or being tested. Approval is determined by USCIS, not the clinic.', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form']
+                                ['Comprehensive Appointment', '$250', 'This service provides a thorough evaluation of a patient’s medical conditions. If requested, and clinically appropriate, a clinical summary may be provided to help the patient understand the findings and next steps.', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form, PHQ-9, GAD-7']
                             ];
                         ?>
 

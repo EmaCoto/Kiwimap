@@ -40,6 +40,7 @@
                     <flux:navlist.item icon="clock" :href="route('time_difference')" :current="request()->routeIs('time_difference')" wire:navigate>{{ __('Diferencia Horaria') }}</flux:navlist.item>
                     <flux:navlist.item icon="calendar-days" :href="route('attendance.tracker')" :current="request()->routeIs('attendance.tracker')" wire:navigate>{{ __('Asistencia') }}</flux:navlist.item>
                     <flux:navlist.item icon="currency-dollar" :href="route('pricing')" :current="request()->routeIs('pricing')" wire:navigate>{{ __('Lista de precios') }}</flux:navlist.item>
+                    <flux:navlist.item icon="arrows-right-left" :href="route('measurement_converter')" :current="request()->routeIs('measurement_converter')" wire:navigate>{{ __('Convertidor') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
