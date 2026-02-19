@@ -22,7 +22,7 @@ class Metrics extends Component
 
     public array $byStatus = [
         'active'  => 0,
-        'pending' => 0,
+        'renovation' => 0,
         'expired' => 0,
     ];
 

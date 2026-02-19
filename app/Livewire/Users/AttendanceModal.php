@@ -90,6 +90,7 @@ class AttendanceModal extends Component
             };
 
             return [
+                'overtime' => $a->overtime_hhmm,
                 'date'   => optional($a->work_date)->toDateString(),
                 'in'     => $get('clock_in'),
                 'b1s'    => $get('break1_start'),
@@ -101,6 +102,7 @@ class AttendanceModal extends Component
                 'out'    => $get('clock_out'),
                 'worked' => $a->worked_hhmm,
                 'status' => $a->status,
+
             ];
         })->toArray();
 
@@ -145,6 +147,8 @@ class AttendanceModal extends Component
         $this->weekHhMm  = $this->fmt($weekSec);
         $this->monthHhMm = $this->fmt($monthSec);
         $this->yearHhMm  = $this->fmt($yearSec);
+
+
 
         // Guarda el paginator en el estado para la vista (sin exponer todo)
         // Livewire te permite devolverlo directo a la vista:

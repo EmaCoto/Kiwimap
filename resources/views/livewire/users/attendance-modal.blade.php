@@ -1,127 +1,120 @@
-<div x-data x-show="$wire.open" x-cloak class="fixed inset-0 z-50 flex items-start justify-center bg-black/30">
-  <div class="mt-6 w-[900px] max-h-[85vh] overflow-y-auto rounded-lg bg-white p-5 shadow">
-    <div class="flex items-center justify-between mb-3">
-      <h2 class="font-semibold">Asistencia — {{ $user?->name }}</h2>
-      <button class="text-sm underline" wire:click="close">Cerrar</button>
+<div x-data x-show="$wire.open" x-cloak class="fixed inset-0 z-50 flex items-start justify-center bg-[#123338]/40 backdrop-blur-sm">
+  <div class="mt-10 w-full max-w-[96%] max-h-[90vh] overflow-y-auto rounded-3xl bg-white dark:bg-[#0d1516] p-8 shadow-2xl border border-white/20">
+
+    {{-- Header Ejecutivo --}}
+    <div class="flex items-center justify-between mb-8">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2">
+            <span class="h-5 w-1 bg-[#351d5b] rounded-full"></span>
+            <h2 class="text-2xl font-black text-[#123338] dark:text-white tracking-tighter uppercase italic">Asistencia — {{ $user?->name }}</h2>
+        </div>
+        <p class="text-[10px] font-black text-[#6fa31c] uppercase tracking-[0.3em] ml-3">Registro Detallado de Jornada</p>
+      </div>
+      <button class="px-4 py-2 rounded-xl bg-gray-50 dark:bg-white/5 text-[10px] font-black uppercase tracking-widest text-gray-500 hover:bg-red-50 hover:text-red-600 transition-all shadow-sm" wire:click="close">Cerrar</button>
     </div>
 
-    <p class="text-sm text-gray-600 mb-4">
-      TZ: {{ $tzLabel }} —
-      Hoy: {{ $todayStr }} —
-      Estado: {{ $rows[0]['status'] ?? '—' }}
-    </p>
-
-    <div class="grid grid-cols-4 gap-3 mb-4">
-      <div class="rounded border p-3">
-        <div class="text-xs text-gray-500">Hoy</div>
-        <div class="text-2xl font-semibold">{{ $todayHhMm }}</div>
-      </div>
-      <div class="rounded border p-3">
-        <div class="text-xs text-gray-500">Semana</div>
-        <div class="text-2xl font-semibold">{{ $weekHhMm }}</div>
-      </div>
-      <div class="rounded border p-3">
-        <div class="text-xs text-gray-500">Mes</div>
-        <div class="text-2xl font-semibold">{{ $monthHhMm }}</div>
-      </div>
-      <div class="rounded border p-3">
-        <div class="text-xs text-gray-500">Año</div>
-        <div class="text-2xl font-semibold">{{ $yearHhMm }}</div>
-      </div>
+    {{-- Info Bar --}}
+    <div class="flex flex-wrap gap-4 mb-6 px-2">
+        <div class="px-3 py-1.5 rounded-lg bg-[#123338]/5 border border-[#123338]/10 text-[10px] font-bold text-[#123338] dark:text-gray-400 uppercase tracking-tight">
+            <span class="opacity-50 font-black">TZ:</span> {{ $tzLabel }}
+        </div>
+        <div class="px-3 py-1.5 rounded-lg bg-[#123338]/5 border border-[#123338]/10 text-[10px] font-bold text-[#123338] dark:text-gray-400 uppercase tracking-tight">
+            <span class="opacity-50 font-black">Hoy:</span> {{ $todayStr }}
+        </div>
+        <div class="px-3 py-1.5 rounded-lg bg-[#02a676]/10 border border-[#02a676]/20 text-[10px] font-black text-[#02a676] uppercase tracking-widest">
+            {{ $rows[0]['status'] ?? '—' }}
+        </div>
     </div>
 
-    {{-- Tabla con paginación --}}
-    <div class="rounded border">
-      <div class="overflow-auto">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-100 text-left">
-            <tr>
-              <th class="p-2">Fecha</th>
-              <th class="p-2">Entrada</th>
-              <th class="p-2">Break 1</th>
-              <th class="p-2">Break 2</th>
-              <th class="p-2">Lunch</th>
-              <th class="p-2">Salida</th>
-              <th class="p-2">Trabajado</th>
-              <th class="p-2">Estado</th>
+    {{-- Stats Grid --}}
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      @php $stats = [['label' => 'Hoy', 'val' => $todayHhMm], ['label' => 'Semana', 'val' => $weekHhMm], ['label' => 'Mes', 'val' => $monthHhMm], ['label' => 'Año', 'val' => $yearHhMm]]; @endphp
+      @foreach($stats as $stat)
+        <div class="bg-white dark:bg-white/5 border border-gray-100 dark:border-white/5 p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">{{ $stat['label'] }}</div>
+          <div class="text-2xl font-mono font-black text-[#123338] dark:text-white italic tracking-tighter">{{ $stat['val'] }}</div>
+        </div>
+      @endforeach
+    </div>
+
+    {{-- Tabla Principal --}}
+    <div class="rounded-2xl border border-gray-100 dark:border-white/5 overflow-hidden bg-white dark:bg-white/5 shadow-sm">
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-gray-50 dark:bg-[#123338]/40 border-b border-gray-100 dark:border-white/10">
+              @foreach(['Fecha', 'Entrada', 'Break 1', 'Break 2', 'Lunch', 'Salida', 'Trabajado', 'Extra', 'Estado'] as $th)
+                <th class="p-4 text-[10px] font-black text-[#123338] dark:text-gray-400 uppercase tracking-widest">{{ $th }}</th>
+              @endforeach
             </tr>
           </thead>
-          <tbody class="divide-y">
+          <tbody class="divide-y divide-gray-50 dark:divide-white/5">
             @forelse($rows as $row)
-              <tr>
-                <td class="p-2 whitespace-nowrap">{{ $row['date'] }}</td>
-                <td class="p-2 whitespace-nowrap">{{ $row['in'] ?? '—' }}</td>
-                <td class="p-2 whitespace-nowrap">
-                  {{ $row['b1s'] ?? '—' }} @if($row['b1e']) / {{ $row['b1e'] }} @endif
+              <tr class="hover:bg-gray-50/50 dark:hover:bg-white/[0.02] transition-colors">
+                <td class="p-4 text-[11px] font-bold text-gray-600 dark:text-gray-300 whitespace-nowrap">{{ $row['date'] }}</td>
+                <td class="p-4 text-[11px] font-mono font-black text-[#123338] dark:text-white">{{ $row['in'] ?? '—' }}</td>
+                <td class="p-4 text-[10px] font-mono text-gray-500 whitespace-nowrap">
+                  {{ $row['b1s'] ?? '—' }} @if($row['b1e']) <span class="text-[#6fa31c] mx-1">/</span> {{ $row['b1e'] }} @endif
                 </td>
-                <td class="p-2 whitespace-nowrap">
-                  {{ $row['b2s'] ?? '—' }} @if($row['b2e']) / {{ $row['b2e'] }} @endif
+                <td class="p-4 text-[10px] font-mono text-gray-500 whitespace-nowrap">
+                  {{ $row['b2s'] ?? '—' }} @if($row['b2e']) <span class="text-[#6fa31c] mx-1">/</span> {{ $row['b2e'] }} @endif
                 </td>
-                <td class="p-2 whitespace-nowrap">
-                  {{ $row['ls'] ?? '—' }} @if($row['le']) / {{ $row['le'] }} @endif
+                <td class="p-4 text-[10px] font-mono text-gray-500 whitespace-nowrap">
+                  {{ $row['ls'] ?? '—' }} @if($row['le']) <span class="text-[#6fa31c] mx-1">/</span> {{ $row['le'] }} @endif
                 </td>
-                <td class="p-2 whitespace-nowrap">{{ $row['out'] ?? '—' }}</td>
-                <td class="p-2 font-semibold">{{ $row['worked'] }}</td>
-                <td class="p-2 whitespace-nowrap">{{ $row['status'] }}</td>
+                <td class="p-4 text-[11px] font-mono font-black text-[#123338] dark:text-white">{{ $row['out'] ?? '—' }}</td>
+                <td class="p-4">
+                    <span class="px-2 py-1 rounded-md bg-[#6fa31c]/10 text-[#6fa31c] text-[11px] font-black font-mono tracking-tighter">{{ $row['worked'] }}</span>
+                </td>
+                <td class="p-4">
+                    <span class="px-2 py-1 rounded bg-orange-100 text-orange-700 text-[11px] font-black">
+                        Extra: {{ $row['overtime'] }}
+                    </span>
+                </td>
+                <td class="p-4">
+                    <span class="text-[9px] font-black uppercase italic tracking-tighter text-gray-400">{{ $row['status'] }}</span>
+                </td>
               </tr>
             @empty
-              <tr><td colspan="8" class="p-4 text-center text-gray-500">Sin registros.</td></tr>
+              <tr><td colspan="8" class="p-10 text-center text-[10px] font-black text-gray-400 uppercase tracking-[0.5em]">Sin registros de asistencia</td></tr>
             @endforelse
           </tbody>
         </table>
       </div>
 
-      {{-- Controles de paginación --}}
-      <div class="flex items-center justify-between p-2">
-        <div class="text-xs text-gray-500">
+      {{-- Paginación --}}
+      <div class="flex items-center justify-between p-4 bg-gray-50/50 dark:bg-[#123338]/20 border-t border-gray-100 dark:border-white/5">
+        <div class="text-[10px] font-black text-gray-400 uppercase tracking-widest">
           @if($paginator)
-            Página {{ $paginator->currentPage() }} de {{ $paginator->lastPage() }} — Total: {{ $paginator->total() }}
+            Página <span class="text-[#123338] dark:text-white">{{ $paginator->currentPage() }}</span> de {{ $paginator->lastPage() }} <span class="mx-2">—</span> Total: {{ $paginator->total() }}
           @endif
         </div>
         <div class="flex gap-2">
-          <button
-            wire:click="previous"
-            class="px-3 py-1 rounded border text-sm disabled:opacity-50"
-            @if(!$paginator || !$paginator->previousPageUrl()) disabled @endif
-          >Anterior</button>
-
-          <button
-            wire:click="next"
-            class="px-3 py-1 rounded border text-sm disabled:opacity-50"
-            @if(!$paginator || !$paginator->nextPageUrl()) disabled @endif
-          >Siguiente</button>
+          <button wire:click="previous" class="px-4 py-2 rounded-xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-[10px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all disabled:opacity-30 shadow-sm" @if(!$paginator || !$paginator->previousPageUrl()) disabled @endif>Anterior</button>
+          <button wire:click="next" class="px-4 py-2 rounded-xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-[10px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all disabled:opacity-30 shadow-sm" @if(!$paginator || !$paginator->nextPageUrl()) disabled @endif>Siguiente</button>
         </div>
       </div>
     </div>
 
-    {{-- Historial mensual (últimos 12) --}}
-    <div class="mt-6">
-      <h3 class="font-semibold mb-2">Historial mensual (últimos 12)</h3>
-      <div class="overflow-auto rounded border">
-        <table class="min-w-full text-sm">
-          <thead class="bg-gray-100 text-left">
-            <tr>
-              <th class="p-2">Mes</th>
-              <th class="p-2">Horas trabajadas</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y">
-            @forelse($history as $h)
-              @php
-                // Formato: "23, diciembre de 2004" no aplica a mes; presentamos "Octubre 2025"
-                $m = \Illuminate\Support\Carbon::parse($h['month'])->isoFormat('MMMM YYYY');
-              @endphp
-              <tr>
-                <td class="p-2 whitespace-nowrap capitalize">{{ $m }}</td>
-                <td class="p-2 font-semibold">{{ $h['hhmm'] }}</td>
-              </tr>
-            @empty
-              <tr><td colspan="2" class="p-4 text-center text-gray-500">Sin historial.</td></tr>
-            @endforelse
-          </tbody>
-        </table>
+    {{-- Historial Mensual --}}
+    <div class="mt-10">
+      <div class="flex items-center gap-4 mb-4">
+        <h3 class="text-[11px] font-black text-[#123338] dark:text-gray-400 uppercase tracking-[0.4em] italic">Historial mensual (últimos 12)</h3>
+        <div class="h-[1px] flex-1 bg-gray-100 dark:bg-white/5"></div>
       </div>
-      <p class="mt-2 text-xs text-gray-500">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        @forelse($history as $h)
+          @php $m = \Illuminate\Support\Carbon::parse($h['month'])->isoFormat('MMMM YYYY'); @endphp
+          <div class="flex items-center justify-between p-4 rounded-2xl bg-gray-50/50 dark:bg-white/5 border border-gray-100 dark:border-white/5 transition-all hover:border-[#6fa31c]/30">
+            <span class="text-[11px] font-bold text-gray-600 dark:text-gray-300 capitalize">{{ $m }}</span>
+            <span class="text-[13px] font-mono font-black text-[#123338] dark:text-[#6fa31c] italic tracking-tighter">{{ $h['hhmm'] }}</span>
+          </div>
+        @empty
+            <div class="col-span-full p-6 border border-dashed border-gray-200 rounded-2xl text-center text-[10px] font-black text-gray-400 uppercase tracking-widest">Sin historial disponible.</div>
+        @endforelse
+      </div>
+      <p class="mt-6 text-[9px] font-bold text-gray-400 italic tracking-tight leading-relaxed">
         * Se actualiza automáticamente al cerrar el mes. Si algún mes no existía en resumen, se calcula en tiempo real.
       </p>
     </div>

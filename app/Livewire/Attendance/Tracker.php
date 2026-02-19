@@ -10,6 +10,9 @@ use Carbon\Carbon;
 
 class Tracker extends Component
 {
+    public ?string $overtimeStart = null;
+    public ?string $overtimeEnd   = null;
+
     public Attendance $attendance;
     public string $tz = '';
     public string $status = 'offline';
@@ -189,6 +192,30 @@ class Tracker extends Component
         ]);
         $this->attendance->refresh();
         $this->status = $this->attendance->status;
+    }
+
+    public function saveOvertime(): void
+    {
+        if (!$this->overtimeStart || !$this->overtimeEnd) return;
+
+        $tz = $this->attendance->timezone ?? config('app.timezone','UTC');
+
+        $start = Carbon::createFromFormat('H:i', $this->overtimeStart, $tz);
+        $end   = Carbon::createFromFormat('H:i', $this->overtimeEnd, $tz);
+
+        // Asegura que sea el mismo día laboral
+        $start->setDateFrom($this->attendance->work_date);
+        $end->setDateFrom($this->attendance->work_date);
+
+        $seconds = max(0, $start->diffInSeconds($end));
+
+        $this->attendance->update([
+            'overtime_start'   => $start,
+            'overtime_end'     => $end,
+            'overtime_seconds' => $seconds,
+        ]);
+
+        $this->attendance->refresh();
     }
 
 

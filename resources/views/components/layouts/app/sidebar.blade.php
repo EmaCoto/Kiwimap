@@ -2,9 +2,19 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
         @include('partials.head')
+        <style>
+            /* Ocultar scrollbar pero permitir desplazamiento */
+            html, body {
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* IE/Edge */
+            }
+            ::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Opera */
+            }
+        </style>
     </head>
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+    <body class="min-h-screen bg-white dark:bg-[#0d1516]">
+        <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-white/5 dark:bg-[#123338]">
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
             <a href="{{ route('dashboard') }}" class="me-5 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
@@ -29,6 +39,7 @@
                 <flux:navlist.group :heading="__('Herramientas')" class="grid">
                     <flux:navlist.item icon="clock" :href="route('time_difference')" :current="request()->routeIs('time_difference')" wire:navigate>{{ __('Diferencia Horaria') }}</flux:navlist.item>
                     <flux:navlist.item icon="calendar-days" :href="route('attendance.tracker')" :current="request()->routeIs('attendance.tracker')" wire:navigate>{{ __('Asistencia') }}</flux:navlist.item>
+                    <flux:navlist.item icon="currency-dollar" :href="route('pricing')" :current="request()->routeIs('pricing')" wire:navigate>{{ __('Lista de precios') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -39,7 +50,6 @@
                 </flux:navlist.group>
             </flux:navlist>
 
-
             <flux:spacer />
 
             <flux:navlist variant="outline">
@@ -48,7 +58,6 @@
                 </flux:navlist.item>
             </flux:navlist>
 
-            <!-- Desktop User Menu -->
             <flux:dropdown class="hidden lg:block" position="bottom" align="start">
                 <flux:profile
                     :name="auth()->user()->name"
@@ -58,15 +67,12 @@
                     circle="true"
                 />
 
-
                 <flux:menu class="w-[220px]">
                     <flux:menu.radio.group>
                         <div class="p-0 text-sm font-normal">
                             <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
                                 <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
-                                    <span
-                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white"
-                                    >
+                                    <span class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
                                         {{ auth()->user()->initials() }}
                                     </span>
                                 </span>
@@ -97,7 +103,6 @@
             </flux:dropdown>
         </flux:sidebar>
 
-        <!-- Mobile User Menu -->
         <flux:header class="lg:hidden">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
@@ -114,9 +119,7 @@
                         <div class="p-0 text-sm font-normal">
                             <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
                                 <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-lg">
-                                    <span
-                                        class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white"
-                                    >
+                                    <span class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
                                         {{ auth()->user()->initials() }}
                                     </span>
                                 </span>

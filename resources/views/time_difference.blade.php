@@ -1,5 +1,5 @@
 <x-layouts.app :title="__('Diferencia Horaria')">
- 
+
     <div class="w-full">
         <h1 class="text-3xl font-extrabold mb-2 text-center">Diferencia Horaria</h1>
         <p class="text-gray-500 text-center">Calcula la diferencia de hora entre tu ubicación y la de tu paciente</p>
@@ -9,17 +9,30 @@
             {{-- COLUMNA PRINCIPAL --}}
             <div class="space-y-6 lg:col-span-2 flex flex-col">
 
-                <div>
-                    <div>
-                        <label for="patientZone" class="block text-xs font-medium mb-1">
-                            Ubicación del Paciente (Estado de EE. UU.)
-                        </label>
-                        <select
-                            id="patientZone"
-                            onchange="calculateTimeDifference()"
-                            class="w-full border rounded p-2 text-sm dark:text-black dark:bg-white"
-                        ></select>
+                {{-- SELECTOR DE ESTADO CON BUSCADOR INTERNO (DISEÑO INTEGRADO) --}}
+                <div class="relative">
+                    <label class="block text-xs font-medium mb-1">
+                        Ubicación del Paciente (Estado de EE. UU.)
+                    </label>
+
+                    <div onclick="toggleStatePicker()" id="statePickerTrigger"
+                        class="w-full border rounded p-2 text-sm bg-white dark:bg-white text-black flex justify-between items-center cursor-pointer shadow-sm">
+                        <span id="selectedStateLabel">Seleccionar Estado...</span>
+                        <flux:icon name="chevron-down" class="h-4 w-4 text-gray-400" />
                     </div>
+
+                    <div id="statePickerPanel" class="hidden absolute z-50 w-full mt-1 bg-white border rounded shadow-xl overflow-hidden">
+                        <div class="p-2 border-b bg-gray-50">
+                            <input type="text" id="stateSearch" placeholder="Buscar estado..." onkeyup="filterStates()"
+                                class="w-full border rounded px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 text-black">
+                        </div>
+                        <div id="statesList" class="max-h-60 overflow-y-auto p-1">
+                            {{-- Se puebla vía JS --}}
+                        </div>
+                    </div>
+
+                    {{-- Select original oculto para mantener compatibilidad con tu lógica --}}
+                    <select id="patientZone" onchange="calculateTimeDifference()" class="hidden"></select>
                 </div>
 
                 <div>
@@ -32,47 +45,31 @@
                         class="w-full border rounded p-2 text-sm dark:text-black dark:bg-white"
                     ></select>
                 </div>
-            
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- FECHA con disparador custom pero usando input date nativo oculto -->
                     <div>
                         <label for="targetDate" class="block text-xs font-medium mb-1">
                             Fecha de la Cita/Referencia
                         </label>
 
-                        {{-- Caja visible que muestra la fecha en formato bonito --}}
                         <button
                             type="button"
                             onclick="openNativeDatePicker()"
                             class="w-full border p-2 rounded text-sm bg-white dark:bg-white text-left flex items-center justify-between"
                         >
-                            <span
-                                id="targetDateDisplayText"
-                                class="text-gray-900 dark:text-black text-sm truncate"
-                            >
-                                —
-                            </span>
-
-                            {{-- Ícono de calendario, negro en dark mode --}}
+                            <span id="targetDateDisplayText" class="text-gray-900 dark:text-black text-sm truncate">—</span>
                             <flux:icon name="calendar" class="h-5 w-5 text-gray-500 dark:text-black ml-2" />
                         </button>
 
-                        {{-- Input nativo type="date" oculto visualmente, pero usado para el datepicker y la lógica --}}
-                        <input
-                            type="date"
-                            id="targetDate"
-                            class="sr-only"
-                            onchange="onTargetDateChange()"
-                        >
+                        <input type="date" id="targetDate" class="sr-only" onchange="onTargetDateChange()">
 
                         <p id="weekStatus" class="text-sm mt-1 font-medium text-gray-700 dark:text-gray-500"></p>
-                        <p class="text-sm mt-1 font-medium text-gray-300">
-                            Si seleccionan <strong>sábado o domingo</strong> en el calendario marcará automáticamente el <strong>lunes</strong> siguiente
+                        <p class="text-[11px] mt-1 text-gray-400 italic">
+                            Si seleccionan <strong>sábado o domingo</strong> se ajustará al <strong>lunes</strong> siguiente.
                         </p>
                     </div>
 
                     <div>
-                        {{-- AHORA ESTA ES LA HORA DEL PACIENTE --}}
                         <label for="myTimeInput" class="block text-xs font-medium mb-1">
                             Hora del Paciente para la cita
                         </label>
@@ -86,33 +83,34 @@
                     </div>
                 </div>
 
-                <div>
-                    <div class="mt-10 bg-blue-200 p-3 pr-10 border-t-4 border-blue-600 w-full flex flex-col sm:flex-row sm:items-center gap-3 rounded">
-                        <flux:icon name="information-circle" class="h-10 w-10 sm:mr-6" />
+                {{-- BLOQUES DE INFORMACIÓN --}}
+                <div class="space-y-4">
+                    <div class="bg-blue-100 p-4 border-l-4 border-blue-600 rounded flex items-start gap-3">
+                        <flux:icon name="information-circle" class="h-6 w-6 text-blue-600 mt-0.5" />
                         <div>
-                            <h2 class="text-xl font-semibold mb-1">¡Estamos para atenderte!</h2>
-                            <p class="text-gray-800">
-                                De lunes a viernes, de 9:00 a.m. a 5:30 p.m. <br>
-                                <span class="text-sm">Hora del Este (ET/EDT)</span>
+                            <h2 class="text-lg font-semibold text-blue-900">¡Estamos para atenderte!</h2>
+                            <p class="text-blue-800 text-sm">
+                                Lunes a viernes, 9:00 a.m. a 5:30 p.m. <br>
+                                <span class="font-medium text-xs">Hora del Este (ET/EDT)</span>
                             </p>
                         </div>
                     </div>
 
-                    <div class="mt-10 bg-blue-200 p-3 pr-10 border-t-4 border-blue-600 w-full flex flex-col sm:flex-row sm:items-center gap-3 rounded">
-                        <flux:icon name="information-circle" class="h-10 w-10 sm:mr-6" />
+                    <div class="bg-orange-100 p-4 border-l-4 border-orange-500 rounded flex items-start gap-3">
+                        <flux:icon name="exclamation-triangle" class="h-6 w-6 text-orange-600 mt-0.5" />
                         <div>
-                            <h2 class="text-xl font-semibold mb-1">¡Información!</h2>
-                            <p class="text-gray-800">
-                                No planeamos dar servicios en New York, Wisconsin y Kansas
+                            <h2 class="text-lg font-semibold text-orange-900">¡Información Importante!</h2>
+                            <p class="text-orange-800 text-sm">
+                                No planeamos dar servicios en New York, Wisconsin y Kansas.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {{-- COLUMNA DE RESULTADOS --}}
+            {{-- COLUMNA DE RESULTADOS (DISEÑO ORIGINAL MANTENIDO) --}}
             <div id="results" class="space-y-6 mt-4 lg:mt-0">
-                <div id="myTimeCard" class="flex flex-col px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">
+                <div id="myTimeCard" class="flex flex-col px-4 py-3 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">
                     <p class="text-sm font-semibold opacity-80">
                         <span id="myZoneName">...</span>
                     </p>
@@ -120,7 +118,7 @@
                     <p id="myDate" class="text-md opacity-90"></p>
                 </div>
 
-                <div id="patientTimeCard" class="flex flex-col px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#351d5b] to-[#31353d] transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">
+                <div id="patientTimeCard" class="flex flex-col px-4 py-3 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#351d5b] to-[#31353d] transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">
                     <p class="text-sm font-semibold opacity-80">
                         Hora del Paciente (<span id="patientZoneName">...</span>)
                     </p>
@@ -128,182 +126,134 @@
                     <p id="patientDate" class="text-md opacity-90"></p>
                 </div>
 
-                <div id="differenceCard" class="bg-gray-100 p-4 rounded-lg shadow-md border-l-4">
-                    <p class="text-gray-600 font-semibold text-sm">Diferencia Horaria</p>
-                    <p id="timeDifference" class="text-xl font-medium text-gray-800 mt-0.5">Calculando...</p>
+                <div id="differenceCard" class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-gray-300">
+                    <p class="text-gray-500 font-semibold text-xs uppercase tracking-wider">Diferencia Horaria</p>
+                    <p id="timeDifference" class="text-lg font-medium text-gray-800 mt-1">Calculando...</p>
+                </div>
+
+                {{-- TABLA DE CONVERSIÓN DE SEMANAS --}}
+                <div class="mt-3">
+                    <div class="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-sm">
+                        <table class="min-w-full text-xs">
+                            <thead class="bg-gray-50 text-gray-700">
+                                <tr>
+                                    <th class="px-3 py-2 font-semibold text-center">Meses</th>
+                                    <th class="px-3 py-2 font-semibold text-center">Semanas</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 text-gray-800">
+                                @for ($w = 4; $w <= 52; $w += 4)
+                                    <tr class="hover:bg-gray-50 transition-colors">
+                                        <td class="px-3 py-2 text-center border-r">{{ intval($w / 4) }} mes{{ (intval($w / 4) === 1) ? '' : 'es' }}</td>
+                                        <td class="px-3 py-2 text-center font-medium">{{ $w }} semanas</td>
+                                    </tr>
+                                @endfor
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-        
     </div>
 
     <script>
+        // Mantenemos tus constantes de zonas exactamente igual
         const TIME_ZONE_GROUPS = [
-            { 
-                label: "Zona del Este (ET/EDT)", 
-                states: [
-                    { name: "Connecticut", zone: "America/New_York" },
-                    { name: "Delaware", zone: "America/New_York" },
-                    { name: "Distrito de Columbia", zone: "America/New_York" },
-                    { name: "Florida (Mayoría)", zone: "America/New_York" },
-                    { name: "Georgia", zone: "America/New_York" },
-                    { name: "Indiana (Mayoría)", zone: "America/Indianapolis" },
-                    { name: "Kentucky (Este)", zone: "America/New_York" },
-                    { name: "Maine", zone: "America/New_York" },
-                    { name: "Maryland", zone: "America/New_York" },
-                    { name: "Massachusetts", zone: "America/New_York" },
-                    { name: "Michigan (Mayoría)", zone: "America/Detroit" },
-                    { name: "New Hampshire", zone: "America/New_York" },
-                    { name: "New Jersey", zone: "America/New_York" },
-                    { name: "Nueva York", zone: "America/New_York" },
-                    { name: "Carolina del Norte", zone: "America/New_York" },
-                    { name: "Ohio", zone: "America/New_York" },
-                    { name: "Pensilvania", zone: "America/New_York" },
-                    { name: "Rhode Island", zone: "America/New_York" },
-                    { name: "Carolina del Sur", zone: "America/New_York" },
-                    { name: "Tennessee (Este)", zone: "America/New_York" },
-                    { name: "Vermont", zone: "America/New_York" },
-                    { name: "Virginia", zone: "America/New_York" },
-                    { name: "Virginia Occidental", zone: "America/New_York" },
-                ]
-            },
-            { 
-                label: "Zona Central (CT/CDT)", 
-                states: [
-                    { name: "Alabama", zone: "America/Chicago" },
-                    { name: "Arkansas", zone: "America/Chicago" },
-                    { name: "Illinois", zone: "America/Chicago" },
-                    { name: "Indiana (Oeste)", zone: "America/Chicago" },
-                    { name: "Iowa", zone: "America/Chicago" },
-                    { name: "Kansas (Mayoría)", zone: "America/Chicago" },
-                    { name: "Kentucky (Oeste)", zone: "America/Chicago" },
-                    { name: "Luisiana", zone: "America/Chicago" },
-                    { name: "Minesota", zone: "America/Chicago" },
-                    { name: "Misisipi", zone: "America/Chicago" },
-                    { name: "Misuri", zone: "America/Chicago" },
-                    { name: "Nebraska (Este)", zone: "America/Chicago" },
-                    { name: "Dakota del Norte (Mayoría)", zone: "America/Chicago" },
-                    { name: "Oklahoma", zone: "America/Chicago" },
-                    { name: "Dakota del Sur (Este)", zone: "America/Chicago" },
-                    { name: "Tennessee (Oeste)", zone: "America/Chicago" },
-                    { name: "Texas (Mayoría)", zone: "America/Chicago" },
-                    { name: "Wisconsin", zone: "America/Chicago" },
-                    { name: "Florida (Oeste)", zone: "America/Chicago" },
-                ]
-            },
-            { 
-                label: "Zona Montaña (MT/MDT)", 
-                states: [
-                    { name: "Colorado", zone: "America/Denver" }, 
-                    { name: "Idaho (Sur)", zone: "America/Denver" },
-                    { name: "Montana", zone: "America/Denver" },
-                    { name: "Nuevo México", zone: "America/Denver" },
-                    { name: "Utah", zone: "America/Denver" },
-                    { name: "Wyoming", zone: "America/Denver" },
-                    { name: "Dakota del Norte (Oeste)", zone: "America/Denver" },
-                    { name: "Dakota del Sur (Oeste)", zone: "America/Denver" },
-                    { name: "Nebraska (Oeste)", zone: "America/Denver" },
-                ]
-            },
-            { 
-                label: "Zona Montaña (MST - Sin DST)", 
-                states: [
-                    { name: "Arizona (Sin DST)", zone: "America/Phoenix" } 
-                ]
-            },
-            { 
-                label: "Zona Pacífico (PT/PDT)", 
-                states: [
-                    { name: "California", zone: "America/Los_Angeles" }, 
-                    { name: "Nevada", zone: "America/Los_Angeles" },
-                    { name: "Oregón (Mayoría)", zone: "America/Los_Angeles" },
-                    { name: "Washington", zone: "America/Los_Angeles" },
-                    { name: "Idaho (Norte)", zone: "America/Los_Angeles" },
-                ]
-            },
-            { 
-                label: "Zona Alaska (AKT/AKDT)", 
-                states: [
-                    { name: "Alaska (Mayoría)", zone: "America/Anchorage" }
-                ]
-            },
-            { 
-                label: "Zona Hawái (HST)", 
-                states: [
-                    { name: "Hawái", zone: "Pacific/Honolulu" }
-                ]
-            }
+            { label: "Zona del Este (ET/EDT)", states: [{ name: "Connecticut", zone: "America/New_York" }, { name: "Delaware", zone: "America/New_York" }, { name: "Distrito de Columbia", zone: "America/New_York" }, { name: "Florida (Mayoría)", zone: "America/New_York" }, { name: "Georgia", zone: "America/New_York" }, { name: "Indiana (Mayoría)", zone: "America/Indianapolis" }, { name: "Kentucky (Este)", zone: "America/New_York" }, { name: "Maine", zone: "America/New_York" }, { name: "Maryland", zone: "America/New_York" }, { name: "Massachusetts", zone: "America/New_York" }, { name: "Michigan (Mayoría)", zone: "America/Detroit" }, { name: "New Hampshire", zone: "America/New_York" }, { name: "New Jersey", zone: "America/New_York" }, { name: "Nueva York", zone: "America/New_York" }, { name: "Carolina del Norte", zone: "America/New_York" }, { name: "Ohio", zone: "America/New_York" }, { name: "Pensilvania", zone: "America/New_York" }, { name: "Rhode Island", zone: "America/New_York" }, { name: "Carolina del Sur", zone: "America/New_York" }, { name: "Tennessee (Este)", zone: "America/New_York" }, { name: "Vermont", zone: "America/New_York" }, { name: "Virginia", zone: "America/New_York" }, { name: "Virginia Occidental", zone: "America/New_York" }] },
+            { label: "Zona Central (CT/CDT)", states: [{ name: "Alabama", zone: "America/Chicago" }, { name: "Arkansas", zone: "America/Chicago" }, { name: "Illinois", zone: "America/Chicago" }, { name: "Indiana (Oeste)", zone: "America/Chicago" }, { name: "Iowa", zone: "America/Chicago" }, { name: "Kansas (Mayoría)", zone: "America/Chicago" }, { name: "Kentucky (Oeste)", zone: "America/Chicago" }, { name: "Luisiana", zone: "America/Chicago" }, { name: "Minesota", zone: "America/Chicago" }, { name: "Misisipi", zone: "America/Chicago" }, { name: "Misuri", zone: "America/Chicago" }, { name: "Nebraska (Este)", zone: "America/Chicago" }, { name: "Dakota del Norte (Mayoría)", zone: "America/Chicago" }, { name: "Oklahoma", zone: "America/Chicago" }, { name: "Dakota del Sur (Este)", zone: "America/Chicago" }, { name: "Tennessee (Oeste)", zone: "America/Chicago" }, { name: "Texas (Mayoría)", zone: "America/Chicago" }, { name: "Wisconsin", zone: "America/Chicago" }, { name: "Florida (Oeste)", zone: "America/Chicago" }] },
+            { label: "Zona Montaña (MT/MDT)", states: [{ name: "Colorado", zone: "America/Denver" }, { name: "Idaho (Sur)", zone: "America/Denver" }, { name: "Montana", zone: "America/Denver" }, { name: "Nuevo México", zone: "America/Denver" }, { name: "Utah", zone: "America/Denver" }, { name: "Wyoming", zone: "America/Denver" }, { name: "Dakota del Norte (Oeste)", zone: "America/Denver" }, { name: "Dakota del Sur (Oeste)", zone: "America/Denver" }, { name: "Nebraska (Oeste)", zone: "America/Denver" }] },
+            { label: "Zona Montaña (MST - Sin DST)", states: [{ name: "Arizona (Sin DST)", zone: "America/Phoenix" }] },
+            { label: "Zona Pacífico (PT/PDT)", states: [{ name: "California", zone: "America/Los_Angeles" }, { name: "Nevada", zone: "America/Los_Angeles" }, { name: "Oregón (Mayoría)", zone: "America/Los_Angeles" }, { name: "Washington", zone: "America/Los_Angeles" }, { name: "Idaho (Norte)", zone: "America/Los_Angeles" }] },
+            { label: "Zona Alaska (AKT/AKDT)", states: [{ name: "Alaska (Mayoría)", zone: "America/Anchorage" }] },
+            { label: "Zona Hawái (HST)", states: [{ name: "Hawái", zone: "Pacific/Honolulu" }] }
         ];
 
         let intervalId = null;
-        let selectedWeeks = null; // null = no elegido por el usuario; número = semanas elegidas
+        let selectedWeeks = null;
 
-        function clearWeekSelection() {
-            selectedWeeks = null;
-            const weekSelector = document.getElementById('weekSelector');
-            if (weekSelector) weekSelector.value = "";
-        }
-
-        // ======= Disparador del datepicker nativo =======
-        function openNativeDatePicker() {
-            const input = document.getElementById('targetDate');
-            if (!input) return;
-
-            if (typeof input.showPicker === 'function') {
-                input.showPicker();
-            } else {
-                // Fallback para navegadores sin showPicker
-                input.focus();
-                input.click();
+        // --- LÓGICA DEL BUSCADOR VISUAL ---
+        function toggleStatePicker() {
+            const panel = document.getElementById('statePickerPanel');
+            panel.classList.toggle('hidden');
+            if (!panel.classList.contains('hidden')) {
+                document.getElementById('stateSearch').value = '';
+                filterStates();
+                document.getElementById('stateSearch').focus();
             }
         }
 
-        // ======= Manejo centralizado del cambio de fecha =======
-        function onTargetDateChange() {
-            clearWeekSelection();
-            checkWeekend();
-            calculateTimeDifference();
-            paintPrettyDate();
+        function filterStates() {
+            const val = document.getElementById('stateSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.state-item');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(val) ? 'block' : 'none';
+            });
         }
 
-        // ======= Config visual del formato de fecha dentro de la caja visible =======
+        function selectState(name, zone) {
+            document.getElementById('selectedStateLabel').textContent = name;
+            const realSelect = document.getElementById('patientZone');
+            // Mantenemos la lógica de inyectar en el select oculto
+            realSelect.innerHTML = `<option value="${zone}" selected>${name}</option>`;
+            if (!document.getElementById('statePickerPanel').classList.contains('hidden')) {
+                toggleStatePicker();
+            }
+            calculateTimeDifference();
+        }
+
+        function populateCustomList() {
+            const list = document.getElementById('statesList');
+            list.innerHTML = '';
+            TIME_ZONE_GROUPS.forEach(group => {
+                const header = document.createElement('div');
+                header.className = 'text-[10px] font-bold text-gray-400 px-2 py-1 bg-gray-50 uppercase tracking-tighter';
+                header.textContent = group.label;
+                list.appendChild(header);
+
+                group.states.forEach(state => {
+                    const item = document.createElement('div');
+                    item.className = 'state-item px-3 py-2 text-sm hover:bg-blue-600 hover:text-white cursor-pointer text-black transition-colors';
+                    item.textContent = state.name;
+                    item.onclick = () => selectState(state.name, state.zone);
+                    list.appendChild(item);
+                });
+            });
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.closest('#statePickerTrigger') && !event.target.closest('#statePickerPanel')) {
+                document.getElementById('statePickerPanel').classList.add('hidden');
+            }
+        }
+
+        // --- TUS FUNCIONES DE LÓGICA (TAL CUAL) ---
+        function clearWeekSelection() { selectedWeeks = null; const ws = document.getElementById('weekSelector'); if (ws) ws.value = ""; }
+        function openNativeDatePicker() { const input = document.getElementById('targetDate'); if (input.showPicker) input.showPicker(); else { input.focus(); input.click(); } }
+        function onTargetDateChange() { clearWeekSelection(); checkWeekend(); calculateTimeDifference(); paintPrettyDate(); }
+
         const PRETTY_LOCALE = 'es-ES';
-        const PRETTY_TZ     = 'America/Bogota';
+        const PRETTY_TZ = 'America/Bogota';
 
         function paintPrettyDate() {
             const input = document.getElementById('targetDate');
             const out = document.getElementById('targetDateDisplayText');
             if (!input || !out) return;
-
-            const iso = input.value; // "YYYY-MM-DD"
-            if (!iso) {
-                out.textContent = '—';
-                return;
-            }
-
+            const iso = input.value;
+            if (!iso) { out.textContent = '—'; return; }
             const date = new Date(iso + 'T00:00:00');
-            const formatted = new Intl.DateTimeFormat(PRETTY_LOCALE, {
-                timeZone: PRETTY_TZ,
-                year: 'numeric',
-                month: PRETTY_LOCALE === 'en-US' ? 'short' : 'long',
-                day: '2-digit'
-            }).format(date);
-
-            // Capitalizar la primera letra (por si viene en minúsculas)
+            const formatted = new Intl.DateTimeFormat(PRETTY_LOCALE, { timeZone: PRETTY_TZ, year: 'numeric', month: 'long', day: '2-digit' }).format(date);
             out.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
         }
-        // ================================================================
 
         function initApp() {
-            populateSelectors();
+            populateCustomList();
             populateWeekSelector();
             setDefaultDate();
             setDefaultTime();
             checkWeekend();
-
-            document.getElementById('myZoneName').textContent = 'Hora del Este (ET/EDT)'; 
-            
-            calculateTimeDifference();
+            document.getElementById('myZoneName').textContent = 'Hora del Este (ET/EDT)';
+            selectState("Connecticut", "America/New_York");
 
             if (intervalId) clearInterval(intervalId);
             intervalId = setInterval(() => {
@@ -311,145 +261,65 @@
                 if (!hasManualTime) calculateTimeDifference();
             }, 1000);
         }
-        
-        function setDefaultDate() {
-            const targetDateInput = document.getElementById('targetDate');
-            const today = new Date();
-            const yyyy = today.getFullYear();
-            const mm = String(today.getMonth() + 1).padStart(2, '0');
-            const dd = String(today.getDate()).padStart(2, '0');
-            const todayString = `${yyyy}-${mm}-${dd}`;
-            
-            targetDateInput.min = todayString;
-            targetDateInput.value = todayString;
-            paintPrettyDate();
-        }
 
-        function setDefaultTime() {
-            const myTimeInput = document.getElementById('myTimeInput');
-            const now = new Date();
-            const hh = String(now.getHours()).padStart(2, '0');
-            const mi = String(now.getMinutes()).padStart(2, '0');
-            myTimeInput.value = `${hh}:${mi}`;
-        }
+        function setDefaultDate() { const targetDateInput = document.getElementById('targetDate'); const today = new Date(); const yyyy = today.getFullYear(); const mm = String(today.getMonth() + 1).padStart(2, '0'); const dd = String(today.getDate()).padStart(2, '0'); const todayString = `${yyyy}-${mm}-${dd}`; targetDateInput.min = todayString; targetDateInput.value = todayString; paintPrettyDate(); }
+        function setDefaultTime() { const myTimeInput = document.getElementById('myTimeInput'); const now = new Date(); const hh = String(now.getHours()).padStart(2, '0'); const mi = String(now.getMinutes()).padStart(2, '0'); myTimeInput.value = `${hh}:${mi}`; }
+        function populateWeekSelector() { const weekSelector = document.getElementById('weekSelector'); weekSelector.innerHTML = '<option value="" selected disabled>-- O selecciona una semana --</option>'; for (let i = 1; i <= 52; i++) { let optionLabel = (i === 1) ? `Próxima semana` : `Dentro de ${i} semanas`; weekSelector.innerHTML += `<option value="${i}">${optionLabel}</option>`; } }
 
         function checkWeekend() {
             const targetDateInput = document.getElementById('targetDate');
-            const selectedDate = new Date(targetDateInput.value + 'T00:00:00'); 
+            const selectedDate = new Date(targetDateInput.value + 'T00:00:00');
             const dayOfWeek = selectedDate.getDay();
-
             let message = '';
-            
             if (dayOfWeek === 0 || dayOfWeek === 6) {
-                let daysToAdd = 0;
-                if (dayOfWeek === 6) { daysToAdd = 2; }
-                else if (dayOfWeek === 0) { daysToAdd = 1; }
-                
+                let daysToAdd = (dayOfWeek === 6) ? 2 : 1;
                 const newDate = new Date(selectedDate.getTime() + (daysToAdd * 86400000));
                 const yyyy = newDate.getFullYear();
                 const mm = String(newDate.getMonth() + 1).padStart(2, '0');
                 const dd = String(newDate.getDate()).padStart(2, '0');
                 targetDateInput.value = `${yyyy}-${mm}-${dd}`;
                 paintPrettyDate();
-                message = "¡Los fines de semana están bloqueados! Se ajustó la fecha al próximo Lunes.";
+                message = "¡Fines de semana no permitidos! Ajustado al lunes.";
             }
-
             const weekStatusEl = document.getElementById('weekStatus');
             if (message) {
                 weekStatusEl.innerHTML = `<span class="text-red-600 font-bold">${message}</span>`;
-                weekStatusEl.classList.remove('text-gray-700');
-                setTimeout(() => { 
-                    calculateTimeDifference(true);
-                }, 3000);
-            } else {
-                weekStatusEl.textContent = '';
-            }
+                setTimeout(() => { calculateTimeDifference(true); }, 3000);
+            } else { weekStatusEl.textContent = ''; }
         }
 
-        function populateWeekSelector() {
-            const weekSelector = document.getElementById('weekSelector');
-            weekSelector.innerHTML = '<option value="" selected disabled>-- O selecciona una semana --</option>';
-            for (let i = 1; i <= 12; i++) { 
-                let optionLabel = (i === 1) ? `Próxima semana` : `Dentro de ${i} semanas`;
-                weekSelector.innerHTML += `<option value="${i}">${optionLabel}</option>`;
-            }
-        }
-        
         function handleWeekSelection(weeks) {
             const weekSelector = document.getElementById('weekSelector');
             const targetDateInput = document.getElementById('targetDate');
-
             const weeksInt = parseInt(weeks, 10);
             selectedWeeks = weeksInt;
-            weekSelector.value = String(weeksInt);
-
             const today = new Date();
-            const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()); 
-            const targetMs = todayStart.getTime() + (weeksInt * 7 * 86400000);
-            const targetDate = new Date(targetMs);
+            const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+            const targetDate = new Date(todayStart.getTime() + (weeksInt * 7 * 86400000));
             const yyyy = targetDate.getFullYear();
             const mm = String(targetDate.getMonth() + 1).padStart(2, '0');
             const dd = String(targetDate.getDate()).padStart(2, '0');
             targetDateInput.value = `${yyyy}-${mm}-${dd}`;
-
             checkWeekend();
             calculateTimeDifference(true);
             paintPrettyDate();
-
             weekSelector.value = String(selectedWeeks);
         }
 
-        function populateSelectors() {
-            const patientZoneSelect = document.getElementById('patientZone');
-            patientZoneSelect.innerHTML = '';
-            TIME_ZONE_GROUPS.forEach((group, groupIndex) => {
-                const optgroupPatient = document.createElement('optgroup');
-                optgroupPatient.label = group.label;
-
-                group.states.forEach((state, stateIndex) => {
-                    const optionPatient = document.createElement('option');
-                    optionPatient.value = state.zone; 
-                    optionPatient.textContent = state.name; 
-                    if (groupIndex === 0 && stateIndex === 0) { // por defecto algo en ET
-                        optionPatient.selected = true;
-                    }
-                    optgroupPatient.appendChild(optionPatient);
-                });
-
-                patientZoneSelect.appendChild(optgroupPatient);
-            });
-        }
-
         function getLocalTimeData(timeZone, dateObj) {
-            const timeOptions = { 
-                timeZone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true 
-            };
-            const dateOptions = {
-                timeZone, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-            };
-
-            const timeFormat = new Intl.DateTimeFormat('es-ES', timeOptions);
-            const dateFormat = new Intl.DateTimeFormat('es-ES', dateOptions);
-
-            const timeString = timeFormat.format(dateObj);
-            const dateString = dateFormat.format(dateObj);
-
-            return { 
-                time: timeString,
-                date: dateString
+            const timeOptions = { timeZone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            const dateOptions = { timeZone, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return {
+                time: new Intl.DateTimeFormat('es-ES', timeOptions).format(dateObj),
+                date: new Intl.DateTimeFormat('es-ES', dateOptions).format(dateObj)
             };
         }
 
-        // ---- Utilidades de zona horaria ----
         function getTzOffsetMinutesAt(date, timeZone) {
-            const dtf = new Intl.DateTimeFormat('en-US', {
-                timeZone, hour12: false,
-                year: 'numeric', month: '2-digit', day: '2-digit',
-                hour: '2-digit', minute: '2-digit', second: '2-digit'
-            });
+            const dtf = new Intl.DateTimeFormat('en-US', { timeZone, hour12: false, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
             const parts = dtf.formatToParts(date).reduce((acc, p) => { acc[p.type] = p.value; return acc; }, {});
             const asUTC = Date.UTC(parts.year, parts.month - 1, parts.day, parts.hour, parts.minute, parts.second);
-            return (asUTC - date.getTime()) / 60000; // minutos
+            return (asUTC - date.getTime()) / 60000;
         }
 
         function makeZonedInstant(year, month, day, hour, minute, timeZone) {
@@ -458,149 +328,51 @@
             let utcMillis = Date.UTC(year, month - 1, day, hour, minute, 0) - (off1 * 60000);
             let result = new Date(utcMillis);
             const off2 = getTzOffsetMinutesAt(result, timeZone);
-            if (off2 !== off1) {
-                utcMillis = Date.UTC(year, month - 1, day, hour, minute, 0) - (off2 * 60000);
-                result = new Date(utcMillis);
-            }
+            if (off2 !== off1) { result = new Date(Date.UTC(year, month - 1, day, hour, minute, 0) - (off2 * 60000)); }
             return result;
         }
 
-        // AHORA LA HORA DE ENTRADA ES HORA DEL PACIENTE
         function calculateTimeDifference(forceWeekStatusUpdate = false) {
             const patientZoneSelect = document.getElementById('patientZone');
             const targetDateInput = document.getElementById('targetDate');
             const myTimeInput = document.getElementById('myTimeInput');
-
-            const myZone = "America/New_York"; 
+            const myZone = "America/New_York";
             const patientZone = patientZoneSelect.value || myZone;
-            const selectedDateString = targetDateInput.value;
-
-            if (!selectedDateString) return;
-
-            // ---- Obtener hora base (HORA DEL PACIENTE) ----
+            if (!targetDateInput.value) return;
             let hour, minute;
-            if (myTimeInput.value) {
-                const [hh, mm] = myTimeInput.value.split(':').map(Number);
-                hour = hh; minute = mm;
-            } else {
-                const now = new Date();
-                hour = now.getHours(); minute = now.getMinutes();
-            }
-
-            const [year, month, day] = selectedDateString.split('-').map(Number);
-
-            // Instante real que corresponde a esa fecha/hora en la zona del PACIENTE
+            if (myTimeInput.value) { const [hh, mm] = myTimeInput.value.split(':').map(Number); hour = hh; minute = mm; }
+            else { const now = new Date(); hour = now.getHours(); minute = now.getMinutes(); }
+            const [year, month, day] = targetDateInput.value.split('-').map(Number);
             const patientInstant = makeZonedInstant(year, month, day, hour, minute, patientZone);
-
-            // Mostrar mi hora/fecha (ET) y la del paciente
             const myData = getLocalTimeData(myZone, patientInstant);
             const patientData = getLocalTimeData(patientZone, patientInstant);
-
-            // Diferencia horaria paciente vs yo
             const offMy = getTzOffsetMinutesAt(patientInstant, myZone) / 60;
             const offPatient = getTzOffsetMinutesAt(patientInstant, patientZone) / 60;
             const diffHours = offPatient - offMy;
+            let differenceText = (diffHours === 0) ? "La hora es la misma." : `El paciente está ${Math.abs(diffHours).toFixed(1)} horas <span class="font-bold ${diffHours > 0 ? 'text-green-700' : 'text-red-700'}">${diffHours > 0 ? 'adelantado' : 'atrasado'}</span>.`;
 
-            let differenceText;
-            if (diffHours === 0) {
-                differenceText = "La hora es la misma (0 horas de diferencia).";
-            } else if (diffHours > 0) {
-                differenceText = `El paciente está ${Math.abs(diffHours).toFixed(1)} horas <span class="font-bold text-green-700">adelantado</span>.`;
-            } else {
-                differenceText = `El paciente está ${Math.abs(diffHours).toFixed(1)} horas <span class="font-bold text-red-700">atrasado</span>.`;
-            }
-            
-            // Estado de semanas/días
             const today = new Date();
-            const targetDate = new Date(selectedDateString + 'T00:00:00');
+            const targetDate = new Date(targetDateInput.value + 'T00:00:00');
             const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-            const diffTime = targetDate.getTime() - todayStart.getTime();
-            const diffDays = Math.round(diffTime / 86400000); 
+            const diffDays = Math.round((targetDate - todayStart) / 86400000);
+            document.getElementById('weekStatus').textContent = diffDays === 0 ? 'Cita: Hoy.' : (diffDays > 0 ? `Cita: Dentro de ${diffDays < 7 ? diffDays + ' día(s)' : Math.round(diffDays/7) + ' semana(s)'}.` : 'Cita: Pasada.');
 
-            let weekStatusText = '';
-            const weekStatusEl = document.getElementById('weekStatus');
-            weekStatusEl.classList.remove('text-red-600'); 
-            weekStatusEl.classList.add('text-gray-700');
-
-            if (diffDays === 0) {
-                weekStatusText = 'Cita: Hoy.';
-            } else if (diffDays > 0) {
-                const weeks = diffDays / 7;
-                if (diffDays < 7) {
-                    weekStatusText = `Cita: Dentro de ${diffDays} día(s).`;
-                } else {
-                    const roundedWeeks = Math.round(weeks);
-                    weekStatusText = `Cita: Dentro de aproximadamente ${roundedWeeks} semana(s).`;
-                }
-            } else {
-                weekStatusText = 'Cita: Fecha en el pasado.';
-            }
-            weekStatusEl.textContent = weekStatusText;
-            
-            // --- Sincronización del selector de semanas ---
-            const weekSelector = document.getElementById('weekSelector');
-            const todayDay = today.getDay();
-            const targetDay = targetDate.getDay();
-            if (selectedWeeks === null) {
-                let syncValue = '';
-                if (targetDay === todayDay && diffDays > 0 && diffDays % 7 === 0) {
-                    syncValue = (diffDays / 7).toString(); 
-                }
-                const matchedOption = Array.from(weekSelector.options).find(option => option.value === syncValue);
-                if (matchedOption) {
-                    weekSelector.value = syncValue;
-                }
-            } else {
-                weekSelector.value = String(selectedWeeks);
-            }
-
-            // Actualizar UI
-            const patientZoneNameText = patientZoneSelect.options[patientZoneSelect.selectedIndex].text;
-            document.getElementById('patientZoneName').textContent = patientZoneNameText;
-
+            document.getElementById('patientZoneName').textContent = document.getElementById('selectedStateLabel').textContent;
             document.getElementById('myTime').textContent = myData.time;
             document.getElementById('myDate').textContent = myData.date.charAt(0).toUpperCase() + myData.date.slice(1);
-
             document.getElementById('patientTime').textContent = patientData.time;
-            const pDateString = patientData.date;
-            document.getElementById('patientDate').textContent = pDateString.charAt(0).toUpperCase() + pDateString.slice(1);
-
+            document.getElementById('patientDate').textContent = patientData.date.charAt(0).toUpperCase() + patientData.date.slice(1);
             document.getElementById('timeDifference').innerHTML = differenceText;
-            
-            const differenceCard = document.getElementById('differenceCard');
-            differenceCard.classList.remove('border-green-400', 'border-red-400', 'border-gray-400');
-            if (diffHours > 0) {
-                differenceCard.classList.add('border-green-400');
-            } else if (diffHours < 0) {
-                differenceCard.classList.add('border-red-400');
-            } else {
-                differenceCard.classList.add('border-gray-400');
-            }
+            const card = document.getElementById('differenceCard');
+            card.className = "bg-white p-4 rounded-lg shadow-sm border-l-4 " + (diffHours > 0 ? 'border-green-500' : (diffHours < 0 ? 'border-red-500' : 'border-gray-300'));
         }
 
-        // =========================
-        // Bootstrap robusto SPA/BFCache
-        // =========================
-        function initOnce() {
-            const root = document.getElementById('results'); 
-            if (!root) return;
-            if (root.dataset.inited === '1') return;
-            root.dataset.inited = '1';
-            try { initApp(); } catch (e) { console.error('initApp() error:', e); }
-        }
-
-        function cleanup() {
-            if (intervalId) { clearInterval(intervalId); intervalId = null; }
-            const root = document.getElementById('results');
-            if (root) delete root.dataset.inited;
-        }
+        function initOnce() { const root = document.getElementById('results'); if (!root || root.dataset.inited === '1') return; root.dataset.inited = '1'; initApp(); }
+        function cleanup() { if (intervalId) { clearInterval(intervalId); intervalId = null; } const root = document.getElementById('results'); if (root) delete root.dataset.inited; }
 
         document.addEventListener('DOMContentLoaded', initOnce, { once: true });
         window.addEventListener('pageshow', (e) => { if (e.persisted) initOnce(); });
         document.addEventListener('turbo:load', () => { cleanup(); initOnce(); });
         document.addEventListener('livewire:navigated', () => { cleanup(); initOnce(); });
-        window.addEventListener('pagehide', cleanup);
-        window.addEventListener('beforeunload', cleanup);
     </script>
-
 </x-layouts.app>

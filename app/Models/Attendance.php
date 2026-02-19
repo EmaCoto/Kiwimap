@@ -16,6 +16,8 @@ class Attendance extends Model
         'break2_start','break2_end',
         'lunch_start','lunch_end',
         'clock_out','status',
+        'overtime_start','overtime_end','overtime_seconds',
+
     ];
 
     protected $casts = [
@@ -28,6 +30,8 @@ class Attendance extends Model
         'lunch_start'  => 'datetime',
         'lunch_end'    => 'datetime',
         'clock_out'    => 'datetime',
+        'overtime_start' => 'datetime',
+        'overtime_end'   => 'datetime',
     ];
 
     /**
@@ -95,5 +99,25 @@ class Attendance extends Model
         $value = $this->getRawOriginal($column);
         return $value ? \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $value) : null;
     }
+
+    public function getOvertimeSecondsCalculated(): int
+    {
+        if (!$this->overtime_start || !$this->overtime_end) {
+            return 0;
+        }
+
+        $tz = $this->timezone ?: config('app.timezone', 'UTC');
+
+        $start = Carbon::parse($this->overtime_start, $tz);
+        $end   = Carbon::parse($this->overtime_end, $tz);
+
+        return max(0, $start->diffInSeconds($end));
+    }
+
+    public function getOvertimeHhmmAttribute(): string
+    {
+        return self::hm($this->overtime_seconds);
+    }
+
 
 }

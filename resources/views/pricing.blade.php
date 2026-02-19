@@ -1,193 +1,130 @@
 <x-layouts.app :title="__('Pricing')">
-    <div class="w-full">
-        <div>
-            <h1 class="text-lg font-bold mt-4">Tentative Service Price List</h1>
-            <span class="text-sm text-gray-400">
-                <strong>Updated on:</strong> 01/16/2026
-            </span>
+
+    <div class="flex h-full w-full flex-1 flex-col gap-8 p-6 bg-[#fcfcfc] dark:bg-[#0d1516] rounded-3xl">
+
+        {{-- Header: Estilo Ejecutivo --}}
+        <div class="flex flex-col md:flex-row justify-between items-end gap-6 px-2">
+            <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                    <span class="h-5 w-1 bg-[#351d5b] rounded-full"></span>
+                    <h1 class="text-3xl font-black text-[#123338] dark:text-white tracking-widest uppercase ">Tentative Service Price List</h1>
+                </div>
+                <p class="text-[10px] font-black text-[#02a676] uppercase tracking-[0.5em] ml-3">
+                    Updated on: 01/16/2026
+                </p>
+            </div>
+
+            <div class="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5">
+                <flux:icon name="currency-dollar" class="h-4 w-4 text-[#6fa31c]" />
+                <span class="text-[9px] font-black text-gray-700 dark:text-white uppercase tracking-widest">Official Rates</span>
+            </div>
         </div>
 
-        <table class="min-w-full table-auto border-collapse border border-gray-300 mt-6">
-            <thead>
-                <tr class="bg-[#6fa31c] text-white dark:bg-[#4d7a19]">
-                    <th class="text-left px-1 font-medium">Membership</th>
-                    <th class="text-left px-1 font-medium w-36">Price</th>
-                    <th class="text-left px-1 font-medium">Benefits</th>
-                    <th class="text-left px-1 font-medium">Notes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="odd:bg-gray-200 dark:odd:bg-gray-800">
-                    <td class="px-1 py-1 text-sm">Bronze Membership</td>
-                    <td class="px-1 py-1 text-sm">$99/month</td>
-                    <td class="px-1 py-1 text-sm"> - Perfect for those seeking essential care <br>
-                                                - Includes one visit per month
-                    </td>
-                    <td class="px-1 py-1 text-sm">
-                        Does not cover weight loss consultations
-                    </td>
-                </tr>
-                <tr class="even:bg-gray-50 dark:even:bg-gray-700">
-                    <td class="px-1 py-1 text-sm">Silver Membership</td>
-                    <td class="px-1 py-1 text-sm">$210 / Initital Visit <br>
-                                                $99 / month
-                    </td>
-                    <td class="px-1 py-1 text-sm"> - All the benefits of Bronze, plus: <br>
-                                                - Includes weightloss consultations and follow ups
-                    </td>
-                    <td class="px-1 py-1 text-sm">
-                        Only one weightloss consultation a month. 
-                    </td>
-                </tr>
-                <tr class="odd:bg-gray-200 dark:odd:bg-gray-800">
-                    <td class="px-1 py-1 text-sm">Gold Membership</td>
-                    <td class="px-1 py-1 text-sm">$210 / Initial Visit <br>
-                                                $149 / month
-                    </td>
-                    <td class="px-1 py-1 text-sm"> - Comprehensive access to all our health services, including weight loss. </td>
-                    <td class="px-1 py-1 text-sm">
-                        Maximum of two visits a month. 
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        {{-- Tabla 1: Memberships --}}
+        <div class="bg-white dark:bg-[#123338]/10 rounded-2xl shadow-2xl shadow-black/[0.02] border border-gray-100 dark:border-white/5 overflow-hidden">
+            <div class="overflow-x-auto no-scrollbar">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="text-[9px] font-black text-gray-700 dark:text-gray-200 uppercase tracking-[0.2em] border-b border-gray-50 dark:border-white/5 bg-gray-50/30">
+                            <th class="px-6 py-5">Membership</th>
+                            <th class="px-6 py-5 w-48">Price</th>
+                            <th class="px-6 py-5">Benefits</th>
+                            <th class="px-6 py-5">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-50 dark:divide-white/5">
+                        {{-- Bronze --}}
+                        <tr class="group hover:bg-[#123338]/[0.02] dark:hover:bg-white/[0.02] transition-colors">
+                            <td class="px-6 py-6 text-[11px] font-black text-[#123338] dark:text-gray-200 uppercase  tracking-widest">Bronze Membership</td>
+                            <td class="px-6 py-6 text-[11px] tracking-widest font-black text-[#02a676]">$149 / Initial Visit <br> $89/month</td>
+                            <td class="px-6 py-6 text-[10px] font-bold text-gray-500 dark:text-gray-200 uppercase leading-relaxed tracking-widest">
+                                - Perfect for those seeking essential care <br> - Includes one visit per month
+                            </td>
+                            <td class="px-6 py-6 text-[9px] font-black text-[#c93d00] uppercase tracking-widest opacity-80">
+                                Does not cover weight loss consultations
+                            </td>
+                        </tr>
+                        {{-- Silver --}}
+                        <tr class="group hover:bg-[#123338]/[0.02] dark:hover:bg-white/[0.02] transition-colors">
+                            <td class="px-6 py-6 text-[11px] font-black text-[#123338] dark:text-gray-200 uppercase  tracking-widest">Silver Membership</td>
+                            <td class="px-6 py-6 text-[11px] tracking-widest font-black text-[#02a676]">
+                                $210 / Initial Visit <br> $99 / month
+                            </td>
+                            <td class="px-6 py-6 text-[10px] font-bold text-gray-500 dark:text-gray-200 uppercase leading-relaxed tracking-widest">
+                                - All the benefits of Bronze, plus: <br> - Includes weight loss consultations and follow ups
+                            </td>
+                            <td class="px-6 py-6 text-[9px] font-black text-gray-700 dark:text-gray-200 uppercase tracking-widest">
+                                Only one weightloss consultation a month.
+                            </td>
+                        </tr>
+                        {{-- Gold --}}
+                        <tr class="group hover:bg-[#123338]/[0.02] dark:hover:bg-white/[0.02] transition-colors">
+                            <td class="px-6 py-6 text-[11px] font-black text-[#123338] dark:text-gray-200 uppercase  tracking-tight">Gold Membership</td>
+                            <td class="px-6 py-6 text-[11px] tracking-widest font-black text-[#02a676]">
+                                $210 / Initial Visit <br> $149 / month
+                            </td>
+                            <td class="px-6 py-6 text-[10px] font-bold text-gray-500 dark:text-gray-200 uppercase leading-relaxed tracking-widest">
+                                - Comprehensive access to all our health services, including weight loss.
+                            </td>
+                            <td class="px-6 py-6 text-[9px] font-black text-gray-700 dark:text-gray-200 uppercase tracking-widest">
+                                Maximum of two visits a month.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
+        {{-- Tabla 2: Services --}}
+        <div class="bg-white dark:bg-[#123338]/10 rounded-2xl shadow-2xl shadow-black/[0.02] border border-gray-100 dark:border-white/5 overflow-hidden mt-4">
+            <div class="overflow-x-auto no-scrollbar">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="text-[9px] font-black text-white uppercase tracking-[0.2em] bg-[#123338]">
+                            <th class="px-6 py-4">Service</th>
+                            <th class="px-6 py-4 w-36">Price</th>
+                            <th class="px-6 py-4">Notes</th>
+                            <th class="px-6 py-4">FORMS / INTAKES</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-50 dark:divide-white/5">
+                        @php
+                            $services = [
+                                ['Weight Loss Initial Visit', '$245 per visit', 'Will usually need to see provider every 4-6 weeks', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Weight Loss Follow up', '$145 per visit', 'Always review the forms for initial visit are completed', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['General Health', '$148.50 per visit', 'Sick patients with urinary symptoms, cough, cold, sore throats, rash, sinus/nasal concerns or other sick symptoms', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Mental Health (Anxiety/Depression) Initial visit', '$149 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Mental Health Follow up', '$149 per visit', '', 'PHQ-9, GAD-7'],
+                                ['Insomnia (difficulty sleeping)', '$149 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Erectile Dysfunction', '$195 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Acne', '$148 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Hair Loss', '$165 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Sexually Transmitted infections', '$147 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Contraception', '$99 per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Follow up', 'same as per visit', 'Patient has a second different visit reason. Everything must be fully written on english.', 'Always review the corresponding forms are completed. Still the forms can be sent in spanish (patient preferred language).'],
+                                ['Patient with multiple health concerns', '$??? per visit', '', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form'],
+                                ['Comprehensive Appointment', '$250', 'This service provides a thorough evaluation of a patient’s medical conditions. If requested, and clinically appropriate, a clinical summary may be provided to help the patient understand the findings and next steps.', 'Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form, PHQ-9, GAD-7']
+                            ];
+                        @endphp
 
-        <table class="min-w-full table-auto border-collapse border border-gray-300 mt-6">
-            <thead>
-                <tr class="bg-[#6fa31c] text-white dark:bg-[#4d7a19]">
-                    <th class="text-left px-1 font-medium">Service</th>
-                    <th class="text-left px-1 font-medium w-26">Price</th>
-                    <th class="text-left px-1 font-medium">Notes</th>
-                    <th class="text-left px-1 font-medium">FORMS / INTAKES</th>
-                </tr>
-            </thead>
+                        @foreach($services as $s)
+                        <tr class="group hover:bg-[#123338]/[0.02] dark:hover:bg-white/[0.02] transition-colors">
+                            <td class="px-6 py-4 text-[12px] font-black text-[#123338] dark:text-gray-200 uppercase  leading-tight">{{ $s[0] }}</td>
+                            <td class="px-6 py-4 text-[12px] tracking-widest font-black text-[#02a676] ">{{ $s[1] }}</td>
+                            <td class="px-6 py-4 text-[10px] font-bold text-gray-700 dark:text-gray-200 uppercase tracking-widest">{{ $s[2] }}</td>
+                            <td class="px-6 py-4 text-[10px] font-bold text-gray-700  dark:text-gray-200 uppercase tracking-widest leading-relaxed">
+                                {{ $s[3] }}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-
-                <tr class="odd:bg-gray-200 dark:odd:bg-gray-800">
-                    <td class="px-1 py-1 text-sm">Weight Loss Initial Visit</td>
-                    <td class="px-1 py-1 text-sm">$245 per visit</td>
-                    <td class="px-1 py-1 text-sm">Will usually need to see provider every 4-6 weeks</td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-                <tr class="even:bg-gray-50 dark:even:bg-gray-700">
-                    <td class="px-1 py-1 text-sm">Weight Loss Follow up</td>
-                    <td class="px-1 py-1 text-sm">$168 per visit</td>
-                    <td class="px-1 py-1 text-sm">
-                        Always review the forms for initial visit are completed
-                    </td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-                <tr class="odd:bg-gray-200 dark:odd:bg-gray-800">
-                    <td class="px-1 py-1 text-sm">Sick Visit</td>
-                    <td class="px-1 py-1 text-sm">$155 per visit</td>
-                    <td class="px-1 py-1 text-sm">
-                        Sick patients with urinary symptoms, cough, cold, sore throats, rash, sinus/nasal concerns or other sick symptoms
-                    </td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-                <tr class="even:bg-gray-50 dark:even:bg-gray-700">
-                    <td class="px-1 py-1 text-sm">Mental Health (Anxiety/Depression) Initial visit</td>
-                    <td class="px-1 py-1 text-sm">$155 per visit</td>
-                    <td class="px-1 py-1 text-sm"></td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-                <tr class="odd:bg-gray-200 dark:odd:bg-gray-800">
-                    <td class="px-1 py-1 text-sm">Mental Health Follow up</td>
-                    <td class="px-1 py-1 text-sm">$150 per visit</td>
-                    <td class="px-1 py-1 text-sm"></td>
-                    <td class="px-1 py-1 text-sm">PHQ-9, GAD-7</td>
-                </tr>
-
-                <tr class="even:bg-gray-50 dark:even:bg-gray-700">
-                    <td class="px-1 py-1 text-sm">Insomnia (difficulty sleeping)</td>
-                    <td class="px-1 py-1 text-sm">$150 per visit</td>
-                    <td class="px-1 py-1 text-sm"></td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-                <tr class="odd:bg-gray-200 dark:odd:bg-gray-800">
-                    <td class="px-1 py-1 text-sm">Erectile Dysfunction</td>
-                    <td class="px-1 py-1 text-sm">$195 per visit</td>
-                    <td class="px-1 py-1 text-sm"></td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-                <tr class="even:bg-gray-50 dark:even:bg-gray-700">
-                    <td class="px-1 py-1 text-sm">Acne</td>
-                    <td class="px-1 py-1 text-sm">$155 per visit</td>
-                    <td class="px-1 py-1 text-sm"></td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-                <tr class="odd:bg-gray-200 dark:odd:bg-gray-800">
-                    <td class="px-1 py-1 text-sm">Hair Loss</td>
-                    <td class="px-1 py-1 text-sm">$165 per visit</td>
-                    <td class="px-1 py-1 text-sm"></td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-                <tr class="even:bg-gray-50 dark:even:bg-gray-700">
-                    <td class="px-1 py-1 text-sm">Sexually Transmitted infections</td>
-                    <td class="px-1 py-1 text-sm">$150 per visit</td>
-                    <td class="px-1 py-1 text-sm"></td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-                <tr class="odd:bg-gray-200 dark:odd:bg-gray-800">
-                    <td class="px-1 py-1 text-sm">Contraception</td>
-                    <td class="px-1 py-1 text-sm">$150 per visit</td>
-                    <td class="px-1 py-1 text-sm"></td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-                <tr class="even:bg-gray-50 dark:even:bg-gray-700">
-                    <td class="px-1 py-1 text-sm">Follow up</td>
-                    <td class="px-1 py-1 text-sm">same as per visit</td>
-                    <td class="px-1 py-1 text-sm">
-                        Patient has a second diferent visit reason.
-                        Everything must be fully written on english.
-                    </td>
-                    <td class="px-1 py-1 text-sm">
-                        Always review the corresponding forms are completed. Still the forms can be sent in spanish (patient preferred language).
-                    </td>
-                </tr>
-
-                <tr class="odd:bg-gray-200 dark:odd:bg-gray-800">
-                    <td class="px-1 py-1 text-sm">Patient with multiple health concerns</td>
-                    <td class="px-1 py-1 text-sm">$??? per visit</td>
-                    <td class="px-1 py-1 text-sm"></td>
-                    <td class="px-1 py-1 text-sm">
-                        Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
+        <div class="px-2 py-4 border-t border-gray-100 dark:border-white/5">
+            <p class="text-[8px] font-black text-gray-700 uppercase tracking-[0.5em] text-center dark:text-gray-200">Executive Pricing Report - Internal Use Only</p>
+        </div>
     </div>
+
 </x-layouts.app>

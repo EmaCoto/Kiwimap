@@ -1,137 +1,171 @@
-<div x-data x-init="$wire.setTz(Intl.DateTimeFormat().resolvedOptions().timeZone)" class="space-y-4">
-  <h1 class="font-semibold">Marcador de asistencia</h1>
-  <p class="text-sm text-gray-600 dark:text-gray-400">
-    {{ $today }} — TZ: {{ $tz }}
-  </p>
+<div x-data x-init="$wire.setTz(Intl.DateTimeFormat().resolvedOptions().timeZone)" class="flex h-full w-full flex-1 flex-col gap-8 p-6 bg-[#fcfcfc] dark:bg-[#0d1516] rounded-3xl">
 
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-    <button wire:click="clockIn" @disabled($closed || $a->clock_in) class="px-3 py-2 rounded text-sm flex items-center justify-between border-white border  {{ ($closed || $a->clock_in) ? 'opacity-30 cursor-not-allowed bg-gradient-to-t from-[#6fa31c] to-[#123338] text-white' : 'bg-gradient-to-t from-[#6fa31c] to-[#123338] text-white cursor-pointer' }}">
-      <flux:icon name="arrow-right-end-on-rectangle" class="h-4 w-4 mr-1" /> Entrada
-      <span></span>
-    </button>
-
-    <button wire:click="break1Start" @disabled($closed || $a->break1_start) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || $a->break1_start) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
-      <flux:icon name="clock" class="h-4 w-4 mr-1" /> Break 1 — Inicio (COL - CR)
-      <span></span>
-    </button>
-
-    <button wire:click="break2Start" @disabled($closed || $a->break2_start) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || $a->break2_start) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
-      <flux:icon name="clock" class="h-4 w-4 mr-1" /> Break 2 — Inicio (COL - CR)
-      <span></span>
-    </button>
-
-    <button wire:click="lunchStart" @disabled($closed || $a->lunch_start) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || $a->lunch_start) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
-      <flux:icon name="pause-circle" class="h-4 w-4 mr-1" />Lunch — Inicio
-      <span></span>
-    </button>
-
-    <button wire:click="clockOut" @disabled($closed || !$a->clock_in || $a->clock_out) class="px-3 py-2 rounded text-sm flex items-center justify-between dark:border-white border {{ ($closed || !$a->clock_in || $a->clock_out) ? 'opacity-30 cursor-not-allowed bg-gradient-to-t from-[#351d5b] to-[#31353d] text-white' : 'bg-gradient-to-t from-[#351d5b] to-[#31353d] text-white cursor-pointer' }}">
-      <flux:icon name="arrow-right-start-on-rectangle" class="h-4 w-4 mr-1" />Salida
-      <span></span>
-    </button>
-
-    <button wire:click="break1End" @disabled($closed || !$a->break1_start || $a->break1_end) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || !$a->break1_start || $a->break1_end) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
-      <flux:icon name="clock" class="h-4 w-4 mr-1" /> Break 1 — Fin
-      <span></span>
-    </button>
-
-    <button wire:click="break2End" @disabled($closed || !$a->break2_start || $a->break2_end) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || !$a->break2_start || $a->break2_end) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
-      <flux:icon name="clock" class="h-4 w-4 mr-1" /> Break 2 — Fin
-      <span></span>
-    </button>
-
-    <button wire:click="lunchEnd" @disabled($closed || !$a->lunch_start || $a->lunch_end) class="px-3 py-2 rounded text-sm border border-black flex items-center justify-between dark:border-white  {{ ($closed || !$a->lunch_start || $a->lunch_end) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:skew-3' }}">
-      <flux:icon name="play-circle" class="h-4 w-4 mr-1" /> Lunch — Fin
-      <span></span>
-    </button>
-
-  </div>
-
-  <hr class="w-full my-10">
-
-  <div class="text-md space-y-5">
-    <h2 class="font-semibold text-center">Conteo de horas del día</h2>
-    @php
-      $get = fn($col) => $a->getRawTime($col)?->format('H:i:s') ?? '—';
-    @endphp
-
-
-    <div class="grid grid-cols-4 gap-8 justify-center items-center text-center">
-
-      <!-- Entrada / Salida -->
-      <div class="flex h-[5em] w-[14em] items-center justify-center rounded-md mx-auto">
-        <div class="group relative flex h-[3em] w-[3em] items-center justify-center rounded-md border-[1px] border-[#ffffffaa] bg-gradient-to-t from-[#6fa31c] to-[#123338] duration-[500ms] hover:h-[5em] hover:w-[14em] shadow mx-auto">
-          <flux:icon name="home-modern" class="absolute h-[1.5em] w-[1.5em] duration-300 group-hover:opacity-0 text-white" />
-          <div class="duration-600 flex h-[5em] w-[16em] flex-col justify-center p-2 text-white mx-auto">
-            <div class="flex flex-col justify-center opacity-0 group-hover:opacity-100 hover:duration-[3500ms] text-left">
-              <p><strong>Entrada:</strong> {{ $get('clock_in') }}</p>
-              <p><strong>Salida:</strong> {{ $get('clock_out') }}</p>
+    {{-- Header Ejecutivo --}}
+    <div class="flex flex-col md:flex-row justify-between items-end gap-6 px-2">
+        <div class="space-y-1">
+            <div class="flex items-center gap-2">
+                <span class="h-5 w-1 bg-[#351d5b] rounded-full"></span>
+                <h1 class="text-3xl font-black text-[#123338] dark:text-white tracking-tighter uppercase italic">Marcador de Asistencia</h1>
             </div>
-          </div>
+            <p class="text-[10px] font-black text-[#02a676] uppercase tracking-[0.5em] ml-3">{{ $today }} — TZ: {{ $tz }}</p>
         </div>
-      </div>
 
-      <!-- Break 1 -->
-      <div class="flex h-[5em] w-[14em] items-center justify-center rounded-md mx-auto">
-        <div class="group relative flex h-[3em] w-[3em] items-center justify-center rounded-md border-[1px] border-[#ffffffaa] bg-gradient-to-t from-[#6fa31c] to-[#123338] duration-[500ms] hover:h-[5em] hover:w-[14em] shadow mx-auto">
-          <flux:icon name="clock" class="absolute h-[1.5em] w-[1.5em] duration-300 group-hover:opacity-0 text-white" />
-          <div class="duration-600 flex h-[5em] w-[16em] flex-col justify-center p-2 text-white mx-auto">
-            <div class="flex flex-col justify-center opacity-0 group-hover:opacity-100 hover:duration-[3500ms] text-left">
-              <p><strong>Break 1 — Inicio:</strong> {{ $get('break1_start') }}</p>
-              <p><strong>Break 1 — Fin:</strong> {{ $get('break1_end') }}</p>
+        <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5">
+            <span class="text-[9px] font-black text-gray-400 uppercase tracking-tighter">Status Actual:</span>
+            <span class="text-[10px] font-black text-[#123338] dark:text-white italic uppercase">
+                {{ ['offline'=>'Offline','working'=>'Working','break1'=>'En Break 1','break2'=>'En Break 2','lunch'=>'En Lunch','clocked_out'=>'Finalizado'][$status] ?? $status }}
+            </span>
+        </div>
+    </div>
+
+    {{-- Panel de Acciones Tácticas --}}
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
+        {{-- Clock In --}}
+        <button wire:click="clockIn" @disabled($closed || $a->clock_in)
+            class="group relative px-4 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all shadow-xl flex flex-col items-center gap-2
+            {{ ($closed || $a->clock_in) ? 'opacity-30 cursor-not-allowed bg-gray-100 text-gray-400' : 'bg-gradient-to-br from-[#123338] to-[#1a444a] text-white hover:scale-105 active:scale-95 shadow-[#123338]/20' }}">
+            <flux:icon name="arrow-right-end-on-rectangle" class="h-5 w-5 text-[#6fa31c]" />
+            <span>Entrada</span>
+        </button>
+
+        {{-- Breaks y Lunch --}}
+        @php
+            $buttons = [
+                ['label' => 'Break 1 (Inicio)', 'action' => 'break1Start', 'icon' => 'clock', 'disabled' => ($closed || $a->break1_start)],
+                ['label' => 'Break 2 (Inicio)', 'action' => 'break2Start', 'icon' => 'clock', 'disabled' => ($closed || $a->break2_start)],
+                ['label' => 'Lunch (Inicio)', 'action' => 'lunchStart', 'icon' => 'pause-circle', 'disabled' => ($closed || $a->lunch_start)],
+            ];
+        @endphp
+
+        @foreach($buttons as $btn)
+            <button wire:click="{{ $btn['action'] }}" @disabled($btn['disabled'])
+                class="group px-4 py-4 rounded-2xl border border-gray-100 dark:border-white/5 text-[10px] font-black uppercase tracking-widest transition-all flex flex-col items-center gap-2
+                {{ $btn['disabled'] ? 'opacity-30 cursor-not-allowed bg-transparent text-gray-300' : 'bg-white dark:bg-[#123338]/40 text-[#123338] dark:text-white hover:border-[#02a676] hover:bg-gray-50' }}">
+                <flux:icon name="{{ $btn['icon'] }}" class="h-5 w-5 {{ $btn['disabled'] ? 'text-gray-300' : 'text-[#351d5b] dark:text-[#6fa31c]' }}" />
+                <span class="text-center leading-tight">{{ $btn['label'] }}</span>
+            </button>
+        @endforeach
+
+        {{-- Clock Out (Estilo Especial) --}}
+        <button wire:click="clockOut" @disabled($closed || !$a->clock_in || $a->clock_out)
+            class="group px-4 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all shadow-xl flex flex-col items-center gap-2
+            {{ ($closed || !$a->clock_in || $a->clock_out) ? 'opacity-30 cursor-not-allowed bg-gray-100 text-gray-400' : 'bg-gradient-to-br from-[#351d5b] to-[#2a174a] text-white hover:scale-105 active:scale-95 shadow-[#351d5b]/20' }}">
+            <flux:icon name="arrow-right-start-on-rectangle" class="h-5 w-5 text-[#f56e2a]" />
+            <span>Salida</span>
+        </button>
+
+        {{-- Botones de Fin --}}
+        @php
+            $ends = [
+                ['label' => 'Break 1 (Fin)', 'action' => 'break1End', 'icon' => 'clock', 'disabled' => ($closed || !$a->break1_start || $a->break1_end)],
+                ['label' => 'Break 2 (Fin)', 'action' => 'break2End', 'icon' => 'clock', 'disabled' => ($closed || !$a->break2_start || $a->break2_end)],
+                ['label' => 'Lunch (Fin)', 'action' => 'lunchEnd', 'icon' => 'play-circle', 'disabled' => ($closed || !$a->lunch_start || $a->lunch_end)],
+            ];
+        @endphp
+
+        @foreach($ends as $btn)
+            <button wire:click="{{ $btn['action'] }}" @disabled($btn['disabled'])
+                class="group px-4 py-4 rounded-2xl border border-dashed border-gray-200 dark:border-white/10 text-[10px] font-black uppercase tracking-widest transition-all flex flex-col items-center gap-2
+                {{ $btn['disabled'] ? 'opacity-30 cursor-not-allowed bg-transparent text-gray-300' : 'bg-white dark:bg-[#123338]/20 text-[#123338] dark:text-white hover:border-[#6fa31c]' }}">
+                <flux:icon name="{{ $btn['icon'] }}" class="h-5 w-5 {{ $btn['disabled'] ? 'text-gray-200' : 'text-[#02a676]' }}" />
+                <span class="text-center leading-tight">{{ $btn['label'] }}</span>
+            </button>
+        @endforeach
+    </div>
+
+    {{-- Sección de Conteo: Estilo Reporte Ejecutivo --}}
+    <div class="mt-4 space-y-6">
+        <div class="flex items-center gap-4 px-2">
+            <h2 class="text-[11px] font-black text-gray-400 uppercase tracking-[0.3em]">Registro de Tiempos del Día</h2>
+            <div class="h-[1px] flex-1 bg-gray-100 dark:bg-white/5"></div>
+        </div>
+
+        @php $get = fn($col) => $a->getRawTime($col)?->format('H:i:s') ?? '—'; @endphp
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 px-2">
+            {{-- Tarjetas de Tiempos --}}
+            @php
+                $metrics = [
+                    ['title' => 'Entrada / Salida', 'icon' => 'home-modern', 'val1' => 'IN: '.$get('clock_in'), 'val2' => 'OUT: '.$get('clock_out')],
+                    ['title' => 'Break 1', 'icon' => 'clock', 'val1' => 'IN: '.$get('break1_start'), 'val2' => 'OUT: '.$get('break1_end')],
+                    ['title' => 'Break 2', 'icon' => 'clock', 'val1' => 'IN: '.$get('break2_start'), 'val2' => 'OUT: '.$get('break2_end')],
+                    ['title' => 'Lunch', 'icon' => 'pause-circle', 'val1' => 'IN: '.$get('lunch_start'), 'val2' => 'OUT: '.$get('lunch_end')],
+                ];
+            @endphp
+
+            @foreach($metrics as $m)
+            <div class="group p-5 rounded-2xl bg-white dark:bg-[#123338]/10 border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-md transition-all">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="h-8 w-8 rounded-lg bg-[#123338] flex items-center justify-center">
+                        <flux:icon name="{{ $m['icon'] }}" class="h-4 w-4 text-[#6fa31c]" />
+                    </div>
+                    <span class="text-[9px] font-black text-[#123338] dark:text-gray-400 uppercase tracking-widest">{{ $m['title'] }}</span>
+                </div>
+                <div class="space-y-1">
+                    <p class="text-[10px] font-mono font-black text-[#02a676]">{{ $m['val1'] }}</p>
+                    <p class="text-[10px] font-mono font-black text-[#123338] dark:text-white">{{ $m['val2'] }}</p>
+                </div>
             </div>
-          </div>
+            @endforeach
         </div>
-      </div>
 
-      <!-- Break 2 -->
-      <div class="flex h-[5em] w-[14em] items-center justify-center rounded-md mx-auto">
-        <div class="group relative flex h-[3em] w-[3em] items-center justify-center rounded-md border-[1px] border-[#ffffffaa] bg-gradient-to-t from-[#6fa31c] to-[#123338] duration-[500ms] hover:h-[5em] hover:w-[14em] shadow mx-auto">
-          <flux:icon name="clock" class="absolute h-[1.5em] w-[1.5em] duration-300 group-hover:opacity-0 text-white" />
-          <div class="duration-600 flex h-[5em] w-[16em] flex-col justify-center p-2 text-white mx-auto">
-            <div class="flex flex-col justify-center opacity-0 group-hover:opacity-100 hover:duration-[3500ms] text-left">
-              <p><strong>Break 2 — Inicio:</strong> {{ $get('break2_start') }}</p>
-              <p><strong>Break 2 — Fin:</strong> {{ $get('break2_end') }}</p>
+        {{-- Footer de Horas Totales --}}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-2 pt-4">
+            <div class="bg-[#123338] p-6 rounded-2xl flex justify-between items-center shadow-2xl shadow-[#123338]/20">
+                <div>
+                    <span class="text-[9px] font-black text-[#6fa31c] uppercase tracking-[0.3em]">Carga Horaria Hoy</span>
+                    <p class="text-3xl font-black text-white italic tracking-tighter mt-1">{{ $todayHHMM }}</p>
+                </div>
+                <flux:icon name="briefcase" class="h-10 w-10 text-white/10" />
             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Lunch -->
-      <div class="flex h-[5em] w-[14em] items-center justify-center rounded-md mx-auto">
-        <div class="group relative flex h-[3em] w-[3em] items-center justify-center rounded-md border-[1px] border-[#ffffffaa] bg-gradient-to-t from-[#6fa31c] to-[#123338] duration-[500ms] hover:h-[5em] hover:w-[14em] shadow mx-auto">
-          <flux:icon name="pause-circle" class="absolute h-[1.5em] w-[1.5em] duration-300 group-hover:opacity-0 text-white" />
-          <div class="duration-600 flex h-[5em] w-[16em] flex-col justify-center p-2 text-white mx-auto">
-            <div class="flex flex-col justify-center opacity-0 group-hover:opacity-100 hover:duration-[3500ms] text-left">
-              <p><strong>Lunch — Inicio:</strong> {{ $get('lunch_start') }}</p>
-              <p><strong>Lunch — Fin:</strong> {{ $get('lunch_end') }}</p>
+            <div class="bg-[#351d5b] p-6 rounded-2xl flex justify-between items-center shadow-2xl shadow-[#351d5b]/20">
+                <div>
+                    <span class="text-[9px] font-black text-white/50 uppercase tracking-[0.3em]">Estado de Jornada</span>
+                    <p class="text-xl font-black text-white uppercase italic tracking-tighter mt-1">
+                        {{ $status == 'clocked_out' ? 'COMPLETADA' : 'EN PROCESO' }}
+                    </p>
+                </div>
+                <flux:icon name="check-badge" class="h-10 w-10 text-white/10" />
             </div>
-          </div>
         </div>
-      </div>
 
-      <!-- Estado -->
-      <div class="flex-col border p-4 text-center rounded-md w-40 shadow-lg mx-auto col-span-2">
-        <p class="font-bold border-b">Estado</p>
-        <p>
-          {{ [
-            'offline'=>'Offline',
-            'working'=>'Working',
-            'break1'=>'Break 1',
-            'break2'=>'Break 2',
-            'lunch'=>'Lunch',
-            'clocked_out'=>'Clocked out'
-          ][$status] ?? $status }}
-        </p>
-      </div>
+        {{-- Horas Extra --}}
+        <div class="mt-8 px-2">
+            <div class="flex items-center gap-4 mb-3">
+                <h2 class="text-[11px] font-black text-gray-400 uppercase tracking-[0.3em]">
+                    Horas Extra
+                </h2>
+                <div class="h-[1px] flex-1 bg-gray-100 dark:bg-white/5"></div>
+            </div>
 
-      <!-- Horas de hoy -->
-      <div class="flex-col border p-4 text-center rounded-md w-40 shadow-lg mx-auto col-span-2">
-        <p class="font-bold border-b">Horas de hoy</p>
-        <p>{{ $todayHHMM }}</p>
-      </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                <div>
+                    <label class="text-[9px] font-black text-gray-400 uppercase">Desde</label>
+                    <input type="time"
+                        wire:model="overtimeStart"
+                        class="w-full rounded-xl border border-gray-200 p-2 text-sm">
+                </div>
+
+                <div>
+                    <label class="text-[9px] font-black text-gray-400 uppercase">Hasta</label>
+                    <input type="time"
+                        wire:model="overtimeEnd"
+                        class="w-full rounded-xl border border-gray-200 p-2 text-sm">
+                </div>
+
+                <button wire:click="saveOvertime"
+                        class="px-4 py-3 rounded-2xl bg-[#6fa31c] text-white text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all">
+                    Guardar Horas Extra
+                </button>
+            </div>
+
+            @if($a->overtime_seconds > 0)
+                <p class="mt-3 text-[11px] font-mono font-black text-[#6fa31c]">
+                    Horas extra registradas: {{ $a->overtime_hhmm }}
+                </p>
+            @endif
+        </div>
 
     </div>
-    
-  </div>
 </div>

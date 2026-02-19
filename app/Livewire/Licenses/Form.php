@@ -19,7 +19,7 @@ class Form extends Component
     public $state_id = '';
     public $issued_date = '';
     public $expiration_date = '';
-    public $status = 'active';
+    public $status = '';
     public $has_active_link = false;
 
     #[Url] public ?string $redirect = null;
@@ -28,40 +28,34 @@ class Form extends Component
     {
         $this->license = $license;
 
-        if ($this->license && $this->license->exists) {
-            $this->authorize('update', $this->license);
+        if ($license && $license->exists) {
+            $this->authorize('update', $license);
+
             $this->fill([
-                'doctor_id'       => $this->license->doctor_id,
-                'state_id'        => $this->license->state_id,
-                'issued_date'     => optional($this->license->issued_date)->format('d-m-y'),
-                'expiration_date' => optional($this->license->expiration_date)->format('d-m-y'),
-                'status'          => $this->license->status,
-                'has_active_link' => (bool) $this->license->has_active_link,
+                'doctor_id'        => $license->doctor_id,
+                'state_id'         => $license->state_id,
+                'issued_date'      => optional($license->issued_date)->format('Y-m-d'),
+                'expiration_date'  => optional($license->expiration_date)->format('Y-m-d'),
+                'status'           => $license->status,
+                'has_active_link'  => (bool) $license->has_active_link,
             ]);
         } else {
             $this->authorize('create', License::class);
-
-            $this->license = null;
-            $this->doctor_id = '';
-            $this->state_id = '';
-            $this->issued_date = '';
-            $this->expiration_date = '';
-            $this->status = 'active';
-            $this->has_active_link = false;
+            $this->status = '';
         }
     }
 
     protected function rules(): array
     {
         return [
-            'doctor_id'       => ['required','integer','exists:doctors,id'],
+            'doctor_id'       => ['required', 'integer', 'exists:doctors,id'],
             'state_id'        => [
                 'required','integer',
                 Rule::exists('states','id')->where(fn($q) => $q->where('is_operational', true)),
             ],
-            'issued_date'     => ['nullable','date'],
-            'expiration_date' => ['nullable','date','after_or_equal:issued_date'],
-            'status'          => ['required','in:active,pending,expired'],
+            'issued_date'     => ['required','date'],
+            'expiration_date' => ['required','date','after_or_equal:issued_date'],
+            'status'          => ['required','in:active,renovation,expired'],
             'has_active_link' => ['boolean'],
         ];
     }
@@ -70,7 +64,10 @@ class Form extends Component
         'doctor_id.required'             => 'Selecciona un doctor.',
         'state_id.required'              => 'Selecciona un estado.',
         'state_id.exists'                => 'El estado seleccionado no está operacional.',
+        'issued_date.required'           => 'La fecha de emisión es obligatoria.',
+        'expiration_date.required'       => 'La fecha de expiración es obligatoria.',
         'expiration_date.after_or_equal' => 'La fecha de expiración no puede ser anterior a la de emisión.',
+        'status.required'                => 'Selecciona un estado de licencia.',
     ];
 
     public function save(): void
@@ -104,14 +101,12 @@ class Form extends Component
         $user = auth()->user();
 
         if ($user->hasRole('Doctor')) {
-            // Doctor: solo se asigna a sí mismo
-            $doctors = \App\Models\Doctor::where('user_id', $user->id)->with('user:id,name')->get();
+            $doctors = Doctor::where('user_id', $user->id)->with('user:id,name')->get();
             if (! $this->doctor_id) {
                 $this->doctor_id = $doctors->first()?->id ?? '';
             }
         } else {
-            // Admin / Front Desk / etc.
-            $doctors = \App\Models\Doctor::with('user:id,name')->orderBy('id')->get();
+            $doctors = Doctor::with('user:id,name')->orderBy('id')->get();
         }
 
         return view('livewire.licenses.form', [
@@ -120,5 +115,4 @@ class Form extends Component
             'isEdit'  => (bool) ($this->license && $this->license->exists),
         ]);
     }
-
 }

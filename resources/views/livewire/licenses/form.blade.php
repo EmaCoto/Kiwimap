@@ -1,72 +1,133 @@
-<div class="max-w-2xl p-6 space-y-6">
-  <div class="flex items-center justify-between">
-    <h1 class="text-xl font-semibold">
-      {{ $isEdit ? 'Editar licencia' : 'Nueva licencia' }}
-    </h1>
-    <a href="{{ $redirect ?? route('licenses.index') }}" class="text-sm flex items-center px-4 py-2 rounded-lg hover:bg-gray-100"><flux:icon name="arrow-uturn-left" class="h-4 w-4 mr-2" />Volver</a>
+<div class="flex h-full w-full flex-1 flex-col gap-8 p-6 bg-[#fcfcfc] dark:bg-[#0d1516] rounded-3xl">
+  
+  {{-- Header: Estilo Ejecutivo --}}
+  <div class="flex flex-col md:flex-row justify-between items-end gap-6 px-2">
+    <div class="space-y-1">
+      <div class="flex items-center gap-2">
+        <span class="h-5 w-1 bg-[#351d5b] rounded-full"></span>
+        <h1 class="text-3xl font-black text-[#123338] dark:text-white tracking-tighter uppercase italic">
+          {{ $isEdit ? 'Gestión: Editar Licencia' : 'Certificación: Nueva Licencia' }}
+        </h1>
+      </div>
+      <p class="text-[10px] font-black text-[#02a676] uppercase tracking-[0.5em] ml-3">Validación de Credenciales / Registro de Vigencia</p>
+    </div>
+    
+    <a href="{{ $redirect ?? route('licenses.index') }}" 
+       class="group flex items-center gap-3 px-6 py-3 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5 text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-[#123338] dark:hover:text-white transition-all">
+      <flux:icon name="arrow-uturn-left" class="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+      <span>Volver</span>
+    </a>
   </div>
 
   @if (session('ok'))
-    <div class="p-3 rounded border-l-2 border-green-800 bg-green-100 text-green-800 text-sm flex items-center"><flux:icon name="bell" class="h-4 w-4 mr-4" />{{ session('ok') }}</div>
+    <div class="mx-2 p-4 rounded-2xl border border-[#02a676]/20 bg-[#02a676]/5 text-[#02a676] text-[10px] font-black uppercase tracking-widest flex items-center">
+        <flux:icon name="bell" class="h-4 w-4 mr-4 animate-bounce" />
+        {{ session('ok') }}
+    </div>
   @endif
 
-  <form wire:submit.prevent="save" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <label class="block text-xs font-medium mb-1">Doctor</label>
-      <select wire:model="doctor_id" class="w-full border rounded p-2 text-sm">
-        <option value="">Seleccione…</option>
-        @foreach($doctors as $d)
-          <option value="{{ $d->id }}">
-            {{ $d->user?->name }}{{ $d->specialty ? ' — '.$d->specialty : '' }}
-          </option>
-        @endforeach
-      </select>
-      @error('doctor_id') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
-    </div>
+  {{-- Contenedor del Formulario --}}
+  <div class="max-w-4xl bg-white dark:bg-[#123338]/10 rounded-[2rem] shadow-2xl shadow-black/[0.02] border border-gray-100 dark:border-white/5 p-8 md:p-12">
+    <form wire:submit.prevent="save" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      {{-- Selección de Doctor --}}
+      <div class="space-y-2">
+        <label class="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-1">Especialista Médico</label>
+        <div class="relative group">
+          <select wire:model="doctor_id" 
+            class="w-full bg-gray-50 dark:bg-[#0d1516]/50 border border-gray-100 dark:border-white/5 rounded-2xl p-4 text-xs font-bold text-[#123338] dark:text-white appearance-none focus:ring-2 focus:ring-[#02a676]/20 focus:border-[#02a676] transition-all outline-none">
+            <option value="" class="dark:bg-[#0d1516]">SELECCIONE…</option>
+            @foreach($doctors as $d)
+              <option value="{{ $d->id }}" class="dark:bg-[#0d1516]">
+                {{ strtoupper($d->user?->name) }}{{ $d->specialty ? ' — '.$d->specialty : '' }}
+              </option>
+            @endforeach
+          </select>
+          <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+            <flux:icon name="chevron-down" class="h-4 w-4 text-gray-400" />
+          </div>
+        </div>
+        @error('doctor_id') <p class="text-[9px] font-black text-rose-600 uppercase tracking-tighter mt-1 ml-1">{{ $message }}</p> @enderror
+      </div>
 
-    <div>
-      <label class="block text-xs font-medium mb-1">Estado</label>
-      <select wire:model="state_id" class="w-full border rounded p-2 text-sm">
-        <option value="">Seleccione…</option>
-        @foreach($states as $s)
-          <option value="{{ $s->id }}">{{ $s->name }} ({{ $s->code }})</option>
-        @endforeach
-      </select>
-      @error('state_id') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
-    </div>
+      {{-- Selección de Estado --}}
+      <div class="space-y-2">
+        <label class="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-1">Jurisdicción Estatal</label>
+        <div class="relative group">
+          <select wire:model="state_id" 
+            class="w-full bg-gray-50 dark:bg-[#0d1516]/50 border border-gray-100 dark:border-white/5 rounded-2xl p-4 text-xs font-bold text-[#123338] dark:text-white appearance-none focus:ring-2 focus:ring-[#02a676]/20 focus:border-[#02a676] transition-all outline-none">
+            <option value="" class="dark:bg-[#0d1516]">SELECCIONE…</option>
+            @foreach($states as $s)
+              <option value="{{ $s->id }}" class="dark:bg-[#0d1516]">{{ strtoupper($s->name) }} ({{ $s->code }})</option>
+            @endforeach
+          </select>
+          <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+            <flux:icon name="chevron-down" class="h-4 w-4 text-gray-400" />
+          </div>
+        </div>
+        @error('state_id') <p class="text-[9px] font-black text-rose-600 uppercase tracking-tighter mt-1 ml-1">{{ $message }}</p> @enderror
+      </div>
 
-    <div>
-      <label class="block text-xs font-medium mb-1">Emitida</label>
-      <input type="date" wire:model="issued_date" class="w-full border rounded p-2 text-sm">
-      @error('issued_date') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
-    </div>
+      {{-- Fecha de Emisión --}}
+      <div class="space-y-2">
+        <label class="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-1">Fecha de Emisión</label>
+        <input type="date" wire:model="issued_date" 
+          class="w-full bg-gray-50 dark:bg-[#0d1516]/50 border border-gray-100 dark:border-white/5 rounded-2xl p-4 text-xs font-bold text-[#123338] dark:text-white focus:ring-2 focus:ring-[#02a676]/20 focus:border-[#02a676] transition-all outline-none">
+        @error('issued_date') <p class="text-[9px] font-black text-rose-600 uppercase tracking-tighter mt-1 ml-1">{{ $message }}</p> @enderror
+      </div>
 
-    <div>
-      <label class="block text-xs font-medium mb-1">Expira</label>
-      <input type="date" wire:model="expiration_date" class="w-full border rounded p-2 text-sm">
-      @error('expiration_date') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
-    </div>
+      {{-- Fecha de Expiración --}}
+      <div class="space-y-2">
+        <label class="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-1">Fecha de Expiración</label>
+        <input type="date" wire:model="expiration_date" 
+          class="w-full bg-gray-50 dark:bg-[#0d1516]/50 border border-gray-100 dark:border-white/5 rounded-2xl p-4 text-xs font-bold text-[#123338] dark:text-white focus:ring-2 focus:ring-[#02a676]/20 focus:border-[#02a676] transition-all outline-none">
+        @error('expiration_date') <p class="text-[9px] font-black text-rose-600 uppercase tracking-tighter mt-1 ml-1">{{ $message }}</p> @enderror
+      </div>
 
-    <div>
-      <label class="block text-xs font-medium mb-1">Status</label>
-      <select wire:model="status" class="w-full border rounded p-2 text-sm">
-        <option value="active">Activa</option>
-        <option value="pending">Pendiente</option>
-        <option value="expired">Vencida</option>
-      </select>
-      @error('status') <p class="text-xs text-rose-600 mt-1">{{ $message }}</p> @enderror
-    </div>
+      {{-- Estatus de Licencia --}}
+      <div class="space-y-2">
+        <label class="text-[10px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-[0.2em] ml-1">Estatus del Registro</label>
+        <div class="relative group">
+          <select wire:model="status" 
+            class="w-full bg-gray-50 dark:bg-[#0d1516]/50 border border-gray-100 dark:border-white/5 rounded-2xl p-4 text-xs font-bold text-[#123338] dark:text-white appearance-none focus:ring-2 focus:ring-[#02a676]/20 focus:border-[#02a676] transition-all outline-none">
+            <option value="active" class="dark:bg-[#0d1516]">ACTIVA</option>
+            <option value="renovation" class="dark:bg-[#0d1516]">EN RENOVACIÓN</option>
+            <option value="expired" class="dark:bg-[#0d1516]">VENCIDA</option>
+          </select>
+          <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+            <flux:icon name="chevron-down" class="h-4 w-4 text-gray-400" />
+          </div>
+        </div>
+        @error('status') <p class="text-[9px] font-black text-rose-600 uppercase tracking-tighter mt-1 ml-1">{{ $message }}</p> @enderror
+      </div>
 
-    <div class="flex justify-center items-center gap-2 mt-6">
-      <input id="has_link" type="checkbox" wire:model="has_active_link" class="rounded border-gray-300">
-      <label for="has_link" class="text-sm">Tiene link de verificación</label>
-    </div>
+      {{-- Checkbox Verificación --}}
+      <div class="flex items-center gap-4 px-6 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5">
+        <div class="relative flex items-center">
+            <input id="has_link" type="checkbox" wire:model="has_active_link" 
+                class="w-5 h-5 rounded-lg border-gray-300 text-[#02a676] focus:ring-[#02a676] cursor-pointer shadow-sm">
+        </div>
+        <label for="has_link" class="text-[10px] font-black text-gray-500 dark:text-gray-400 uppercase tracking-widest cursor-pointer select-none leading-tight">
+            Vínculo de Verificación Activo
+        </label>
+      </div>
 
-    <div class="md:col-span-2 flex items-center gap-3 mt-5 justify-end">
-      <button wire:loading.class="opacity-20" type="submit" class="flex items-center cursor-pointer px-3 py-2 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">
-        {{ $isEdit ? 'Guardar cambios' : 'Crear licencia' }}
-      </button>
-      <a href="{{ $redirect ?? route('licenses.index') }}" class="px-4 py-2 rounded-lg bg-gray-900 text-white transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">Cancelar</a>
-    </div>
-  </form>
+      {{-- Botones de Acción --}}
+      <div class="md:col-span-2 flex items-center gap-4 mt-8 justify-end">
+        <a href="{{ $redirect ?? route('licenses.index') }}" 
+           class="px-8 py-4 rounded-2xl bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 text-[10px] font-black uppercase tracking-widest hover:bg-gray-200 dark:hover:bg-white/10 transition-all">
+          Cancelar
+        </a>
+        
+        <button wire:loading.class="opacity-50" type="submit" 
+          class="group relative px-10 py-4 rounded-2xl bg-[#123338] dark:bg-white text-white dark:text-[#123338] text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 shadow-2xl shadow-[#123338]/20">
+          <div class="flex items-center gap-3">
+            <flux:icon name="check" class="h-4 w-4 text-[#6fa31c]" />
+            <span>{{ $isEdit ? 'Guardar Cambios' : 'Generar Licencia' }}</span>
+          </div>
+        </button>
+      </div>
+      
+    </form>
+  </div>
 </div>

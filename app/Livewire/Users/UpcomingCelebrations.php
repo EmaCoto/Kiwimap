@@ -25,7 +25,7 @@ class UpcomingCelebrations extends Component
 
     public function mount(): void
     {
-        $this->authorize('viewAny', User::class);
+        // $this->authorize('viewAny', User::class);
         $this->tz = config('app.timezone', 'UTC');
 
         if ($this->month !== null) {
