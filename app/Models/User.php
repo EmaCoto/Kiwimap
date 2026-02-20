@@ -100,9 +100,9 @@ class User extends Authenticatable
     public static function humanMilestoneLabel(string $key): string
     {
         return match ($key) {
-            'birthday'       => 'Cumpleaños',
-            'kiwimed'        => 'Aniversario Dr. Kiwimed',
-            'group'          => 'Aniversario Grupo Empresarial',
+            'birthday'       => __('Birthday'),
+            'kiwimed'        => __('Dr. Kiwimed Anniversary'),
+            'group'          => __('Business Group Anniversary'),
             default          => '—',
         };
     }

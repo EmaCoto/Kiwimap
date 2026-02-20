@@ -29,7 +29,7 @@ class Metrics extends Component
     public $expiringSoon; // collection
 
     public function mount(): void
-    {    
+    {
 
         $this->operationalStates = State::where('is_operational', true)->count();
         $this->doctorsCount      = Doctor::count();
@@ -61,8 +61,10 @@ class Metrics extends Component
 
     public function clearCaches(): void
     {
+        $user = request()->user();
         // ✅ Seguridad: solo Admin u Office Manager
-        if (! auth()->user()?->hasAnyRole(['Admin','Office Manager'])) {
+
+        if (! $user || ! $user->hasAnyRole(['Admin', 'Office Manager'])) {
             abort(403);
         }
 

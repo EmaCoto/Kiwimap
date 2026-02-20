@@ -1,49 +1,49 @@
 <div class="max-w-6xl mx-auto p-6 space-y-10">
-  {{-- Encabezado + filtros --}}
+  {{-- Header + filters --}}
   <div class="flex flex-wrap items-end gap-3 px-2">
     <div class="space-y-1">
-        <h1 class="text-3xl font-black text-[#123338] dark:text-white tracking-tighter uppercase italic">Próximos Cumpleaniversario</h1>
+        <h1 class="text-3xl font-black text-[#123338] dark:text-white tracking-tighter uppercase italic">{{ __('Upcoming Milestones') }}</h1>
         <div class="h-1 w-20 bg-[#6fa31c]"></div>
     </div>
 
     <div class="ms-auto flex items-center gap-4">
-      {{-- Filtro de mes --}}
+      {{-- Month filter --}}
       <div class="flex flex-col">
-        <label class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1 ml-1">Mes</label>
+        <label class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1 ml-1">{{ __('Month') }}</label>
         <select wire:model.live="month" class="border border-gray-200 dark:border-white/10 bg-white dark:bg-[#123338] rounded-lg p-2 text-[11px] font-bold uppercase tracking-tight focus:ring-1 focus:ring-[#6fa31c] outline-none">
-          <option value="" class="dark:text-black">Mes actual</option>
+          <option value="" class="dark:text-black">{{ __('Current month') }}</option>
           @foreach($monthNames as $num => $name)
             <option value="{{ $num }}" class="dark:text-black">{{ $name }}</option>
           @endforeach
         </select>
       </div>
 
-      {{-- Filtro de tipo --}}
+      {{-- Type filter --}}
       <div class="flex flex-col">
-        <label class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1 ml-1">Tipo</label>
+        <label class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1 ml-1">{{ __('Type') }}</label>
         <select wire:model.live="type" class="border border-gray-200 dark:border-white/10 bg-white dark:bg-[#123338] rounded-lg p-2 text-[11px] font-bold uppercase tracking-tight focus:ring-1 focus:ring-[#6fa31c] outline-none">
-          <option value="all" class="dark:text-black">Todos</option>
-          <option value="birthday" class="dark:text-black">Cumpleaños</option>
-          <option value="kiwimed" class="dark:text-black">Aniversario Dr. Kiwimed</option>
-          <option value="group" class="dark:text-black">Aniversario Grupo</option>
+          <option value="all" class="dark:text-black">{{ __('All') }}</option>
+          <option value="birthday" class="dark:text-black">{{ __('Birthday') }}</option>
+          <option value="kiwimed" class="dark:text-black">{{ __('Dr. Kiwimed Anniversary') }}</option>
+          <option value="group" class="dark:text-black">{{ __('Group Anniversary') }}</option>
         </select>
       </div>
 
-      {{-- Limpiar filtros --}}
+      {{-- Clear filters --}}
       <div class="self-end">
-        <button wire:click="clearFilters" type="button" class="px-5 py-2.5 rounded-lg bg-gradient-to-t from-[#123338] to-[#1a444a] text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-lg hover:scale-105 transition-all active:scale-95">Limpiar filtros</button>
+        <button wire:click="clearFilters" type="button" class="px-5 py-2.5 rounded-lg bg-gradient-to-t from-[#123338] to-[#1a444a] text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-lg hover:scale-105 transition-all active:scale-95">{{ __('Clear filters') }}</button>
       </div>
     </div>
     <hr class="w-full border-gray-100 dark:border-white/5 mt-4">
   </div>
 
-  {{-- Sección fija: Mes ACTUAL --}}
+  {{-- Fixed section: CURRENT month --}}
   <div class="space-y-4">
-    <h2 class="text-[11px] font-black text-[#02a676] uppercase tracking-[0.4em] px-2 italic">Cumpleaniversarios de {{ $monthNames[$currentMonthNum] }}</h2>
+    <h2 class="text-[11px] font-black text-[#02a676] uppercase tracking-[0.4em] px-2 italic">{{ __('Milestones in :month', ['month' => $monthNames[$currentMonthNum]]) }}</h2>
 
     @if(empty($upcomingCurrentMonth))
       <div class="mx-2 p-8 rounded-2xl border-2 border-dashed border-gray-100 dark:border-white/5 text-gray-400 text-[10px] font-black uppercase tracking-widest text-center">
-        No hay próximos hitos para el resto del mes.
+        {{ __('No upcoming milestones for the rest of the month.') }}
       </div>
     @else
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -59,10 +59,10 @@
 
           <div class="group relative bg-white dark:bg-[#123338]/20 border border-gray-100 dark:border-white/5 rounded-2xl p-4 transition-all hover:shadow-2xl hover:shadow-[#123338]/10 hover:-translate-y-1 overflow-hidden">
             <img src="{{ asset('img/ballons.gif') }}" alt="" class="absolute -right-4 -top-4 h-20 w-20 opacity-10 group-hover:opacity-100 transition-opacity">
-            
+
             <div class="flex items-center gap-4">
               <div class="flex-shrink-0">
-                <img src="{{ $avatar }}" class="h-14 w-14 rounded-full object-cover shadow-sm" alt="Avatar">
+                <img src="{{ $avatar }}" class="h-14 w-14 rounded-full object-cover shadow-sm" alt="{{ __('Avatar') }}">
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-2 flex-wrap">
@@ -87,7 +87,7 @@
     @endif
   </div>
 
-  {{-- Listado del MES SELECCIONADO --}}
+  {{-- Selected MONTH list --}}
   <div class="space-y-4">
     <div class="flex items-center gap-4 px-2">
         <h2 class="text-[11px] font-black text-gray-400 uppercase tracking-[0.4em] italic">{{ $monthNames[$shownMonthNum] }}</h2>
@@ -96,7 +96,7 @@
 
     @if(empty($monthItems))
       <div class="mx-2 p-8 rounded-2xl border border-dashed border-gray-200 dark:border-white/10 text-gray-400 text-[10px] font-black uppercase tracking-widest text-center">
-        No hay resultados con los filtros seleccionados para este mes.
+        {{ __('No results for the selected filters for this month.') }}
       </div>
     @else
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -115,7 +115,7 @@
           <div class="rounded-2xl border {{ $border }} p-4 transition-all hover:bg-gray-50 dark:hover:bg-white/[0.07]">
             <div class="flex items-center gap-3">
               <div class="flex-shrink-0">
-                <img src="{{ $avatar }}" class="h-10 w-10 rounded-lg object-cover grayscale-[40%]" alt="Avatar">
+                <img src="{{ $avatar }}" class="h-10 w-10 rounded-lg object-cover grayscale-[40%]" alt="{{ __('Avatar') }}">
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-2 flex-wrap">
@@ -136,7 +136,7 @@
                 <div class="text-[10px] font-mono font-black text-gray-400 dark:text-gray-500 italic mt-1">{{ $fecha }}</div>
               </div>
               @if($past)
-                <span class="text-[8px] font-black text-red-500/50 uppercase italic tracking-tighter shrink-0">Event Past</span>
+                <span class="text-[8px] font-black text-red-500/50 uppercase italic tracking-tighter shrink-0">{{ __('Event Past') }}</span>
               @endif
             </div>
           </div>
