@@ -22,32 +22,32 @@
             </a>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Estadísticas')" class="grid">
+                <flux:navlist.group :heading="__('Analytics')" class="grid">
                     <flux:navlist.item icon="dash" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Información')" class="grid">
-                    <flux:navlist.item icon="doctor" :href="route('doctors.index')" :current="request()->routeIs('doctors.index')" wire:navigate>{{ __('Doctores') }}</flux:navlist.item>
-                    <flux:navlist.item icon="states" :href="route('states.index')" :current="request()->routeIs('states.index')" wire:navigate>{{ __('Estados') }}</flux:navlist.item>
-                    <flux:navlist.item icon="id-card" :href="route('licenses.index')" :current="request()->routeIs('licenses.index')" wire:navigate>{{ __('Licencias') }}</flux:navlist.item>
+                <flux:navlist.group :heading="__('Information')" class="grid">
+                    <flux:navlist.item icon="doctor" :href="route('doctors.index')" :current="request()->routeIs('doctors.index')" wire:navigate>{{ __('Doctors') }}</flux:navlist.item>
+                    <flux:navlist.item icon="states" :href="route('states.index')" :current="request()->routeIs('states.index')" wire:navigate>{{ __('States') }}</flux:navlist.item>
+                    <flux:navlist.item icon="id-card" :href="route('licenses.index')" :current="request()->routeIs('licenses.index')" wire:navigate>{{ __('Licenses') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Herramientas')" class="grid">
-                    <flux:navlist.item icon="clock" :href="route('time_difference')" :current="request()->routeIs('time_difference')" wire:navigate>{{ __('Diferencia Horaria') }}</flux:navlist.item>
-                    <flux:navlist.item icon="calendar-days" :href="route('attendance.tracker')" :current="request()->routeIs('attendance.tracker')" wire:navigate>{{ __('Asistencia') }}</flux:navlist.item>
-                    <flux:navlist.item icon="currency-dollar" :href="route('pricing')" :current="request()->routeIs('pricing')" wire:navigate>{{ __('Lista de precios') }}</flux:navlist.item>
-                    <flux:navlist.item icon="arrows-right-left" :href="route('measurement_converter')" :current="request()->routeIs('measurement_converter')" wire:navigate>{{ __('Convertidor') }}</flux:navlist.item>
+                <flux:navlist.group :heading="__('Tools')" class="grid">
+                    <flux:navlist.item icon="clock" :href="route('time_difference')" :current="request()->routeIs('time_difference')" wire:navigate>{{ __('Time Difference') }}</flux:navlist.item>
+                    <flux:navlist.item icon="calendar-days" :href="route('attendance.tracker')" :current="request()->routeIs('attendance.tracker')" wire:navigate>{{ __('Attendance') }}</flux:navlist.item>
+                    <flux:navlist.item icon="currency-dollar" :href="route('pricing')" :current="request()->routeIs('pricing')" wire:navigate>{{ __('Price List') }}</flux:navlist.item>
+                    <flux:navlist.item icon="arrows-right-left" :href="route('measurement_converter')" :current="request()->routeIs('measurement_converter')" wire:navigate>{{ __('Converter') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Gestión de usuarios')" class="grid">
-                    <flux:navlist.item icon="group-user" :href="route('users.index')" :current="request()->routeIs('users.index')" wire:navigate>{{ __('Usuarios') }}</flux:navlist.item>
-                    <flux:navlist.item icon="cake" :href="route('users.celebrations')" :current="request()->routeIs('users.celebrations')" wire:navigate>{{ __('Celebraciones') }}</flux:navlist.item>
+                <flux:navlist.group :heading="__('User Management')" class="grid">
+                    <flux:navlist.item icon="group-user" :href="route('users.index')" :current="request()->routeIs('users.index')" wire:navigate>{{ __('Users') }}</flux:navlist.item>
+                    <flux:navlist.item icon="cake" :href="route('users.celebrations')" :current="request()->routeIs('users.celebrations')" wire:navigate>{{ __('Celebrations') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -55,7 +55,7 @@
 
             <flux:navlist variant="outline">
                 <flux:navlist.item icon="book-open-text" href="#" target="_blank">
-                {{ __('Documentación') }}
+                {{ __('Documentation') }}
                 </flux:navlist.item>
             </flux:navlist>
 
@@ -151,8 +151,10 @@
             </flux:dropdown>
         </flux:header>
 
+
         {{ $slot }}
 
+        <x-language-button/>
         @fluxScripts
     </body>
 </html>

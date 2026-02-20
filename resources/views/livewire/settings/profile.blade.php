@@ -182,27 +182,6 @@ new class extends Component {
                 </x-action-message>
             </div>
         </form>
-
-        <div>
-            <h2 class="text-sm font-semibold mb-4">Language</h2>
-
-            <div class="relative">
-                @php($current = app()->getLocale())
-                @php($isEn = $current === 'en')
-
-                <label class="relative inline-flex items-center cursor-pointer">
-                    <input
-                        type="checkbox"
-                        class="sr-only peer"
-                        @checked($isEn)
-                        onchange="window.location.href='{{ route('lang.switch', $isEn ? 'es' : 'en') }}'"
-                        aria-label="Switch language"
-                    >
-                    <div class="peer outline-none text-xs duration-100 rounded-full after:duration-500 w-24 h-10 bg-[#123338] peer-focus:outline-none after:content-['ES'] after:absolute after:outline-none after:h-8 after:w-8 after:rounded-full after:bg-white after:top-1 after:left-1 after:flex after:justify-center after:items-center after:text-[#123338] after:font-bold peer-checked:after:translate-x-14 peer-checked:after:content-['EN'] peer-checked:after:border-white"></div>
-                </label>
-            </div>
-        </div>
-
         {{-- <livewire:settings.delete-user-form /> --}}
     </x-settings.layout>
 </section>

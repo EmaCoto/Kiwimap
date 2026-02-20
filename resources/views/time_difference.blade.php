@@ -1,43 +1,43 @@
-<x-layouts.app :title="__('Diferencia Horaria')">
+<x-layouts.app :title="__('Time Difference')">
 
     <div class="w-full">
-        <h1 class="text-3xl font-extrabold mb-2 text-center">Diferencia Horaria</h1>
-        <p class="text-gray-500 text-center">Calcula la diferencia de hora entre tu ubicación y la de tu paciente</p>
+        <h1 class="text-3xl font-extrabold mb-2 text-center">{{ __('Time Difference') }}</h1>
+        <p class="text-gray-500 text-center">{{ __('Calculate the time difference between your location and your patient’s location') }}</p>
 
-        {{-- GRID PRINCIPAL RESPONSIVE --}}
+        {{-- MAIN RESPONSIVE GRID --}}
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
-            {{-- COLUMNA PRINCIPAL --}}
+            {{-- MAIN COLUMN --}}
             <div class="space-y-6 lg:col-span-2 flex flex-col">
 
-                {{-- SELECTOR DE ESTADO CON BUSCADOR INTERNO (DISEÑO INTEGRADO) --}}
+                {{-- STATE SELECTOR WITH INTERNAL SEARCH (INTEGRATED DESIGN) --}}
                 <div class="relative">
                     <label class="block text-xs font-medium mb-1">
-                        Ubicación del Paciente (Estado de EE. UU.)
+                        {{ __('Patient Location (U.S. State)') }}
                     </label>
 
                     <div onclick="toggleStatePicker()" id="statePickerTrigger"
                         class="w-full border rounded p-2 text-sm bg-white dark:bg-white text-black flex justify-between items-center cursor-pointer shadow-sm">
-                        <span id="selectedStateLabel">Seleccionar Estado...</span>
+                        <span id="selectedStateLabel">{{ __('Select State...') }}</span>
                         <flux:icon name="chevron-down" class="h-4 w-4 text-gray-400" />
                     </div>
 
                     <div id="statePickerPanel" class="hidden absolute z-50 w-full mt-1 bg-white border rounded shadow-xl overflow-hidden">
                         <div class="p-2 border-b bg-gray-50">
-                            <input type="text" id="stateSearch" placeholder="Buscar estado..." onkeyup="filterStates()"
+                            <input type="text" id="stateSearch" placeholder="{{ __('Search state...') }}" onkeyup="filterStates()"
                                 class="w-full border rounded px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-blue-500 text-black">
                         </div>
                         <div id="statesList" class="max-h-60 overflow-y-auto p-1">
-                            {{-- Se puebla vía JS --}}
+                            {{-- Populated via JS --}}
                         </div>
                     </div>
 
-                    {{-- Select original oculto para mantener compatibilidad con tu lógica --}}
+                    {{-- Original hidden select to keep compatibility with your logic --}}
                     <select id="patientZone" onchange="calculateTimeDifference()" class="hidden"></select>
                 </div>
 
                 <div>
                     <label for="weekSelector" class="block text-xs font-medium mb-1">
-                        Seleccionar Cita por Semana (basado en el día de hoy)
+                        {{ __('Select Appointment by Week (based on today)') }}
                     </label>
                     <select
                         id="weekSelector"
@@ -49,7 +49,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label for="targetDate" class="block text-xs font-medium mb-1">
-                            Fecha de la Cita/Referencia
+                            {{ __('Appointment/Reference Date') }}
                         </label>
 
                         <button
@@ -65,13 +65,13 @@
 
                         <p id="weekStatus" class="text-sm mt-1 font-medium text-gray-700 dark:text-gray-500"></p>
                         <p class="text-[11px] mt-1 text-gray-400 italic">
-                            Si seleccionan <strong>sábado o domingo</strong> se ajustará al <strong>lunes</strong> siguiente.
+                            {!! __('If you select <strong>Saturday or Sunday</strong>, it will adjust to the following <strong>Monday</strong>.') !!}
                         </p>
                     </div>
 
                     <div>
                         <label for="myTimeInput" class="block text-xs font-medium mb-1">
-                            Hora del Paciente para la cita
+                            {{ __('Patient time for the appointment') }}
                         </label>
                         <input
                             type="time"
@@ -83,15 +83,14 @@
                     </div>
                 </div>
 
-                {{-- BLOQUES DE INFORMACIÓN --}}
+                {{-- INFO BLOCKS --}}
                 <div class="space-y-4">
                     <div class="bg-blue-100 p-4 border-l-4 border-blue-600 rounded flex items-start gap-3">
                         <flux:icon name="information-circle" class="h-6 w-6 text-blue-600 mt-0.5" />
                         <div>
-                            <h2 class="text-lg font-semibold text-blue-900">¡Estamos para atenderte!</h2>
+                            <h2 class="text-lg font-semibold text-blue-900">{{ __('We’re here to help!') }}</h2>
                             <p class="text-blue-800 text-sm">
-                                Lunes a viernes, 9:00 a.m. a 5:30 p.m. <br>
-                                <span class="font-medium text-xs">Hora del Este (ET/EDT)</span>
+                                {!! __('Monday to Friday, 9:00 a.m. to 5:30 p.m.<br><span class="font-medium text-xs">Eastern Time (ET/EDT)</span>') !!}
                             </p>
                         </div>
                     </div>
@@ -99,16 +98,16 @@
                     <div class="bg-orange-100 p-4 border-l-4 border-orange-500 rounded flex items-start gap-3">
                         <flux:icon name="exclamation-triangle" class="h-6 w-6 text-orange-600 mt-0.5" />
                         <div>
-                            <h2 class="text-lg font-semibold text-orange-900">¡Información Importante!</h2>
+                            <h2 class="text-lg font-semibold text-orange-900">{{ __('Important Information!') }}</h2>
                             <p class="text-orange-800 text-sm">
-                                No planeamos dar servicios en New York, Wisconsin y Kansas.
+                                {{ __('We do not plan to provide services in New York, Wisconsin, and Kansas.') }}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {{-- COLUMNA DE RESULTADOS (DISEÑO ORIGINAL MANTENIDO) --}}
+            {{-- RESULTS COLUMN (ORIGINAL DESIGN KEPT) --}}
             <div id="results" class="space-y-6 mt-4 lg:mt-0">
                 <div id="myTimeCard" class="flex flex-col px-4 py-3 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#6fa31c] to-[#123338] transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">
                     <p class="text-sm font-semibold opacity-80">
@@ -120,32 +119,32 @@
 
                 <div id="patientTimeCard" class="flex flex-col px-4 py-3 text-neutral-50 rounded-lg group hover:shadow shadow-[#31353d] dark:shadow-[#4a4e58] bg-gradient-to-t active:bg-gradient-to-b from-[#351d5b] to-[#31353d] transition ease-in-out duration-300 text-sm hover:scale-105 font-semibold">
                     <p class="text-sm font-semibold opacity-80">
-                        Hora del Paciente (<span id="patientZoneName">...</span>)
+                        {{ __('Patient Time') }} (<span id="patientZoneName">...</span>)
                     </p>
                     <p id="patientTime" class="text-4xl font-bold mt-1">--:--</p>
                     <p id="patientDate" class="text-md opacity-90"></p>
                 </div>
 
                 <div id="differenceCard" class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-gray-300">
-                    <p class="text-gray-500 font-semibold text-xs uppercase tracking-wider">Diferencia Horaria</p>
-                    <p id="timeDifference" class="text-lg font-medium text-gray-800 mt-1">Calculando...</p>
+                    <p class="text-gray-500 font-semibold text-xs uppercase tracking-wider">{{ __('Time Difference') }}</p>
+                    <p id="timeDifference" class="text-lg font-medium text-gray-800 mt-1">{{ __('Calculating...') }}</p>
                 </div>
 
-                {{-- TABLA DE CONVERSIÓN DE SEMANAS --}}
+                {{-- WEEKS CONVERSION TABLE --}}
                 <div class="mt-3">
                     <div class="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-sm">
                         <table class="min-w-full text-xs">
                             <thead class="bg-gray-50 text-gray-700">
                                 <tr>
-                                    <th class="px-3 py-2 font-semibold text-center">Meses</th>
-                                    <th class="px-3 py-2 font-semibold text-center">Semanas</th>
+                                    <th class="px-3 py-2 font-semibold text-center">{{ __('Months') }}</th>
+                                    <th class="px-3 py-2 font-semibold text-center">{{ __('Weeks') }}</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 text-gray-800">
                                 @for ($w = 4; $w <= 52; $w += 4)
                                     <tr class="hover:bg-gray-50 transition-colors">
-                                        <td class="px-3 py-2 text-center border-r">{{ intval($w / 4) }} mes{{ (intval($w / 4) === 1) ? '' : 'es' }}</td>
-                                        <td class="px-3 py-2 text-center font-medium">{{ $w }} semanas</td>
+                                        <td class="px-3 py-2 text-center border-r">{{ intval($w / 4) }} {{ (intval($w / 4) === 1) ? __('month') : __('months') }}</td>
+                                        <td class="px-3 py-2 text-center font-medium">{{ $w }} {{ __('weeks') }}</td>
                                     </tr>
                                 @endfor
                             </tbody>
@@ -157,21 +156,42 @@
     </div>
 
     <script>
-        // Mantenemos tus constantes de zonas exactamente igual
+        // --- TRANSLATABLE STRINGS (INJECTED FROM BLADE; NO LOGIC CHANGES) ---
+        const T = {
+            easternTimeLabel: @json(__('Eastern Time (ET/EDT)')),
+            selectStatePlaceholder: @json(__('Select State...')),
+            weekPlaceholder: @json(__('-- Or select a week --')),
+            nextWeek: @json(__('Next week')),
+            inWeeksPrefix: @json(__('In ')),
+            inWeeksSuffix: @json(__(' weeks')),
+            weekendsNotAllowedAdjusted: @json(__('Weekends not allowed! Adjusted to Monday.')),
+            sameTime: @json(__('The time is the same.')),
+            patientAhead: @json(__('ahead')),
+            patientBehind: @json(__('behind')),
+            patientIs: @json(__('The patient is ')),
+            hours: @json(__(' hours ')),
+            appointmentToday: @json(__('Appointment: Today.')),
+            appointmentInPrefix: @json(__('Appointment: In ')),
+            daySuffix: @json(__(' day(s).')),
+            weekSuffix: @json(__(' week(s).')),
+            appointmentPast: @json(__('Appointment: Past.'))
+        };
+
+        // Keep your time zone constants exactly the same (zones unchanged)
         const TIME_ZONE_GROUPS = [
-            { label: "Zona del Este (ET/EDT)", states: [{ name: "Connecticut", zone: "America/New_York" }, { name: "Delaware", zone: "America/New_York" }, { name: "Distrito de Columbia", zone: "America/New_York" }, { name: "Florida (Mayoría)", zone: "America/New_York" }, { name: "Georgia", zone: "America/New_York" }, { name: "Indiana (Mayoría)", zone: "America/Indianapolis" }, { name: "Kentucky (Este)", zone: "America/New_York" }, { name: "Maine", zone: "America/New_York" }, { name: "Maryland", zone: "America/New_York" }, { name: "Massachusetts", zone: "America/New_York" }, { name: "Michigan (Mayoría)", zone: "America/Detroit" }, { name: "New Hampshire", zone: "America/New_York" }, { name: "New Jersey", zone: "America/New_York" }, { name: "Nueva York", zone: "America/New_York" }, { name: "Carolina del Norte", zone: "America/New_York" }, { name: "Ohio", zone: "America/New_York" }, { name: "Pensilvania", zone: "America/New_York" }, { name: "Rhode Island", zone: "America/New_York" }, { name: "Carolina del Sur", zone: "America/New_York" }, { name: "Tennessee (Este)", zone: "America/New_York" }, { name: "Vermont", zone: "America/New_York" }, { name: "Virginia", zone: "America/New_York" }, { name: "Virginia Occidental", zone: "America/New_York" }] },
-            { label: "Zona Central (CT/CDT)", states: [{ name: "Alabama", zone: "America/Chicago" }, { name: "Arkansas", zone: "America/Chicago" }, { name: "Illinois", zone: "America/Chicago" }, { name: "Indiana (Oeste)", zone: "America/Chicago" }, { name: "Iowa", zone: "America/Chicago" }, { name: "Kansas (Mayoría)", zone: "America/Chicago" }, { name: "Kentucky (Oeste)", zone: "America/Chicago" }, { name: "Luisiana", zone: "America/Chicago" }, { name: "Minesota", zone: "America/Chicago" }, { name: "Misisipi", zone: "America/Chicago" }, { name: "Misuri", zone: "America/Chicago" }, { name: "Nebraska (Este)", zone: "America/Chicago" }, { name: "Dakota del Norte (Mayoría)", zone: "America/Chicago" }, { name: "Oklahoma", zone: "America/Chicago" }, { name: "Dakota del Sur (Este)", zone: "America/Chicago" }, { name: "Tennessee (Oeste)", zone: "America/Chicago" }, { name: "Texas (Mayoría)", zone: "America/Chicago" }, { name: "Wisconsin", zone: "America/Chicago" }, { name: "Florida (Oeste)", zone: "America/Chicago" }] },
-            { label: "Zona Montaña (MT/MDT)", states: [{ name: "Colorado", zone: "America/Denver" }, { name: "Idaho (Sur)", zone: "America/Denver" }, { name: "Montana", zone: "America/Denver" }, { name: "Nuevo México", zone: "America/Denver" }, { name: "Utah", zone: "America/Denver" }, { name: "Wyoming", zone: "America/Denver" }, { name: "Dakota del Norte (Oeste)", zone: "America/Denver" }, { name: "Dakota del Sur (Oeste)", zone: "America/Denver" }, { name: "Nebraska (Oeste)", zone: "America/Denver" }] },
-            { label: "Zona Montaña (MST - Sin DST)", states: [{ name: "Arizona (Sin DST)", zone: "America/Phoenix" }] },
-            { label: "Zona Pacífico (PT/PDT)", states: [{ name: "California", zone: "America/Los_Angeles" }, { name: "Nevada", zone: "America/Los_Angeles" }, { name: "Oregón (Mayoría)", zone: "America/Los_Angeles" }, { name: "Washington", zone: "America/Los_Angeles" }, { name: "Idaho (Norte)", zone: "America/Los_Angeles" }] },
-            { label: "Zona Alaska (AKT/AKDT)", states: [{ name: "Alaska (Mayoría)", zone: "America/Anchorage" }] },
-            { label: "Zona Hawái (HST)", states: [{ name: "Hawái", zone: "Pacific/Honolulu" }] }
+            { label: "Eastern Time Zone (ET/EDT)", states: [{ name: "Connecticut", zone: "America/New_York" }, { name: "Delaware", zone: "America/New_York" }, { name: "District of Columbia", zone: "America/New_York" }, { name: "Florida (Most)", zone: "America/New_York" }, { name: "Georgia", zone: "America/New_York" }, { name: "Indiana (Most)", zone: "America/Indianapolis" }, { name: "Kentucky (East)", zone: "America/New_York" }, { name: "Maine", zone: "America/New_York" }, { name: "Maryland", zone: "America/New_York" }, { name: "Massachusetts", zone: "America/New_York" }, { name: "Michigan (Most)", zone: "America/Detroit" }, { name: "New Hampshire", zone: "America/New_York" }, { name: "New Jersey", zone: "America/New_York" }, { name: "New York", zone: "America/New_York" }, { name: "North Carolina", zone: "America/New_York" }, { name: "Ohio", zone: "America/New_York" }, { name: "Pennsylvania", zone: "America/New_York" }, { name: "Rhode Island", zone: "America/New_York" }, { name: "South Carolina", zone: "America/New_York" }, { name: "Tennessee (East)", zone: "America/New_York" }, { name: "Vermont", zone: "America/New_York" }, { name: "Virginia", zone: "America/New_York" }, { name: "West Virginia", zone: "America/New_York" }] },
+            { label: "Central Time Zone (CT/CDT)", states: [{ name: "Alabama", zone: "America/Chicago" }, { name: "Arkansas", zone: "America/Chicago" }, { name: "Illinois", zone: "America/Chicago" }, { name: "Indiana (West)", zone: "America/Chicago" }, { name: "Iowa", zone: "America/Chicago" }, { name: "Kansas (Most)", zone: "America/Chicago" }, { name: "Kentucky (West)", zone: "America/Chicago" }, { name: "Louisiana", zone: "America/Chicago" }, { name: "Minnesota", zone: "America/Chicago" }, { name: "Mississippi", zone: "America/Chicago" }, { name: "Missouri", zone: "America/Chicago" }, { name: "Nebraska (East)", zone: "America/Chicago" }, { name: "North Dakota (Most)", zone: "America/Chicago" }, { name: "Oklahoma", zone: "America/Chicago" }, { name: "South Dakota (East)", zone: "America/Chicago" }, { name: "Tennessee (West)", zone: "America/Chicago" }, { name: "Texas (Most)", zone: "America/Chicago" }, { name: "Wisconsin", zone: "America/Chicago" }, { name: "Florida (West)", zone: "America/Chicago" }] },
+            { label: "Mountain Time Zone (MT/MDT)", states: [{ name: "Colorado", zone: "America/Denver" }, { name: "Idaho (South)", zone: "America/Denver" }, { name: "Montana", zone: "America/Denver" }, { name: "New Mexico", zone: "America/Denver" }, { name: "Utah", zone: "America/Denver" }, { name: "Wyoming", zone: "America/Denver" }, { name: "North Dakota (West)", zone: "America/Denver" }, { name: "South Dakota (West)", zone: "America/Denver" }, { name: "Nebraska (West)", zone: "America/Denver" }] },
+            { label: "Mountain Time Zone (MST - No DST)", states: [{ name: "Arizona (No DST)", zone: "America/Phoenix" }] },
+            { label: "Pacific Time Zone (PT/PDT)", states: [{ name: "California", zone: "America/Los_Angeles" }, { name: "Nevada", zone: "America/Los_Angeles" }, { name: "Oregon (Most)", zone: "America/Los_Angeles" }, { name: "Washington", zone: "America/Los_Angeles" }, { name: "Idaho (North)", zone: "America/Los_Angeles" }] },
+            { label: "Alaska Time Zone (AKT/AKDT)", states: [{ name: "Alaska (Most)", zone: "America/Anchorage" }] },
+            { label: "Hawaii Time Zone (HST)", states: [{ name: "Hawaii", zone: "Pacific/Honolulu" }] }
         ];
 
         let intervalId = null;
         let selectedWeeks = null;
 
-        // --- LÓGICA DEL BUSCADOR VISUAL ---
+        // --- VISUAL SEARCH LOGIC ---
         function toggleStatePicker() {
             const panel = document.getElementById('statePickerPanel');
             panel.classList.toggle('hidden');
@@ -194,7 +214,7 @@
         function selectState(name, zone) {
             document.getElementById('selectedStateLabel').textContent = name;
             const realSelect = document.getElementById('patientZone');
-            // Mantenemos la lógica de inyectar en el select oculto
+            // Keep the logic of injecting into the hidden select
             realSelect.innerHTML = `<option value="${zone}" selected>${name}</option>`;
             if (!document.getElementById('statePickerPanel').classList.contains('hidden')) {
                 toggleStatePicker();
@@ -227,12 +247,12 @@
             }
         }
 
-        // --- TUS FUNCIONES DE LÓGICA (TAL CUAL) ---
+        // --- YOUR LOGIC FUNCTIONS (AS-IS) ---
         function clearWeekSelection() { selectedWeeks = null; const ws = document.getElementById('weekSelector'); if (ws) ws.value = ""; }
         function openNativeDatePicker() { const input = document.getElementById('targetDate'); if (input.showPicker) input.showPicker(); else { input.focus(); input.click(); } }
         function onTargetDateChange() { clearWeekSelection(); checkWeekend(); calculateTimeDifference(); paintPrettyDate(); }
 
-        const PRETTY_LOCALE = 'es-ES';
+        const PRETTY_LOCALE = 'en-US';
         const PRETTY_TZ = 'America/Bogota';
 
         function paintPrettyDate() {
@@ -252,7 +272,7 @@
             setDefaultDate();
             setDefaultTime();
             checkWeekend();
-            document.getElementById('myZoneName').textContent = 'Hora del Este (ET/EDT)';
+            document.getElementById('myZoneName').textContent = T.easternTimeLabel;
             selectState("Connecticut", "America/New_York");
 
             if (intervalId) clearInterval(intervalId);
@@ -264,7 +284,15 @@
 
         function setDefaultDate() { const targetDateInput = document.getElementById('targetDate'); const today = new Date(); const yyyy = today.getFullYear(); const mm = String(today.getMonth() + 1).padStart(2, '0'); const dd = String(today.getDate()).padStart(2, '0'); const todayString = `${yyyy}-${mm}-${dd}`; targetDateInput.min = todayString; targetDateInput.value = todayString; paintPrettyDate(); }
         function setDefaultTime() { const myTimeInput = document.getElementById('myTimeInput'); const now = new Date(); const hh = String(now.getHours()).padStart(2, '0'); const mi = String(now.getMinutes()).padStart(2, '0'); myTimeInput.value = `${hh}:${mi}`; }
-        function populateWeekSelector() { const weekSelector = document.getElementById('weekSelector'); weekSelector.innerHTML = '<option value="" selected disabled>-- O selecciona una semana --</option>'; for (let i = 1; i <= 52; i++) { let optionLabel = (i === 1) ? `Próxima semana` : `Dentro de ${i} semanas`; weekSelector.innerHTML += `<option value="${i}">${optionLabel}</option>`; } }
+
+        function populateWeekSelector() {
+            const weekSelector = document.getElementById('weekSelector');
+            weekSelector.innerHTML = `<option value="" selected disabled>${T.weekPlaceholder}</option>`;
+            for (let i = 1; i <= 52; i++) {
+                let optionLabel = (i === 1) ? `${T.nextWeek}` : `${T.inWeeksPrefix}${i}${T.inWeeksSuffix}`;
+                weekSelector.innerHTML += `<option value="${i}">${optionLabel}</option>`;
+            }
+        }
 
         function checkWeekend() {
             const targetDateInput = document.getElementById('targetDate');
@@ -279,7 +307,7 @@
                 const dd = String(newDate.getDate()).padStart(2, '0');
                 targetDateInput.value = `${yyyy}-${mm}-${dd}`;
                 paintPrettyDate();
-                message = "¡Fines de semana no permitidos! Ajustado al lunes.";
+                message = T.weekendsNotAllowedAdjusted;
             }
             const weekStatusEl = document.getElementById('weekStatus');
             if (message) {
@@ -310,8 +338,8 @@
             const timeOptions = { timeZone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
             const dateOptions = { timeZone, weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             return {
-                time: new Intl.DateTimeFormat('es-ES', timeOptions).format(dateObj),
-                date: new Intl.DateTimeFormat('es-ES', dateOptions).format(dateObj)
+                time: new Intl.DateTimeFormat('en-US', timeOptions).format(dateObj),
+                date: new Intl.DateTimeFormat('en-US', dateOptions).format(dateObj)
             };
         }
 
@@ -339,23 +367,37 @@
             const myZone = "America/New_York";
             const patientZone = patientZoneSelect.value || myZone;
             if (!targetDateInput.value) return;
+
             let hour, minute;
             if (myTimeInput.value) { const [hh, mm] = myTimeInput.value.split(':').map(Number); hour = hh; minute = mm; }
             else { const now = new Date(); hour = now.getHours(); minute = now.getMinutes(); }
+
             const [year, month, day] = targetDateInput.value.split('-').map(Number);
             const patientInstant = makeZonedInstant(year, month, day, hour, minute, patientZone);
+
             const myData = getLocalTimeData(myZone, patientInstant);
             const patientData = getLocalTimeData(patientZone, patientInstant);
+
             const offMy = getTzOffsetMinutesAt(patientInstant, myZone) / 60;
             const offPatient = getTzOffsetMinutesAt(patientInstant, patientZone) / 60;
             const diffHours = offPatient - offMy;
-            let differenceText = (diffHours === 0) ? "La hora es la misma." : `El paciente está ${Math.abs(diffHours).toFixed(1)} horas <span class="font-bold ${diffHours > 0 ? 'text-green-700' : 'text-red-700'}">${diffHours > 0 ? 'adelantado' : 'atrasado'}</span>.`;
+
+            let differenceText =
+                (diffHours === 0)
+                    ? T.sameTime
+                    : `${T.patientIs}${Math.abs(diffHours).toFixed(1)}${T.hours}<span class="font-bold ${diffHours > 0 ? 'text-green-700' : 'text-red-700'}">${diffHours > 0 ? T.patientAhead : T.patientBehind}</span>.`;
 
             const today = new Date();
             const targetDate = new Date(targetDateInput.value + 'T00:00:00');
             const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
             const diffDays = Math.round((targetDate - todayStart) / 86400000);
-            document.getElementById('weekStatus').textContent = diffDays === 0 ? 'Cita: Hoy.' : (diffDays > 0 ? `Cita: Dentro de ${diffDays < 7 ? diffDays + ' día(s)' : Math.round(diffDays/7) + ' semana(s)'}.` : 'Cita: Pasada.');
+
+            document.getElementById('weekStatus').textContent =
+                diffDays === 0
+                    ? T.appointmentToday
+                    : (diffDays > 0
+                        ? `${T.appointmentInPrefix}${diffDays < 7 ? diffDays + T.daySuffix : Math.round(diffDays/7) + T.weekSuffix}`
+                        : T.appointmentPast);
 
             document.getElementById('patientZoneName').textContent = document.getElementById('selectedStateLabel').textContent;
             document.getElementById('myTime').textContent = myData.time;
@@ -363,6 +405,7 @@
             document.getElementById('patientTime').textContent = patientData.time;
             document.getElementById('patientDate').textContent = patientData.date.charAt(0).toUpperCase() + patientData.date.slice(1);
             document.getElementById('timeDifference').innerHTML = differenceText;
+
             const card = document.getElementById('differenceCard');
             card.className = "bg-white p-4 rounded-lg shadow-sm border-l-4 " + (diffHours > 0 ? 'border-green-500' : (diffHours < 0 ? 'border-red-500' : 'border-gray-300'));
         }
