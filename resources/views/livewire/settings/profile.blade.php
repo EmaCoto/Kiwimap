@@ -44,7 +44,7 @@ new class extends Component {
                 'max:255',
                 Rule::unique(User::class)->ignore($user->id)
             ],
-            
+
             'avatar' => ['nullable', 'image', 'max:2048'], // NUEVA REGLA
         ]);
 
@@ -56,7 +56,7 @@ new class extends Component {
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
-        
+
         // LÓGICA DE AVATAR (NUEVO)
         if ($this->avatar) {
             if ($user->avatar_path) {
@@ -87,7 +87,7 @@ new class extends Component {
         $this->hasAvatar = false; // Actualiza el estado
         $this->dispatch('profile-updated', name: $user->name);
 
-        
+
     }
     // FIN NUEVO MÉTODO
 
@@ -115,13 +115,13 @@ new class extends Component {
 
     <x-settings.layout :heading="__('Profile')" :subheading="__('Update your name, email and avatar')">
         <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6" enctype="multipart/form-data">
-            
+
             {{-- BLOQUE DE AVATAR --}}
             <div class="flex items-center gap-4">
                 {{-- Preview --}}
                 <div class="shrink-0">
-                    @php 
-                        $src = auth()->user()->avatar_url; 
+                    @php
+                        $src = auth()->user()->avatar_url;
                         // Usa un placeholder si no hay URL
                         $placeholder = 'https://ui-avatars.com/api/?name='.urlencode(auth()->user()->name).'&background=E5E7EB&color=111827';
                     @endphp
@@ -136,7 +136,7 @@ new class extends Component {
                 <div class="flex-1">
                     <label class="block text-sm font-medium mb-1">{{ __('Avatar') }}</label>
                     <input type="file" wire:model="avatar" accept="image/*" class="block w-full text-sm border px-1 hover:shadow-sm rounded-md hover:cursor-pointer active:bg-gray-100 bg-gray-200">
-                    
+
                     @error('avatar')
                         <p class="text-xs text-rose-600 mt-1">{{ $message }}</p>
                     @enderror
@@ -183,7 +183,27 @@ new class extends Component {
             </div>
         </form>
 
-        <livewire:settings.delete-user-form />
+        <div>
+            <h2 class="text-sm font-semibold mb-4">Language</h2>
+
+            <div class="relative">
+                @php($current = app()->getLocale())
+                @php($isEn = $current === 'en')
+
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input
+                        type="checkbox"
+                        class="sr-only peer"
+                        @checked($isEn)
+                        onchange="window.location.href='{{ route('lang.switch', $isEn ? 'es' : 'en') }}'"
+                        aria-label="Switch language"
+                    >
+                    <div class="peer outline-none text-xs duration-100 rounded-full after:duration-500 w-24 h-10 bg-[#123338] peer-focus:outline-none after:content-['ES'] after:absolute after:outline-none after:h-8 after:w-8 after:rounded-full after:bg-white after:top-1 after:left-1 after:flex after:justify-center after:items-center after:text-[#123338] after:font-bold peer-checked:after:translate-x-14 peer-checked:after:content-['EN'] peer-checked:after:border-white"></div>
+                </label>
+            </div>
+        </div>
+
+        {{-- <livewire:settings.delete-user-form /> --}}
     </x-settings.layout>
 </section>
 

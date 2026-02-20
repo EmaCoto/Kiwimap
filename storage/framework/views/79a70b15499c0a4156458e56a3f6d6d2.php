@@ -24,13 +24,13 @@ use Livewire\WithFileUploads; // NECESARIO
 <?php endif; ?>
 <?php $component->withAttributes(['heading' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('Profile')),'subheading' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(__('Update your name, email and avatar'))]); ?>
         <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6" enctype="multipart/form-data">
-            
+
             
             <div class="flex items-center gap-4">
                 
                 <div class="shrink-0">
-                    <?php 
-                        $src = auth()->user()->avatar_url; 
+                    <?php
+                        $src = auth()->user()->avatar_url;
                         // Usa un placeholder si no hay URL
                         $placeholder = 'https://ui-avatars.com/api/?name='.urlencode(auth()->user()->name).'&background=E5E7EB&color=111827';
                     ?>
@@ -45,7 +45,7 @@ use Livewire\WithFileUploads; // NECESARIO
                 <div class="flex-1">
                     <label class="block text-sm font-medium mb-1"><?php echo e(__('Avatar')); ?></label>
                     <input type="file" wire:model="avatar" accept="image/*" class="block w-full text-sm border px-1 hover:shadow-sm rounded-md hover:cursor-pointer active:bg-gray-100 bg-gray-200">
-                    
+
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['avatar'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -232,26 +232,27 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
             </div>
         </form>
 
-        <?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
-[$__name, $__params] = $__split('settings.delete-user-form', []);
+        <div>
+            <h2 class="text-sm font-semibold mb-4">Language</h2>
 
-$key = null;
+            <div class="relative">
+                <?php ($current = app()->getLocale()); ?>
+                <?php ($isEn = $current === 'en'); ?>
 
-$key ??= \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::generateKey('lw-3169304150-0', null);
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input
+                        type="checkbox"
+                        class="sr-only peer"
+                        <?php if($isEn): echo 'checked'; endif; ?>
+                        onchange="window.location.href='<?php echo e(route('lang.switch', $isEn ? 'es' : 'en')); ?>'"
+                        aria-label="Switch language"
+                    >
+                    <div class="peer outline-none text-xs duration-100 rounded-full after:duration-500 w-24 h-10 bg-[#123338] peer-focus:outline-none after:content-['ES'] after:absolute after:outline-none after:h-8 after:w-8 after:rounded-full after:bg-white after:top-1 after:left-1 after:flex after:justify-center after:items-center after:text-[#123338] after:font-bold peer-checked:after:translate-x-14 peer-checked:after:content-['EN'] peer-checked:after:border-white"></div>
+                </label>
+            </div>
+        </div>
 
-$__html = app('livewire')->mount($__name, $__params, $key);
-
-echo $__html;
-
-unset($__html);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
+        
      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal951a5936e8413b65cd052beecc1fba57)): ?>

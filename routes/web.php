@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
+use App\Http\Controllers\LocaleController;
 use App\Livewire\Licenses\{Index as LicensesIndex, Form as LicensesForm};
 use App\Livewire\Doctors\{Index as DoctorsIndex, Form as DoctorsForm};
 use App\Livewire\States\{Index as StatesIndex, Form as StatesForm};
@@ -27,6 +28,11 @@ Route::middleware([
     'verified',
     'throttle:60,1',
 ])->group(function () {
+
+
+
+
+    Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('lang.switch');
 
     // Dashboard
     Route::view('/dashboard', 'dashboard')->name('dashboard');
