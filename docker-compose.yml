@@ -42,7 +42,7 @@ services:
       - db
 
   vite:
-    image: node:20-alpine
+    image: node:24-alpine
     working_dir: /var/www
     volumes:
       - ./:/var/www
