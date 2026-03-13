@@ -452,3 +452,6 @@ storage/framework/views
 # Ver que Laravel corre (comando interno)
 docker compose exec app php artisan about
 ✅ Si esto corre sin error, tu app está viva y leyendo config.
+
+
+docker compose exec vite npm run build

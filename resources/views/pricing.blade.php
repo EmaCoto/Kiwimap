@@ -15,10 +15,35 @@
             </div>
 
             <div class="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5">
-                <flux:icon name="currency-dollar" class="h-4 w-4 text-[#6fa31c]" />
+                <flux:icon name="currency-dollar" class="h-4 w-4 text-[#02a676]" />
                 <span class="text-[9px] font-black text-gray-700 dark:text-white uppercase tracking-widest">{{ __('Official Rates') }}</span>
             </div>
         </div>
+
+
+        <div class="space-y-3 flex flex-col">
+            {{-- Contenedor de Información con mejor diseño --}}
+            <div class="bg-[#02a676]/5 border-l-4 border-[#02a676] p-4 rounded-r-2xl max-w-2xl">
+                <div class="flex items-start gap-3">
+                    <flux:icon name="information-circle" class="h-5 w-5 text-[#02a676] mt-0.5" />
+                    <div class="space-y-2">
+                        <p class="text-sm font-bold text-[#123338] dark:text-white leading-tight">
+                            {{ __('Patients of Georgia, ask if they live within a 25 air-mile straight-line radius from ZIP code 30566.') }}
+                        </p>
+                        <div class="flex flex-col gap-2">
+                            <a
+                                class="text-[11px] font-medium text-gray-600 dark:text-gray-400 hover:text-[#02a676] transition-colors break-all underline decoration-[#02a676]/30 underline-offset-4"
+                                href="https://www.google.com/maps/place/Oakwood,+Georgia+30566,+EE.+UU./@34.2229331,-83.9202238,14741m/data=!3m1!1e3!4m6!3m5!1s0x88f5f30891aee1b9:0x385e3005efde53c6!8m2!3d34.2292795!4d-83.8950042!16s%2Fm%2F03dpck0?entry=ttu&g_ep=EgoyMDI2MDMwMS4xIKXMDSoASAFQAw%3D%3D"
+                            >
+                                {{ __('Click here to check the radius') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         {{-- Tabla 1: Memberships --}}
         <div class="bg-white dark:bg-[#123338]/10 rounded-2xl shadow-2xl shadow-black/[0.02] border border-gray-100 dark:border-white/5 overflow-hidden">
