@@ -47,9 +47,10 @@
     43 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     44 => 'Termwind\\Laravel\\TermwindServiceProvider',
     45 => 'Pest\\Laravel\\PestServiceProvider',
-    46 => 'Spatie\\Permission\\PermissionServiceProvider',
-    47 => 'App\\Providers\\AppServiceProvider',
-    48 => 'App\\Providers\\VoltServiceProvider',
+    46 => 'SimpleSoftwareIO\\QrCode\\QrCodeServiceProvider',
+    47 => 'Spatie\\Permission\\PermissionServiceProvider',
+    48 => 'App\\Providers\\AppServiceProvider',
+    49 => 'App\\Providers\\VoltServiceProvider',
   ),
   'eager' => 
   array (
@@ -83,9 +84,10 @@
     27 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     28 => 'Termwind\\Laravel\\TermwindServiceProvider',
     29 => 'Pest\\Laravel\\PestServiceProvider',
-    30 => 'Spatie\\Permission\\PermissionServiceProvider',
-    31 => 'App\\Providers\\AppServiceProvider',
-    32 => 'App\\Providers\\VoltServiceProvider',
+    30 => 'SimpleSoftwareIO\\QrCode\\QrCodeServiceProvider',
+    31 => 'Spatie\\Permission\\PermissionServiceProvider',
+    32 => 'App\\Providers\\AppServiceProvider',
+    33 => 'App\\Providers\\VoltServiceProvider',
   ),
   'deferred' => 
   array (

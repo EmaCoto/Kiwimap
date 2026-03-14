@@ -39,6 +39,7 @@ Route::middleware([
     Route::view('/time_difference', 'time_difference')->name('time_difference');
     Route::view('/pricing', 'pricing')->name('pricing');
     Route::view('/measurement_converter', 'measurement_converter')->name('measurement_converter');
+    Route::view('/qr', 'qr')->name('qr.index');
 
     // Settings
     Route::redirect('/settings', '/settings/profile');

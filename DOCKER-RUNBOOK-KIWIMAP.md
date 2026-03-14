@@ -455,3 +455,10 @@ docker compose exec app php artisan about
 
 
 docker compose exec vite npm run build
+
+
+docker exec -it kiwimap-app-1 php artisan migrate
+docker exec -it kiwimap-app-1 php artisan config:clear
+docker exec -it kiwimap-app-1 php artisan cache:clear
+docker exec -it kiwimap-app-1 php artisan migrate
+
