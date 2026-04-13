@@ -37,11 +37,12 @@
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Tools')" class="grid">
+                    <flux:navlist.item icon="squares-plus" :href="route('daily_ops')" :current="request()->routeIs('daily_ops')" wire:navigate>{{ __('Daily Ops') }}</flux:navlist.item>
                     <flux:navlist.item icon="clock" :href="route('time_difference')" :current="request()->routeIs('time_difference')" wire:navigate>{{ __('Time Difference') }}</flux:navlist.item>
-                    <flux:navlist.item icon="calendar-days" :href="route('attendance.tracker')" :current="request()->routeIs('attendance.tracker')" wire:navigate>{{ __('Attendance') }}</flux:navlist.item>
                     <flux:navlist.item icon="currency-dollar" :href="route('pricing')" :current="request()->routeIs('pricing')" wire:navigate>{{ __('Price List') }}</flux:navlist.item>
                     <flux:navlist.item icon="arrows-right-left" :href="route('measurement_converter')" :current="request()->routeIs('measurement_converter')" wire:navigate>{{ __('Converter') }}</flux:navlist.item>
                     <flux:navlist.item icon="qr-code" :href="route('qr.index')" :current="request()->routeIs('qr.index')" wire:navigate>{{ __('QR Generator') }}</flux:navlist.item>
+                    <flux:navlist.item icon="calendar-days" href="https://facecheck.drkiwimed.com/kiosco" target="_blank" rel="noopener noreferrer" >{{ __('Attendance') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

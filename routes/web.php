@@ -39,6 +39,7 @@ Route::middleware([
     Route::view('/pricing', 'pricing')->name('pricing');
     Route::view('/measurement_converter', 'measurement_converter')->name('measurement_converter');
     Route::view('/qr', 'qr')->name('qr.index');
+    Route::view('/daily_ops', 'daily_ops')->name('daily_ops');
 
     // Settings
     Route::redirect('/settings', '/settings/profile');
@@ -63,7 +64,7 @@ Route::middleware([
         ->name('users.celebrations');
 
     // Attendance
-    Route::get('/my-attendance', Tracker::class)->name('attendance.tracker');
+    // Route::get('/my-attendance', Tracker::class)->name('attendance.tracker');
 
     // Doctors
     Route::get('/doctors', DoctorsIndex::class)->name('doctors.index');
