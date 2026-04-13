@@ -26,13 +26,12 @@ Route::get('/', fn () => view('welcome'))->name('home');
 Route::middleware([
     'auth',
     'verified',
-    'throttle:60,1',
 ])->group(function () {
 
 
 
 
-    Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('lang.switch');
+    Route::match(['get', 'post'], '/lang/{locale}', [LocaleController::class, 'switch'])->name('lang.switch');
 
     // Dashboard
     Route::view('/dashboard', 'dashboard')->name('dashboard');

@@ -14,6 +14,10 @@ class LocaleController extends Controller
 
         session(['locale' => $locale]);
 
+        if ($request->expectsJson()) {
+            return response()->noContent();
+        }
+
         return back();
     }
 }
