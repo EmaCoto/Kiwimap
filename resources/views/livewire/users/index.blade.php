@@ -1,12 +1,11 @@
 <div class="p-8 space-y-8 bg-[#fcfcfc] dark:bg-[#0d1516] min-h-screen">
-  {{-- Header Pro --}}
   <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 dark:border-white/5 pb-6">
     <div class="space-y-1">
         <div class="flex items-center gap-2">
             <span class="h-6 w-1 bg-[#351d5b] rounded-full"></span>
             <h1 class="text-3xl font-black text-[#123338] dark:text-white tracking-tighter uppercase italic">Directorio de Usuarios</h1>
         </div>
-        <p class="text-[10px] font-black text-[#6fa31c] uppercase tracking-[0.3em] ml-3">Gestión de Accesos y Talento</p>
+        <p class="text-[10px] font-black text-[#6fa31c] uppercase tracking-[0.3em] ml-3">Gestion de Accesos y Talento</p>
     </div>
 
     @can('create', \App\Models\User::class)
@@ -16,7 +15,6 @@
     @endcan
   </div>
 
-  {{-- Alertas --}}
   @if (session('ok'))
     <div class="p-4 rounded-2xl bg-[#02a676]/10 border border-[#02a676]/20 text-[#02a676] text-[10px] font-black uppercase tracking-widest flex items-center">
         <flux:icon name="bell" class="h-4 w-4 mr-3" />{{ session('ok') }}
@@ -28,7 +26,6 @@
     </div>
   @endif
 
-  {{-- Filtros Ejecutivos --}}
   <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-end bg-white dark:bg-white/5 p-6 rounded-3xl border border-gray-100 dark:border-white/5 shadow-sm">
     <div>
         <label class="block text-[9px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Filtrar por Rol</label>
@@ -41,15 +38,14 @@
     </div>
 
     <div class="md:col-span-3">
-        <label class="block text-[9px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Búsqueda Maestra</label>
+        <label class="block text-[9px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Busqueda Maestra</label>
         <div class="relative">
-            <input type="text" wire:model.live.debounce.300ms="search" placeholder="ID, nombre, email o rol…" class="w-full bg-gray-50 dark:bg-[#123338]/40 border-none rounded-xl p-3 pl-10 text-xs font-bold focus:ring-2 focus:ring-[#6fa31c] transition-all">
+            <input type="text" wire:model.live.debounce.300ms="search" placeholder="ID, nombre, email o rol..." class="w-full bg-gray-50 dark:bg-[#123338]/40 border-none rounded-xl p-3 pl-10 text-xs font-bold focus:ring-2 focus:ring-[#6fa31c] transition-all">
             <flux:icon name="magnifying-glass" class="absolute left-3 top-3 h-4 w-4 text-gray-400" />
         </div>
     </div>
   </div>
 
-  {{-- Toolbar de Tabla --}}
   <div class="flex justify-between items-center px-2">
     <button wire:click="clearFilters" class="group flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-[#123338] transition-colors hover:cursor-pointer active:text-white">
         <div class="h-8 w-8 rounded-lg bg-gray-100 dark:bg-white/5 flex items-center justify-center group-hover:bg-[#6fa31c] group-hover:text-white transition-all">
@@ -63,7 +59,6 @@
     </div>
   </div>
 
-  {{-- Tabla Ejecutiva --}}
   <div class="overflow-hidden rounded-3xl border border-gray-100 dark:border-white/5 bg-white dark:bg-white/5 shadow-sm">
     <div class="overflow-x-auto">
       <table class="min-w-full border-collapse">
@@ -74,7 +69,7 @@
             <th class="p-4 text-[9px] font-black text-gray-400 uppercase tracking-[0.2em]">Usuario</th>
             <th class="p-4 text-[9px] font-black text-gray-400 uppercase tracking-[0.2em]">Email</th>
             <th class="p-4 text-[9px] font-black text-gray-400 uppercase tracking-[0.2em]">Nivel / Roles</th>
-            <th class="p-4 text-[9px] font-black text-gray-400 uppercase tracking-[0.2em]">País</th>
+            <th class="p-4 text-[9px] font-black text-gray-400 uppercase tracking-[0.2em]">Pais</th>
             <th class="p-4 text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] text-right">Acciones</th>
           </tr>
         </thead>
@@ -91,10 +86,8 @@
               </td>
 
               <td class="p-4">
-                <button type="button" wire:click="$dispatch('open-attendance', { userId: {{ $u->id }} })" class="text-left group/btn">
-                  <div class="text-[11px] font-black text-[#123338] dark:text-white uppercase italic tracking-tight group-hover/btn:text-[#6fa31c] transition-colors">{{ $u->name }}</div>
-                  <div class="text-[8px] font-bold text-gray-400 uppercase tracking-widest">Ver Asistencia</div>
-                </button>
+                <div class="text-[11px] font-black text-[#123338] dark:text-white uppercase italic tracking-tight">{{ $u->name }}</div>
+                <div class="text-[8px] font-bold text-gray-400 uppercase tracking-widest">Perfil de usuario</div>
               </td>
 
               <td class="p-4 text-[11px] font-bold text-gray-500 lowercase">{{ $u->email }}</td>
@@ -116,7 +109,7 @@
                 @if($flag)
                   <img src="{{ $flag }}" alt="{{ $u->country_code }}" class="h-auto w-6 block opacity-100 border-0 shadow-none ring-0">
                 @else
-                  <span class="text-[10px] font-black text-gray-300">—</span>
+                  <span class="text-[10px] font-black text-gray-300">-</span>
                 @endif
               </td>
 
@@ -133,7 +126,7 @@
                   </button>
 
                   @can('delete', $u)
-                    <button x-data @click.prevent="if (confirm('¿Eliminar este usuario?')) { $wire.delete({{ $u->id }}) }" type="button" class="p-2 rounded-lg hover:bg-rose-50 hover:text-rose-600 transition-colors cursor-pointer" title="Eliminar">
+                    <button x-data @click.prevent="if (confirm('Eliminar este usuario?')) { $wire.delete({{ $u->id }}) }" type="button" class="p-2 rounded-lg hover:bg-rose-50 hover:text-rose-600 transition-colors cursor-pointer" title="Eliminar">
                         <flux:icon name="trash" class="h-4 w-4" />
                     </button>
                   @endcan
@@ -150,8 +143,6 @@
     </div>
   </div>
 
-  {{-- Modales & Paginación --}}
-  <livewire:users.attendance-modal :key="'users-attendance-modal'" />
   <livewire:users.user-details-modal :key="'users-user-details-modal'" />
 
   <div class="pt-4">

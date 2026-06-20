@@ -3,13 +3,12 @@
     <head>
         @include('partials.head')
         <style>
-            /* Ocultar scrollbar pero permitir desplazamiento */
             html, body {
-                scrollbar-width: none; /* Firefox */
-                -ms-overflow-style: none; /* IE/Edge */
+                scrollbar-width: none;
+                -ms-overflow-style: none;
             }
             ::-webkit-scrollbar {
-                display: none; /* Chrome, Safari, Opera */
+                display: none;
             }
         </style>
     </head>
@@ -42,7 +41,6 @@
                     <flux:navlist.item icon="currency-dollar" :href="route('pricing')" :current="request()->routeIs('pricing')" wire:navigate>{{ __('Price List') }}</flux:navlist.item>
                     <flux:navlist.item icon="arrows-right-left" :href="route('measurement_converter')" :current="request()->routeIs('measurement_converter')" wire:navigate>{{ __('Converter') }}</flux:navlist.item>
                     <flux:navlist.item icon="qr-code" :href="route('qr.index')" :current="request()->routeIs('qr.index')" wire:navigate>{{ __('QR Generator') }}</flux:navlist.item>
-                    <flux:navlist.item icon="calendar-days" href="https://facecheck.drkiwimed.com/kiosco" target="_blank" rel="noopener noreferrer" >{{ __('Attendance') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -70,7 +68,7 @@
                     circle="true"
                 />
 
-                <flux:menu class="w-[220px]">
+                <flux:menu class="w-55">
                     <flux:menu.radio.group>
                         <div class="p-0 text-sm font-normal">
                             <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
@@ -152,7 +150,6 @@
                 </flux:menu>
             </flux:dropdown>
         </flux:header>
-
 
         {{ $slot }}
 

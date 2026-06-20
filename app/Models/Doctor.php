@@ -9,15 +9,21 @@ class Doctor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','specialty'];
+    protected $fillable = ['user_id', 'specialty'];
 
-    public function user()    { return $this->belongsTo(User::class); }
-    public function licenses(){ return $this->hasMany(License::class); }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-    // Helper: estados con licencia activa
+    public function licenses()
+    {
+        return $this->hasMany(License::class);
+    }
+
     public function licensedStates()
     {
         return $this->belongsToMany(State::class, 'licenses')
-            ->withPivot(['license_number','status','expiration_date']);
+            ->withPivot(['status', 'expiration_date']);
     }
 }

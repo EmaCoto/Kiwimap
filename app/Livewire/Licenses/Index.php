@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Licenses;
 
-use App\Models\{License, State};
+use App\Models\{License, State, User};
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -19,11 +19,12 @@ class Index extends Component
     public function mount(): void
     {
         $this->authorize('viewAny', License::class);
+        $this->status = License::normalizeStatus($this->status) ?? $this->status;
     }
 
     public function updating($field): void
     {
-        if (in_array($field, ['stateCode','status','search'])) {
+        if (in_array($field, ['stateCode', 'status', 'search'], true)) {
             $this->resetPage();
         }
     }
@@ -38,40 +39,42 @@ class Index extends Component
 
     public function delete(int $id): void
     {
-        $license = License::with('doctor.user')->findOrFail($id);
+        $license = License::query()->with('doctor.user')->findOrFail($id);
         $this->authorize('delete', $license);
         $license->delete();
 
-        session()->flash('ok', 'License eliminada.');
+        session()->flash('ok', 'Licencia eliminada.');
     }
 
     public function render()
     {
+        /** @var User|null $user */
+        $user = request()->user();
+
         $query = License::query()
-            ->whereHas('state', fn($s) => $s->where('is_operational', true))
-            ->when($this->stateCode, fn($q) =>
-                $q->whereHas('state', fn($s) => $s->where('code', strtoupper($this->stateCode))->where('is_operational', true))
+            ->when($this->stateCode, fn ($q) =>
+                $q->whereHas('state', fn ($s) => $s->where('code', strtoupper($this->stateCode)))
             )
-            ->when($this->status !== 'all', fn($q) => $q->where('status', $this->status))
+            ->forStatus($this->status)
             ->when($this->search, function ($q) {
                 $term = "%{$this->search}%";
+
                 $q->where(function ($qq) use ($term) {
-                    $qq->whereHas('doctor.user', fn($u) => $u->where('name','like',$term))
-                    ->orWhereHas('state', fn($s) => $s->where('name','like',$term)->orWhere('code','like',$term));
+                    $qq->whereHas('doctor.user', fn ($u) => $u->where('name', 'like', $term))
+                        ->orWhereHas('state', fn ($s) => $s->where('name', 'like', $term)->orWhere('code', 'like', $term));
                 });
             })
-            ->with(['doctor.user','state'])
-            ->orderByDesc('expiration_date');
-
-        // 🔒 Si el usuario es Doctor → solo sus licencias
-        if (auth()->user()->hasRole('Doctor')) {
-            $query->whereHas('doctor', fn($d) => $d->where('user_id', auth()->id()));
-        }
+            ->visibleToUser($user)
+            ->with(['doctor.user', 'state'])
+            ->orderByDesc('expiration_date')
+            ->orderByDesc('id');
 
         return view('livewire.licenses.index', [
             'licenses' => $query->paginate(15),
-            'states'   => State::where('is_operational', true)->orderBy('name')->get(['id','name','code']),
+            'states' => State::query()
+                ->orderByDesc('is_operational')
+                ->orderBy('name')
+                ->get(['id', 'name', 'code', 'is_operational']),
         ]);
     }
-
 }

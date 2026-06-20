@@ -43,10 +43,10 @@ class User extends Authenticatable
     public function primaryRoleName(): string
     {
         $r = $this->roles()->first();
-        return $r ? ucfirst($r->name) : '—';
+        return $r ? ucfirst($r->name) : 'Ã¢â‚¬â€';
     }
 
-    /** Devuelve Carbon con la PRÓXIMA ocurrencia (desde hoy) para una fecha MM-DD (ignora año) */
+    /** Devuelve Carbon con la PRÃƒâ€œXIMA ocurrencia (desde hoy) para una fecha MM-DD (ignora aÃƒÂ±o) */
         public function nextOccurrenceOf(?string $date, ?string $tz = null): ?Carbon
     {
         if (!$date) return null;
@@ -70,7 +70,7 @@ class User extends Authenticatable
         return $cand;
     }
 
-    /** Próximos */
+    /** PrÃƒÂ³ximos */
     public function nextBirthday(?string $tz = null): ?Carbon
     {
         return $this->nextOccurrenceOf($this->birthday, $tz);
@@ -103,7 +103,7 @@ class User extends Authenticatable
             'birthday'       => __('Birthday'),
             'kiwimed'        => __('Dr. Kiwimed Anniversary'),
             'group'          => __('Business Group Anniversary'),
-            default          => '—',
+            default          => 'Ã¢â‚¬â€',
         };
     }
 
@@ -115,18 +115,16 @@ class User extends Authenticatable
             ->map(fn($w) => Str::substr($w,0,1))->implode('');
     }
 
-    public function attendances() {
-        return $this->hasMany(\App\Models\Attendance::class);
-    }
 
-    // URL del avatar público
+
+    // URL del avatar pÃƒÂºblico
     public function getAvatarUrlAttribute(): ?string
     {
         return $this->avatar_path? Storage::url($this->avatar_path): null;
     }
 
 
-    // Fechas formateadas “23, diciembre de 2004”
+    // Fechas formateadas Ã¢â‚¬Å“23, diciembre de 2004Ã¢â‚¬Â
     public function formatLongEs(?Carbon $date): ?string
     {
         return $date ? $date->copy()->locale('es')->translatedFormat('j, F \\d\\e Y') : null;

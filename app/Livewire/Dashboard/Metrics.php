@@ -2,18 +2,19 @@
 
 namespace App\Livewire\Dashboard;
 
-use App\Models\{Doctor, License, State};
+use App\Models\{Doctor, License, State, User};
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Livewire\Attributes\Url;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class Metrics extends Component
 {
     use AuthorizesRequests;
 
-    #[Url] public int $soonDays = 90; // configurable por query: /dashboard?soonDays=45
+    #[Url] public int $soonDays = 90;
 
     public int $operationalStates = 0;
     public int $doctorsCount = 0;
@@ -21,60 +22,72 @@ class Metrics extends Component
     public int $expiringSoonCount = 0;
 
     public array $byStatus = [
-        'active'  => 0,
-        'renovation' => 0,
-        'expired' => 0,
+        License::STATUS_ACTIVE => 0,
+        License::STATUS_RENOVATION => 0,
+        License::STATUS_EXPIRED => 0,
     ];
 
-    public $expiringSoon; // collection
+    /**
+     * @var \Illuminate\Database\Eloquent\Collection<int, License>
+     */
+    public $expiringSoon;
 
     public function mount(): void
     {
+        $this->operationalStates = State::query()->where('is_operational', true)->count();
+        $this->doctorsCount = Doctor::query()->count();
+        $this->licensesCount = $this->visibleLicensesQuery()->count();
 
-        $this->operationalStates = State::where('is_operational', true)->count();
-        $this->doctorsCount      = Doctor::count();
-        $this->licensesCount     = License::count();
+        $statusCounts = $this->visibleLicensesQuery()
+            ->selectRaw(License::normalizedStatusCaseSql('status').' as normalized_status, COUNT(*) as c')
+            ->groupBy('normalized_status')
+            ->pluck('c', 'normalized_status');
 
-        // Distribución por status
-        $statusCounts = License::selectRaw('status, COUNT(*) as c')
-            ->groupBy('status')
-            ->pluck('c', 'status');
-
-        foreach (['active','pending','expired'] as $k) {
-            $this->byStatus[$k] = (int) ($statusCounts[$k] ?? 0);
+        foreach (License::canonicalStatuses() as $status) {
+            $this->byStatus[$status] = (int) ($statusCounts[$status] ?? 0);
         }
 
         $today = now()->startOfDay();
         $until = now()->addDays($this->soonDays)->endOfDay();
 
-        $this->expiringSoon = License::with(['doctor.user:id,name','state:id,name,code'])
+        $expiringSoonQuery = $this->visibleLicensesQuery()
+            ->with(['doctor.user:id,name', 'state:id,name,code'])
             ->whereNotNull('expiration_date')
             ->whereBetween('expiration_date', [$today, $until])
             ->orderBy('expiration_date')
+            ->orderBy('id');
+
+        $this->expiringSoon = (clone $expiringSoonQuery)
             ->limit(10)
             ->get();
 
-        $this->expiringSoonCount = License::whereNotNull('expiration_date')
-            ->whereBetween('expiration_date', [$today, $until])
-            ->count();
+        $this->expiringSoonCount = (clone $expiringSoonQuery)->count();
+    }
+
+    /**
+     * @return Builder<License>
+     */
+    private function visibleLicensesQuery(): Builder
+    {
+        /** @var User|null $user */
+        $user = request()->user();
+
+        return License::query()->visibleToUser($user);
     }
 
     public function clearCaches(): void
     {
+        /** @var User|null $user */
         $user = request()->user();
-        // ✅ Seguridad: solo Admin u Office Manager
 
         if (! $user || ! $user->hasAnyRole(['Admin', 'Office Manager'])) {
             abort(403);
         }
 
-        // (Opcional) extra seguridad en producción
-        // if (app()->isProduction()) { abort(403, 'Solo en entornos autorizados.'); }
-
         $commands = [
-            'optimize:clear', // limpia todo (config, route, view, cache, etc.)
+            'optimize:clear',
             'event:clear',
-            'queue:restart',  // reinicia workers de colas
+            'queue:restart',
         ];
 
         foreach ($commands as $cmd) {
@@ -85,8 +98,7 @@ class Metrics extends Component
             }
         }
 
-        // Feedback en UI
-        session()->flash('ok', 'Cachés limpiadas.');
+        session()->flash('ok', 'Caches limpiadas.');
     }
 
     public function render()
