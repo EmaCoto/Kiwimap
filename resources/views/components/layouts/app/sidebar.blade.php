@@ -41,6 +41,7 @@
                     <flux:navlist.item icon="currency-dollar" :href="route('pricing')" :current="request()->routeIs('pricing')" wire:navigate>{{ __('Price List') }}</flux:navlist.item>
                     <flux:navlist.item icon="arrows-right-left" :href="route('measurement_converter')" :current="request()->routeIs('measurement_converter')" wire:navigate>{{ __('Converter') }}</flux:navlist.item>
                     <flux:navlist.item icon="qr-code" :href="route('qr.index')" :current="request()->routeIs('qr.index')" wire:navigate>{{ __('QR Generator') }}</flux:navlist.item>
+                    <flux:navlist.item icon="calendar-days" href="https://facecheck.drkiwimed.com/login">{{ __('Attendance') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
