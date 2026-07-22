@@ -23,7 +23,7 @@
 
             @php
                 $links = [
-                    ['name' => 'Zoom', 'desc' => 'Video Meetings', 'sub' => 'Virtual Visits', 'color' => '#7DAACB', 'url' => 'https://us06web.zoom.us/j/83507903817?pwd=SEUlb4cWirTs8gjyfKt0IXaSYhJEod.1', 'img' => 'zoom.png'],
+                    ['name' => 'Zoom', 'desc' => 'Video Meetings', 'sub' => 'Virtual Visits', 'color' => '#7DAACB', 'url' => 'https://us06web.zoom.us/j/89884592328?pwd=TcmgpaLrBezOfOQutsrLzpZR7NGw8s.1', 'img' => 'zoom.png'],
                     ['name' => 'Tebra', 'desc' => 'Patient Management', 'sub' => 'Secure Sign-In', 'color' => '#91D06C', 'url' => 'https://www.tebra.com/sign-in', 'img' => 'tebra.png'],
                     ['name' => 'Spruce', 'desc' => 'Communication', 'sub' => 'Health Portal', 'color' => '#02a676', 'url' => 'https://app.sprucehealth.com/login', 'img' => 'spruce.png'],
                     ['name' => 'Teams', 'desc' => 'Collaboration', 'sub' => 'Microsoft Office', 'color' => '#464eb8', 'url' => 'https://teams.microsoft.com/l/chat/19:fb9db99945b44030bae71e8b4606fb71@thread.v2/conversations?context=%7B%22contextType%22%3A%22chat%22%7D', 'img' => 'teams.png'],
