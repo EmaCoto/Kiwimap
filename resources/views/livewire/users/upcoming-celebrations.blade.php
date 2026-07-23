@@ -33,6 +33,14 @@
       <div class="self-end">
         <button wire:click="clearFilters" type="button" class="px-5 py-2.5 rounded-lg bg-gradient-to-t from-[#123338] to-[#1a444a] text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-lg hover:scale-105 transition-all active:scale-95">{{ __('Clear filters') }}</button>
       </div>
+
+      {{-- Export the currently filtered month/type --}}
+      <div class="self-end">
+        <button wire:click="exportExcel" wire:loading.attr="disabled" wire:target="exportExcel" type="button" class="px-5 py-2.5 rounded-lg bg-gradient-to-t from-[#6fa31c] to-[#85b82e] text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-lg hover:scale-105 transition-all active:scale-95 disabled:cursor-wait disabled:opacity-60">
+          <span wire:loading.remove wire:target="exportExcel">{{ __('Download Excel') }}</span>
+          <span wire:loading wire:target="exportExcel">{{ __('Preparing...') }}</span>
+        </button>
+      </div>
     </div>
     <hr class="w-full border-gray-100 dark:border-white/5 mt-4">
   </div>
@@ -114,8 +122,8 @@
 
           <div class="rounded-2xl border {{ $border }} p-4 transition-all hover:bg-gray-50 dark:hover:bg-white/[0.07]">
             <div class="flex items-center gap-3">
-              <div class="flex-shrink-0">
-                <img src="{{ $avatar }}" class="h-10 w-10 rounded-lg object-cover grayscale-[40%]" alt="{{ __('Avatar') }}">
+              <div class="shrink-0">
+                <img src="{{ $avatar }}" class="h-10 w-10 rounded-lg object-cover grayscale-40" alt="{{ __('Avatar') }}">
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-2 flex-wrap">

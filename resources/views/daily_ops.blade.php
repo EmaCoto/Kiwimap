@@ -37,7 +37,7 @@
             @foreach($links as $link)
             <a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer"
                style="--brand-color: {{ $link['color'] }};"
-               class="group relative h-80 rounded-lg transition-all duration-500 [transform-style:preserve-3d] hover:[transform:rotateY(-8deg)_rotateX(4deg)]">
+               class="group relative h-80 rounded-lg transition-all duration-500 transform-3d hover:[transform:rotateY(-8deg)_rotateX(4deg)]">
 
                 {{-- Glass Card Base --}}
                 <div class="absolute inset-0 bg-white dark:bg-[#123338]/20 backdrop-blur-xl border border-gray-100 dark:border-white/10 rounded-lg shadow-[0_15px_35px_-10px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.4)] transition-all"></div>

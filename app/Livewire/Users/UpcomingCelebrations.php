@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 use Carbon\CarbonInterface;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class UpcomingCelebrations extends Component
 {
@@ -53,6 +54,43 @@ class UpcomingCelebrations extends Component
     {
         $this->month = null;
         $this->type  = 'all';
+    }
+
+    /** Descarga en un CSV UTF-8 compatible con Excel los hitos del filtro visible. */
+    public function exportExcel(): StreamedResponse
+    {
+        $this->buildLists();
+
+        $shownMonth = $this->month ?: (int) Carbon::now($this->tz)->format('n');
+        $filename = sprintf(
+            'cumpleaniversarios-%04d-%02d.csv',
+            (int) Carbon::now($this->tz)->format('Y'),
+            $shownMonth
+        );
+
+        $rows = collect($this->monthItems)->map(static function (array $row): array {
+            return [
+                $row['user']->name,
+                User::humanMilestoneLabel($row['which']),
+                $row['date']->format('d/m/Y'),
+            ];
+        })->all();
+
+        return response()->streamDownload(function () use ($rows): void {
+            $output = fopen('php://output', 'wb');
+
+            // BOM para que Excel reconozca correctamente tildes y caracteres UTF-8.
+            fwrite($output, "\xEF\xBB\xBF");
+            fputcsv($output, ['Nombre', 'Qué está cumpliendo', 'Fecha'], ';');
+
+            foreach ($rows as $row) {
+                fputcsv($output, $row, ';');
+            }
+
+            fclose($output);
+        }, $filename, [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
     }
 
     /** ========= Helpers de fecha (seguros con CarbonInterface) ========= */
