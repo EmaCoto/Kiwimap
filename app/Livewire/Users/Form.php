@@ -245,6 +245,11 @@ class Form extends Component
             'states.create' => 'Crear estado',
             'states.update' => 'Editar estado',
             'states.delete' => 'Eliminar estado',
+            // Information
+            'information.view'   => 'Ver información',
+            'information.create' => 'Crear información',
+            'information.update' => 'Editar información',
+            'information.delete' => 'Eliminar información',
         ];
     }
 

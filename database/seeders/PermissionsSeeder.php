@@ -22,6 +22,8 @@ class PermissionsSeeder extends Seeder
             'licenses.view','licenses.create','licenses.update','licenses.delete',
             // States
             'states.view','states.create','states.update','states.delete',
+            // Information
+            'information.view','information.create','information.update','information.delete',
         ];
 
         foreach ($allPerms as $p) {
@@ -47,6 +49,7 @@ class PermissionsSeeder extends Seeder
             'doctors.view','doctors.create','doctors.update',
             'licenses.view','licenses.create','licenses.update',
             'states.view','states.create','states.update',
+            'information.view','information.create','information.update',
         ]);
 
         $front = Role::findByName('Front Desk', $guard);
@@ -54,6 +57,7 @@ class PermissionsSeeder extends Seeder
             'doctors.view',
             'licenses.view','licenses.create',
             'states.view','states.create',
+            'information.view','information.create',
         ]);
 
         $doctor = Role::findByName('Doctor', $guard);
@@ -61,6 +65,7 @@ class PermissionsSeeder extends Seeder
             'doctors.view',
             'licenses.view','licenses.create','licenses.update',
             'states.view',
+            'information.view',
         ]);
 
         $ma = Role::findByName('Medical Assistant', $guard);
@@ -68,6 +73,7 @@ class PermissionsSeeder extends Seeder
             'doctors.view',
             'licenses.view',
             'states.view',
+            'information.view',
         ]);
     }
 }

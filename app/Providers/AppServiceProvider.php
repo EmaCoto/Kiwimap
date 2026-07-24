@@ -7,6 +7,8 @@ use App\Observers\LicenseObserver;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Models\Information\Index as InformationIndex;
+use App\Policies\InformationPolicy;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -15,6 +17,8 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        Gate::policy(InformationIndex::class, InformationPolicy::class);
+
         // 🔔 Disparo inmediato al guardar si cae en offset
         License::observe(LicenseObserver::class);
 
@@ -30,4 +34,3 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 }
-

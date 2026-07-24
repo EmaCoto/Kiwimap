@@ -9,6 +9,7 @@ use App\Livewire\Doctors\{Index as DoctorsIndex, Form as DoctorsForm};
 use App\Livewire\States\{Index as StatesIndex, Form as StatesForm};
 use App\Livewire\Users\{Index as UsersIndex, Form as UsersForm};
 use App\Livewire\Users\UpcomingCelebrations;
+use App\Livewire\Information\{Index as InformationIndex, Form as InformationForm};
 
 Route::get('/', fn () => view('welcome'))->name('home');
 
@@ -55,6 +56,12 @@ Route::middleware([
     Route::get('/states/{state}/edit', StatesForm::class)
         ->whereNumber('state')
         ->name('states.edit');
+
+    Route::get('/information', InformationIndex::class)->name('information.index');
+    Route::view('/information/create', 'livewire.information.creates')->name('information.create');
+    Route::get('/information/{informationRecord}/edit', InformationForm::class)
+        ->whereNumber('informationRecord')
+        ->name('information.edit');
 });
 
 Route::fallback(fn () => abort(404));

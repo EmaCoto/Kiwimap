@@ -31,7 +31,9 @@
                     <flux:navlist.item icon="doctor" :href="route('doctors.index')" :current="request()->routeIs('doctors.index')" wire:navigate>{{ __('Doctors') }}</flux:navlist.item>
                     <flux:navlist.item icon="states" :href="route('states.index')" :current="request()->routeIs('states.index')" wire:navigate>{{ __('States') }}</flux:navlist.item>
                     <flux:navlist.item icon="id-card" :href="route('licenses.index')" :current="request()->routeIs('licenses.index')" wire:navigate>{{ __('Licenses') }}</flux:navlist.item>
-                    <flux:navlist.item icon="shield-exclamation" :href="route('licenses.index')" :current="request()->routeIs('licenses.index')" wire:navigate>{{ __('Licenses') }}</flux:navlist.item>
+                    @can('viewAny', \App\Models\Information\Index::class)
+                        <flux:navlist.item icon="shield-exclamation" :href="route('information.index')" :current="request()->routeIs('information.*')" wire:navigate>{{ __('Details') }}</flux:navlist.item>
+                    @endcan
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -43,6 +45,7 @@
                     <flux:navlist.item icon="arrows-right-left" :href="route('measurement_converter')" :current="request()->routeIs('measurement_converter')" wire:navigate>{{ __('Converter') }}</flux:navlist.item>
                     <flux:navlist.item icon="qr-code" :href="route('qr.index')" :current="request()->routeIs('qr.index')" wire:navigate>{{ __('QR Generator') }}</flux:navlist.item>
                     <flux:navlist.item icon="calendar-days" href="https://facecheck.drkiwimed.com/login">{{ __('Attendance') }}</flux:navlist.item>
+                    <flux:navlist.item icon="globe-americas" href="https://facecheckusa.kiwimedspa.com/login">{{ __('Attendance USA / PR') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
