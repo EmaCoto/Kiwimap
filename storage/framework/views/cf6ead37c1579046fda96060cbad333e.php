@@ -35,8 +35,9 @@
                     ['name' => 'Zoom', 'desc' => 'Video Meetings', 'sub' => 'Virtual Visits', 'color' => '#7DAACB', 'url' => 'https://us06web.zoom.us/j/89884592328?pwd=TcmgpaLrBezOfOQutsrLzpZR7NGw8s.1', 'img' => 'zoom.png'],
                     ['name' => 'Tebra', 'desc' => 'Patient Management', 'sub' => 'Secure Sign-In', 'color' => '#91D06C', 'url' => 'https://www.tebra.com/sign-in', 'img' => 'tebra.png'],
                     ['name' => 'Spruce', 'desc' => 'Communication', 'sub' => 'Health Portal', 'color' => '#02a676', 'url' => 'https://app.sprucehealth.com/login', 'img' => 'spruce.png'],
-                    ['name' => 'Teams', 'desc' => 'Collaboration', 'sub' => 'Microsoft Office', 'color' => '#464eb8', 'url' => 'https://teams.microsoft.com/l/chat/19:fb9db99945b44030bae71e8b4606fb71@thread.v2/conversations?context=%7B%22contextType%22%3A%22chat%22%7D', 'img' => 'teams.png'],
+                    ['name' => 'Podium', 'desc' => 'Aesthetic Manager', 'sub' => 'Weight Management', 'color' => '#321E48', 'url' => 'https://app.podium.com/home?locationUid=019db609-c90d-7385-a0cf-e1b2d0b80926', 'img' => 'podium.png'],
                     ['name' => 'Outlook', 'desc' => 'Business Email', 'sub' => 'Email & Calendar', 'color' => '#0078d4', 'url' => 'https://outlook.office.com', 'img' => 'outlook.png'],
+                    ['name' => 'Teams', 'desc' => 'Collaboration', 'sub' => 'Microsoft Office', 'color' => '#464eb8', 'url' => 'https://teams.microsoft.com/l/chat/19:fb9db99945b44030bae71e8b4606fb71@thread.v2/conversations?context=%7B%22contextType%22%3A%22chat%22%7D', 'img' => 'teams.png'],
                     ['name' => 'Gmail', 'desc' => 'Workspace Mail', 'sub' => 'Google Workspace', 'color' => '#ea4335', 'url' => 'https://mail.google.com', 'img' => 'gmail.png'],
                     ['name' => 'Color Hunt', 'desc' => 'Color Palette Inspiration', 'sub' => 'Design Resources', 'color' => '#FFDE42', 'url' => 'https://colorhunt.co', 'img' => 'color_hunt.png'],
                     ['name' => 'Meta Business', 'desc' => 'Business Manager', 'sub' => 'Ads & Assets', 'color' => '#03AED2', 'url' => 'https://business.facebook.com/latest/home?asset_id=753148577872650&business_id=1560930404957347&ir_qe_exposed=1&nav_ref=fb_web_pplus_settings_menu', 'img' => 'meta.png'],
@@ -46,7 +47,7 @@
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $links; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $link): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <a href="<?php echo e($link['url']); ?>" target="_blank" rel="noopener noreferrer"
                style="--brand-color: <?php echo e($link['color']); ?>;"
-               class="group relative h-80 rounded-lg transition-all duration-500 [transform-style:preserve-3d] hover:[transform:rotateY(-8deg)_rotateX(4deg)]">
+               class="group relative h-80 rounded-lg transition-all duration-500 transform-3d hover:[transform:rotateY(-8deg)_rotateX(4deg)]">
 
                 
                 <div class="absolute inset-0 bg-white dark:bg-[#123338]/20 backdrop-blur-xl border border-gray-100 dark:border-white/10 rounded-lg shadow-[0_15px_35px_-10px_rgba(0,0,0,0.05)] dark:shadow-[0_20px_50px_-15px_rgba(0,0,0,0.4)] transition-all"></div>
