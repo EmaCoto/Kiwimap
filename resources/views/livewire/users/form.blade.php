@@ -74,6 +74,12 @@
       </div>
 
       <div>
+        <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Vencimiento Curso HIPAA</label>
+        <input type="date" wire:model.defer="hipaa_course_expiration_date" class="w-full bg-white dark:bg-[#123338]/20 border border-gray-200 dark:border-white/10 rounded-xl p-3 text-sm font-bold text-[#123338] dark:text-white focus:ring-2 focus:ring-[#6fa31c] outline-none">
+        @error('hipaa_course_expiration_date') <p class="text-[10px] font-black text-rose-600 uppercase tracking-tighter mt-1 ml-1">{{ $message }}</p> @enderror
+      </div>
+
+      <div>
         <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Ubicación / País</label>
         <select wire:model.defer="country_code" class="w-full bg-white dark:bg-[#123338]/20 border border-gray-200 dark:border-white/10 rounded-xl p-3 text-sm font-bold text-[#123338] dark:text-white focus:ring-2 focus:ring-[#6fa31c] outline-none">
           <option value="">— Seleccionar —</option>

@@ -21,6 +21,7 @@ class User extends Authenticatable
         'birthday',
         'anniversary_kiwimed',
         'anniversary_group',
+        'hipaa_course_expiration_date',
         'country_code',
         'spruce_number',
         'crecer_number',
@@ -37,6 +38,7 @@ class User extends Authenticatable
             'birthday'            => 'date',
             'anniversary_kiwimed' => 'date',
             'anniversary_group'   => 'date',
+            'hipaa_course_expiration_date' => 'date',
         ];
     }
 
@@ -141,5 +143,10 @@ class User extends Authenticatable
     public function getAnniversaryGroupLongAttribute(): ?string
     {
         return $this->formatLongEs($this->anniversary_group);
+    }
+
+    public function getHipaaCourseExpirationLongAttribute(): ?string
+    {
+        return $this->formatLongEs($this->hipaa_course_expiration_date);
     }
 }

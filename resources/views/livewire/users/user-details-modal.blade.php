@@ -71,6 +71,21 @@
           <div class="text-sm font-bold text-gray-700 dark:text-gray-300">{{ $user->anniversary_group_long ?: '—' }}</div>
         </div>
 
+        @php
+          $hipaaExpired = $user->hipaa_course_expiration_date?->lt(today());
+        @endphp
+        <div class="group">
+          <div class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1 group-hover:text-[#6fa31c] transition-colors">Vencimiento Curso HIPAA</div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <div class="text-sm font-bold {{ $hipaaExpired ? 'text-rose-600' : 'text-gray-700 dark:text-gray-300' }}">{{ $user->hipaa_course_expiration_long ?: '—' }}</div>
+            @if($user->hipaa_course_expiration_date)
+              <span class="px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest {{ $hipaaExpired ? 'bg-rose-500/10 text-rose-600' : 'bg-[#02a676]/10 text-[#02a676]' }}">
+                {{ $hipaaExpired ? 'Vencido' : 'Vigente' }}
+              </span>
+            @endif
+          </div>
+        </div>
+
         <div class="group">
           <div class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1 group-hover:text-[#6fa31c] transition-colors">ID Físico Entregado</div>
           <div class="text-sm font-black text-[#123338] dark:text-white uppercase tracking-tighter">{{ $user->has_id_badge ? 'Confirmado' : 'Pendiente' }}</div>

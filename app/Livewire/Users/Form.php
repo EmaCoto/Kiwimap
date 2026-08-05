@@ -28,6 +28,7 @@ class Form extends Component
     public ?string $birthday = null;               // YYYY-MM-DD
     public ?string $anniversary_kiwimed = null;    // YYYY-MM-DD
     public ?string $anniversary_group = null;      // YYYY-MM-DD
+    public ?string $hipaa_course_expiration_date = null; // YYYY-MM-DD
     public ?string $country_code = null;           // 'us','co','mx'...
     public ?string $spruce_number = null;
     public ?string $crecer_number = null;
@@ -57,6 +58,7 @@ class Form extends Component
                 'birthday'            => optional($this->user->birthday)->toDateString(),
                 'anniversary_kiwimed' => optional($this->user->anniversary_kiwimed)->toDateString(),
                 'anniversary_group'   => optional($this->user->anniversary_group)->toDateString(),
+                'hipaa_course_expiration_date' => optional($this->user->hipaa_course_expiration_date)->toDateString(),
                 'country_code'        => $this->user->country_code,
                 'spruce_number'       => $this->user->spruce_number,
                 'crecer_number'       => $this->user->crecer_number,
@@ -87,6 +89,7 @@ class Form extends Component
             'birthday'            => ['nullable','date'],
             'anniversary_kiwimed' => ['nullable','date'],
             'anniversary_group'   => ['nullable','date'],
+            'hipaa_course_expiration_date' => ['nullable','date'],
             'country_code'        => ['nullable','string','size:2'], // ISO-2
             'spruce_number'       => ['nullable','string','max:50'],
             'crecer_number'       => ['nullable','string','max:50'],
@@ -140,6 +143,7 @@ class Form extends Component
             $u->birthday            = $data['birthday'] ?? null;
             $u->anniversary_kiwimed = $data['anniversary_kiwimed'] ?? null;
             $u->anniversary_group   = $data['anniversary_group'] ?? null;
+            $u->hipaa_course_expiration_date = $data['hipaa_course_expiration_date'] ?? null;
             $u->country_code        = $data['country_code'] ? strtolower($data['country_code']) : null;
             $u->spruce_number       = $data['spruce_number'] ?? null;
             $u->crecer_number       = $data['crecer_number'] ?? null;
@@ -160,6 +164,7 @@ class Form extends Component
             $u->birthday            = $data['birthday'] ?? null;
             $u->anniversary_kiwimed = $data['anniversary_kiwimed'] ?? null;
             $u->anniversary_group   = $data['anniversary_group'] ?? null;
+            $u->hipaa_course_expiration_date = $data['hipaa_course_expiration_date'] ?? null;
             $u->country_code        = $data['country_code'] ? strtolower($data['country_code']) : null;
             $u->spruce_number       = $data['spruce_number'] ?? null;
             $u->crecer_number       = $data['crecer_number'] ?? null;
