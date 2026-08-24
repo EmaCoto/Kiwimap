@@ -101,7 +101,7 @@
                                 {{ __('') }}
                             </td>
                             <td class="px-6 py-6 text-[9px] font-black text-gray-700 dark:text-gray-200 uppercase tracking-widest">
-                                {{ __('') }}
+                                {{ __('Use the same  Form/Intake that Weightloss Initial Visit and Fu accordingly') }}
                             </td>
                         </tr>
                     </tbody>
