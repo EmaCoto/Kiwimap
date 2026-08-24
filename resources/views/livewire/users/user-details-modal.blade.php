@@ -1,5 +1,5 @@
 <div x-data x-show="$wire.open" x-cloak class="fixed inset-0 z-50 flex items-start justify-center bg-[#123338]/40 backdrop-blur-sm">
-  <div class="mt-10 w-full max-w-[650px] rounded-3xl bg-white dark:bg-[#0d1516] p-8 shadow-2xl border border-white/20">
+  <div class="mt-10 w-full max-w-162.5 rounded-3xl bg-white dark:bg-[#0d1516] p-8 shadow-2xl border border-white/20">
 
     {{-- Header del Modal --}}
     <div class="flex items-center justify-between mb-8">

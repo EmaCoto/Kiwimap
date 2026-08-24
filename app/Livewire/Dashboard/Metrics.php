@@ -32,6 +32,11 @@ class Metrics extends Component
      */
     public $expiringSoon;
 
+    /**
+     * @var \Illuminate\Database\Eloquent\Collection<int, User>
+     */
+    public $hipaaExpiringSoon;
+
     public function mount(): void
     {
         $this->operationalStates = State::query()->where('is_operational', true)->count();
@@ -62,6 +67,16 @@ class Metrics extends Component
             ->get();
 
         $this->expiringSoonCount = (clone $expiringSoonQuery)->count();
+
+        $hipaaUntil = $today->copy()->addDays(30);
+
+        $this->hipaaExpiringSoon = User::query()
+            ->select(['id', 'name', 'hipaa_course_expiration_date'])
+            ->whereNotNull('hipaa_course_expiration_date')
+            ->whereDate('hipaa_course_expiration_date', '<=', $hipaaUntil->toDateString())
+            ->orderBy('hipaa_course_expiration_date')
+            ->orderBy('name')
+            ->get();
     }
 
     /**

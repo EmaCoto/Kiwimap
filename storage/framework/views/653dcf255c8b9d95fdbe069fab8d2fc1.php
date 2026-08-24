@@ -93,6 +93,73 @@
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
   </div>
 
+  
+  <div class="order-last bg-white dark:bg-[#123338]/10 rounded-lg shadow-2xl shadow-black/2 border border-gray-100 dark:border-white/5 overflow-hidden">
+    <div class="p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-50 dark:border-white/5 bg-gray-50/20 dark:bg-white/2">
+      <div class="flex items-center gap-4">
+        <div class="h-2 w-2 rounded-full bg-[#f56e2a] animate-pulse shadow-[0_0_8px_#f56e2a]"></div>
+        <div>
+          <h2 class="text-sm font-black text-[#123338] dark:text-white uppercase tracking-widest italic">Vencimientos de Curso HIPAA</h2>
+          <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mt-1">Cursos vencidos y próximos a vencer dentro de 30 días</p>
+        </div>
+      </div>
+      <div class="px-4 py-2 rounded-xl bg-white dark:bg-[#123338] border border-gray-100 dark:border-white/5 shadow-sm">
+        <span class="text-[9px] font-black text-gray-400 uppercase tracking-tighter">Próximos:</span>
+        <span class="text-[10px] font-black text-[#f56e2a] uppercase italic ml-1"><?php echo e($hipaaExpiringSoon->count()); ?></span>
+      </div>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-left">
+        <thead>
+          <tr class="text-[9px] font-black text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em]">
+            <th class="px-8 py-5">Usuario</th>
+            <th class="px-8 py-5 text-center">Fecha de vencimiento</th>
+            <th class="px-8 py-5 text-center">Plazo restante</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-50 dark:divide-white/5">
+          <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__empty_1 = true; $__currentLoopData = $hipaaExpiringSoon; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $hipaaUser): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+            <?php
+              $daysRemaining = $hipaaUser->hipaa_course_expiration_date->lte(today())
+                ? 0
+                : (int) today()->diffInDays($hipaaUser->hipaa_course_expiration_date);
+            ?>
+            <tr class="group hover:bg-[#123338]/2 dark:hover:bg-white/2 transition-all duration-300">
+              <td class="px-8 py-6">
+                <div class="text-sm font-black text-[#123338] dark:text-gray-200 uppercase tracking-tighter italic group-hover:text-[#02a676] transition-colors">
+                  <?php echo e($hipaaUser->name); ?>
+
+                </div>
+              </td>
+              <td class="px-8 py-6 text-center text-xs font-mono font-black text-gray-500 dark:text-gray-400">
+                <?php echo e($hipaaUser->hipaa_course_expiration_date->format('d . m . Y')); ?>
+
+              </td>
+              <td class="px-8 py-6">
+                <div class="flex justify-center">
+                  <span class="px-4 py-1.5 rounded-full border text-[9px] font-black uppercase tracking-widest <?php echo e($daysRemaining <= 7 ? 'bg-rose-500/10 border-rose-500/20 text-rose-600' : 'bg-[#f56e2a]/10 border-[#f56e2a]/20 text-[#f56e2a]'); ?>">
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($daysRemaining === 1): ?>
+                      1 día restante
+                    <?php else: ?>
+                      <?php echo e($daysRemaining); ?> días restantes
+                    <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+            <tr>
+              <td colspan="3" class="p-16 text-center">
+                <p class="text-[10px] font-black uppercase tracking-[0.4em] opacity-20 italic">No hay cursos HIPAA próximos a vencer</p>
+              </td>
+            </tr>
+          <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <div class="bg-white dark:bg-[#123338]/10 rounded-lg shadow-2xl shadow-black/2 border border-gray-100 dark:border-white/5 overflow-hidden">
     <div class="p-8 flex items-center justify-between border-b border-gray-50 dark:border-white/5 bg-gray-50/20 dark:bg-white/2">
       <div class="flex items-center gap-4">

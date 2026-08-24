@@ -91,7 +91,7 @@
         </select>
       </div>
 
-      <div class="flex items-center gap-3 bg-[#6fa31c]/5 rounded-2xl px-4 py-3 border border-[#6fa31c]/10 self-end h-[50px]">
+      <div class="flex items-center gap-3 bg-[#6fa31c]/5 rounded-2xl px-4 py-3 border border-[#6fa31c]/10 self-end h-12.5">
         <input type="checkbox" wire:model.defer="has_id_badge" class="w-5 h-5 rounded border-gray-300 text-[#6fa31c] focus:ring-[#6fa31c]">
         <label class="text-[10px] font-black text-[#123338] dark:text-[#6fa31c] uppercase tracking-widest cursor-pointer">ID Badge Entregado</label>
       </div>
@@ -167,7 +167,7 @@
       <a href="{{ $redirect ?? route('users.index') }}" class="px-6 py-3 rounded-2xl bg-gray-100 dark:bg-white/5 text-[10px] font-black text-gray-500 uppercase tracking-widest hover:bg-gray-200 dark:hover:bg-white/10 transition-all shadow-sm">
         Cancelar
       </a>
-      <button type="submit" class="flex items-center px-8 py-3 rounded-2xl bg-gradient-to-t from-[#123338] to-[#1a444a] text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 active:scale-95 transition-all">
+      <button type="submit" class="flex items-center px-8 py-3 rounded-2xl bg-linear-to-t from-[#123338] to-[#1a444a] text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 active:scale-95 transition-all">
         {{ $isEdit ? 'Actualizar Registro' : 'Crear Usuario' }}
       </button>
     </div>

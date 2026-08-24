@@ -369,12 +369,15 @@
     "$210 / Initial Visit <br> $149 / month": "$210 / Visita inicial <br> $149 / mes",
     "- Comprehensive access to all our health services, including weight loss.": "- Acceso integral a todos nuestros servicios de salud, incluyendo pérdida de peso.",
     "Maximum of two visits a month.": "Máximo de dos visitas al mes.",
+    "Weight Loss Membership": "Membresía para la pérdida de peso",
+    "$149 / Initial Visit <br> $99 / month": "$149 / Visita inicial <br> $99 / mes",
     "Service": "Servicio",
     "FORMS / INTAKES": "FORMULARIOS / INGRESOS",
     "Weight Loss Initial Visit": "Visita inicial de pérdida de peso",
     "$245 per visit": "$245 por visita",
     "Will usually need to see provider every 4-6 weeks": "Por lo general necesitará ver al proveedor cada 4-6 semanas",
     "Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form": "Información básica, Formulario de autorización Este-HIPAA, Consentimiento informado de telemedicina por estado (Seleccionar por estado), Medicamentos y alergias, Formulario de autorización de tarjeta de crédito",
+    "Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form, Consent weightloss": "Información básica, Formulario de autorización Este-HIPAA, Consentimiento informado de telemedicina por estado (Seleccionar por estado), Medicamentos y alergias, Formulario de autorización de tarjeta de crédito, Consentimiento para pérdida de peso",
     "Weight Loss Follow up": "Seguimiento de pérdida de peso",
     "$145 per visit": "$145 por visita",
     "Always review the forms for initial visit are completed": "Siempre verificar que los formularios de la visita inicial estén completados",
@@ -518,5 +521,8 @@
     "Birthday": "Cumpleaños",
     "Dr. Kiwimed Anniversary": "Aniversario Dr. Kiwimed",
     "Business Group Anniversary": "Aniversario Grupo Empresarial",
-    "Patients of Georgia, ask if they live within a 25 air-mile straight-line radius from ZIP code 30566.": "Pacientes de Georgia, pregunten si viven dentro de un radio de 25 millas aéreas en línea recta desde el código postal 30566."
+    "Patients of Georgia, ask if they live within a 25 air-mile straight-line radius from ZIP code 30566.": "Pacientes de Georgia, pregunten si viven dentro de un radio de 25 millas aéreas en línea recta desde el código postal 30566.",
+    "Post-Consultation Form or Medical Letter Completion": "Llenado de formularios o cartas médicas después de la consulta",
+    "$30": "$30",
+    "Administrative fee for forms or medical letters requested after the patient’s consultation. Payment is required before the request is processed. All requests are subject to physician review and must be supported by the patient’s medical record.\n\nThe physician may decline to complete or sign any form or letter if the request is not clinically justified, is not supported by sufficient documentation, or falls outside the scope of the services provided.": "Tarifa administrativa aplicable a formularios o cartas médicas solicitados después de finalizar la consulta. El pago debe realizarse antes de procesar la solicitud. Todo documento está sujeto a revisión médica y debe estar respaldado por el expediente clínico del paciente.\n\nEl médico puede negarse a completar o firmar cualquier formulario o carta cuando la solicitud no esté clínicamente justificada, no cuente con documentación suficiente o esté fuera del alcance de los servicios proporcionados."
 }
