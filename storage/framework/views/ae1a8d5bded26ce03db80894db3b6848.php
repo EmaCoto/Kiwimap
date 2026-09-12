@@ -29,42 +29,42 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u><u><strong> </strong></u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u><strong> </strong></u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Patient Medical History Form</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Formulario Medico Historial</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Hipaa Consent</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/11aFDRHz2_VrllVxu4Y4hott0sUP7NDhH0rih7J_-P-I/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Patient Medical History Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento de Hipaa</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Privacy Policy</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Política de Privacidad</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1_Vr-XIz7tvnmYEXFH5j8IEUtlJ8GU-yslS66WgtmUJk/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Formulario Medico Historial</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1uCxkeIr-Q-6DI49wcq82pfUgKOo61gtmDNuU4sRYL2M/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Hipaa Consent</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1uCxkeIr-Q-6DI49wcq82pfUgKOo61gtmDNuU4sRYL2M/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento de Hipaa</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1SHuDHc6bIQbeVtp4gfGX1aFah2dG-oe3/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Privacy Policy</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/16zkd3qEvO18jXHuhLo55OnO5uTx4HNDv/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Política de Privacidad</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -90,50 +90,50 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u><u><strong> </strong></u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u><strong> </strong></u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Patient Medical History Form</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Formulario Medico Historial</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Hipaa Consent</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/11aFDRHz2_VrllVxu4Y4hott0sUP7NDhH0rih7J_-P-I/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Patient Medical History Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento de Hipaa</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Privacy Policy</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Política de Privacidad</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1_Vr-XIz7tvnmYEXFH5j8IEUtlJ8GU-yslS66WgtmUJk/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Formulario Medico Historial</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Medical Weight Loss Program Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1uCxkeIr-Q-6DI49wcq82pfUgKOo61gtmDNuU4sRYL2M/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Hipaa Consent</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Formulario de Programa de Pérdida de Peso</u> </p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1uCxkeIr-Q-6DI49wcq82pfUgKOo61gtmDNuU4sRYL2M/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento de Hipaa</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1SHuDHc6bIQbeVtp4gfGX1aFah2dG-oe3/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Privacy Policy</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/16zkd3qEvO18jXHuhLo55OnO5uTx4HNDv/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Política de Privacidad</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1ZN8tzolLE8Cov28sghSlVr2IuK7yDLn6SMrwwVqFcBo/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Medical Weight Loss Program Form</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1W2a3nBBUjHZfJYOZjVmVSyledgnOgP6jj7OYJlX-L7M/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Formulario de Programa de Pérdida de Peso</u></a> </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -195,42 +195,42 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Opus Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/10hkAGlW7L4esOa_isEg0rNMTps4TkGcle0VKN6T9GCo/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Opus Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento Opus</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1vUfTGwQSc5TKHNPYJSZMXF1hN4q6Damv/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento Opus</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Changes in Medical History Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Modificaciones en el Formulario Historial Médico</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consent to Numbing cream</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento para Crema Anestésica</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/193cpUdGRkH9GejdOXehaQZUb9Xp8jov-KUj9QV43oRU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Changes in Medical History Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/14DSYQ1P0VQnxDCizHdc7zQZ8tKvREuIvQopyYOCUmoM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Modificaciones en el Formulario Historial Médico</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1AnOx8cmA776LSwD8Iyi5BSi96Ttoh8a3L1ljpZDGSpQ/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consent to Numbing cream</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1zEAyTJKQP3oLq4XZ7PoeHK7BFBtngqOvol_EUJ5KBbg/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento para Crema Anestésica</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -291,34 +291,34 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Veil Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/15dVEbYKyz0iDvnXW5t31GNuUm3vKtSWF5B4WTc_s0rs/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Veil Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para tratamiento de Veil</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u><u><strong> </strong></u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1TJ7BkbqUZcJlBb3gZIy1-6d84D8l3Pno/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para tratamiento de Veil</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Changes in Medical History Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u><strong> </strong></u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Modificaciones en el Formulario Historial Médico</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/193cpUdGRkH9GejdOXehaQZUb9Xp8jov-KUj9QV43oRU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Changes in Medical History Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/14DSYQ1P0VQnxDCizHdc7zQZ8tKvREuIvQopyYOCUmoM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Modificaciones en el Formulario Historial Médico</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -401,34 +401,34 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Accent Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1JQngVI0XFwGYwUoAMVfVRcq2IPnhP-XByux0W3a8KFg/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Accent Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del paciente para Tratamiento de Accent Prime</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1pN_0DzL_K-7m1g_bxToQivVY7s-mHnYeKu018oTfXnM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del paciente para Tratamiento de Accent Prime</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Changes in Medical History Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Modificaciones en el Formulario Historial Médico</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/193cpUdGRkH9GejdOXehaQZUb9Xp8jov-KUj9QV43oRU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Changes in Medical History Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/14DSYQ1P0VQnxDCizHdc7zQZ8tKvREuIvQopyYOCUmoM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Modificaciones en el Formulario Historial Médico</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -489,34 +489,34 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>TED CONSENT FORM</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1liW1iT7H7aaXpnryCgEG1VFqs0h4Z32LBb2pjpSSqBg/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>TED CONSENT FORM</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>CONSENTIMIENTO DEL PACIENTE PARA TRATAMIENTO TED</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1UUt7Y_ujsauU3F28MJg3S8HWvlseFlnq/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>CONSENTIMIENTO DEL PACIENTE PARA TRATAMIENTO TED</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Changes in Medical History Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Modificaciones en el Formulario Historial Médico</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/193cpUdGRkH9GejdOXehaQZUb9Xp8jov-KUj9QV43oRU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Changes in Medical History Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/14DSYQ1P0VQnxDCizHdc7zQZ8tKvREuIvQopyYOCUmoM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Modificaciones en el Formulario Historial Médico</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -589,50 +589,50 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Harmony Tattoo Removal Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/10cLkDYnDjNhZ9FvJjfWA5SpnUb5G8_SeexiRLUJwajI/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Harmony Tattoo Removal Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento Harmony</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Harmony Dye-vl, Clearlift</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento Harmony Dye-vl, Clearlift</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYsTieFGvswTpKyiZp1Z-AXBrofD_I6S/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento Harmony</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Harmony XL Pro</u> (Laser Nail fungus)</p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1vcUCYHUzvhjmSVjCnoMgPN-zLs-PMd4vxNSKVP42_wE/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Harmony Dye-vl, Clearlift</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento de Harmony XL Pro</u> (Laser Nail Fungus)</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1Mh24-dJaQxBHSz_oHKYI03I8stvXulRg/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento Harmony Dye-vl, Clearlift</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Changes in Medical History Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1ipqBkazZRTIe6SN97FT4POkF6u2d72TqhfMqgAUJwRI/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Harmony XL Pro</u></a> (Laser Nail fungus)</p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Modificaciones en el Formulario Historial Médico</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1839bu92dN4cVqUIYmHo5yXK_zy4oOq5zQHs3h0si-y4/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento de Harmony XL Pro</u></a> (Laser Nail Fungus)</p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/193cpUdGRkH9GejdOXehaQZUb9Xp8jov-KUj9QV43oRU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Changes in Medical History Form</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/14DSYQ1P0VQnxDCizHdc7zQZ8tKvREuIvQopyYOCUmoM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Modificaciones en el Formulario Historial Médico</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -726,34 +726,34 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Neurotoxins Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gQbpW16VHjXt7xsG_2IddmG1-xeuuvq6gVi-oqY8-Ks/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Neurotoxins Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para tratamiento Neurotoxinas</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1oQMBVzTflF8BAbXL7eNe3WV0sh0ulHeO/edit#heading=h.ypt6lhcf60ih" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para tratamiento Neurotoxinas</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Changes in Medical History Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Modificaciones en el Formulario Historial Médico</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/193cpUdGRkH9GejdOXehaQZUb9Xp8jov-KUj9QV43oRU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Changes in Medical History Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/14DSYQ1P0VQnxDCizHdc7zQZ8tKvREuIvQopyYOCUmoM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Modificaciones en el Formulario Historial Médico</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -814,58 +814,58 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>FemiLift/ Femi Co2 Pixel Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1Az-FR36-2Spu98HWGLJdVznW_P36T_0Jntn1BzL9sRM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>FemiLift/ Femi Co2 Pixel Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento FemiLift/ Femi Co2 Pixel</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Pixel Peel Consent Form</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento Pixel Peel</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1lyrnDiKAF3L-HZiTF8zMYQVHFw1RMs2i/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento FemiLift/ Femi Co2 Pixel</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Pixel Co2 Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1yTJOil-a5TA_y3qV60RvLqUu6gYtGec9lE_J51W2c1I/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Pixel Peel Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento Pixel Co2</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1MzDZu6gp_crg3B9uvRAQPDqep_c_FOTf/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento Pixel Peel</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Changes in Medical History Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1yTJOil-a5TA_y3qV60RvLqUu6gYtGec9lE_J51W2c1I/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Pixel Co2 Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Modificaciones en el Formulario Historial Médico</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consent to Numbing cream </u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento para Crema Anestésica</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1MzDZu6gp_crg3B9uvRAQPDqep_c_FOTf/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento Pixel Co2</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/193cpUdGRkH9GejdOXehaQZUb9Xp8jov-KUj9QV43oRU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Changes in Medical History Form</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/14DSYQ1P0VQnxDCizHdc7zQZ8tKvREuIvQopyYOCUmoM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Modificaciones en el Formulario Historial Médico</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1AnOx8cmA776LSwD8Iyi5BSi96Ttoh8a3L1ljpZDGSpQ/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consent to Numbing cream </u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1zEAyTJKQP3oLq4XZ7PoeHK7BFBtngqOvol_EUJ5KBbg/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento para Crema Anestésica</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -937,34 +937,34 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Soprano Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1pqdzYpN-I1ZceSdp1meYX_IOq3IrTR08W1r-9lrm4jA/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Soprano Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento Soprano</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1-D8mQz9ZZU6mF-ShrCTTIceCrA7wwPO0DKxDEYx1aOs/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento Soprano</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Changes in Medical History Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Modificaciones en el Formulario Historial Médico</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/193cpUdGRkH9GejdOXehaQZUb9Xp8jov-KUj9QV43oRU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Changes in Medical History Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/14DSYQ1P0VQnxDCizHdc7zQZ8tKvREuIvQopyYOCUmoM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Modificaciones en el Formulario Historial Médico</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -1080,10 +1080,10 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Perfect Derma Peel Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1HGgkJuKfGbpq86b0sfkh3Sic6pGu3OIaIyvQSV-l6o8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Perfect Derma Peel Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento Derma Peel</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/12fbMBnrSQ2H4D5nWUgXMzlVc1g-3FM8H/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento Derma Peel</u></a></p>
                         </td>
                     </tr>
                     <tr>
@@ -1098,58 +1098,58 @@
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Aqua Glow Signature Facial Consent</u> </p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1PwGjC9hPDtLyZT7Kj8PxlLDvLouRk7yHLpPFa_63Q7s/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Aqua Glow Signature Facial Consent</u></a> </p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento Aqua Glow Signature Facial</u> </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Microneedling/ Mesoneedling Consent Form</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para tratamiento Microneedling/ Mesoneedling</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1xS8BeOZPkgXgObyObvk3b3XgHbWY8jT9/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento Aqua Glow Signature Facial</u></a> </p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consent (Microneedling/Mesoneedling to Numbing cream</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1v4GQkqD9s8ZB70VczVGJEIHxmFm4tlHudeXEBwqKmHc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Microneedling/ Mesoneedling Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento (Microneedling/Mesoneedling) para Crema Anestésica</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>PRX Plus/ PRX perfect Derma Consent Form</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento PRX Plus/ PRX perfect Derma</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1OMf1YucHXJVdYiusInitTmOC7ob5Is8T/edit" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para tratamiento Microneedling/ Mesoneedling</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1AnOx8cmA776LSwD8Iyi5BSi96Ttoh8a3L1ljpZDGSpQ/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consent (Microneedling/Mesoneedling to Numbing cream</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Changes in Medical History Form</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Modificaciones en el Formulario Historial Médico</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1zEAyTJKQP3oLq4XZ7PoeHK7BFBtngqOvol_EUJ5KBbg/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento (Microneedling/Mesoneedling) para Crema Anestésica</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/15GqYDhOSbqCY5hdMI9RPg10aEc3NfiXg0-1Na25Dzsw/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>PRX Plus/ PRX perfect Derma Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1OdOnPk2wR48_9E_wxwx52yBAwbtqnWmjUma-vg25mlQ/edit?tab=t.0#heading=h.oemcgv95fjlu" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento PRX Plus/ PRX perfect Derma</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/193cpUdGRkH9GejdOXehaQZUb9Xp8jov-KUj9QV43oRU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Changes in Medical History Form</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/14DSYQ1P0VQnxDCizHdc7zQZ8tKvREuIvQopyYOCUmoM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Modificaciones en el Formulario Historial Médico</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -1292,34 +1292,34 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Dermal Fillers Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1lIawxTcpzfh0uCJN7NB-Uru2nyLgPWrmvr-Wqw6oW1Y/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Dermal Fillers Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Tratamiento de Dermal Rellenos Dérmicos</u></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Marketing, Social Media, Photos,</u></p>
-                        </td>
-                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Autorización para Uso con Fines de Marketing</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1Dn6DYf5Wxx2E4JAakWf0PLF3AvAlqHa0-onzH1QDyXU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Tratamiento de Dermal Rellenos Dérmicos</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Changes in Medical History Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1S3NPDqemmxM0x3PnsRf1ZDXXxW43cYdRkSyf-yuQyVM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Marketing, Social Media, Photos,</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Modificaciones en el Formulario Historial Médico</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jj01ASvPCg7WdHI9XhZdRjDhBC_vkUjvLzY1XhxVFl8/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Autorización para Uso con Fines de Marketing</u></a></p>
                         </td>
                     </tr>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Financial Responsibility Agreement</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/193cpUdGRkH9GejdOXehaQZUb9Xp8jov-KUj9QV43oRU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Changes in Medical History Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Acuerdo de Responsabilidad financiera del Paciente</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/14DSYQ1P0VQnxDCizHdc7zQZ8tKvREuIvQopyYOCUmoM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Modificaciones en el Formulario Historial Médico</u></a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1GxGTRKOGjdt11qfwEISp0KE4RmBgq8AQ0dMDyojb7lc/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Financial Responsibility Agreement</u></a></p>
+                        </td>
+                        <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1gYy7XM2Idrb8kOe9JQGGgK3yfXVWOXBBLusL3UkLxFM/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Acuerdo de Responsabilidad financiera del Paciente</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -1345,10 +1345,10 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>V-Tech Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1D1D1qKoJVK_dhEusJm8SP6bGizs8Kf8jaxkJDFNziyc/edit?tab=t.0#heading=h.ff4i92coczgj" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>V-Tech Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para V-Tech</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1jzWoEzqVERsxpK5jpJfOEAzeGlJs7jGdBUdsFzkmuDM/edit?tab=t.0#heading=h.a2hw9sov3o7b" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para V-Tech</u></a></p>
                         </td>
                     </tr>
                 </tbody>
@@ -1374,10 +1374,10 @@
                 <tbody>
                     <tr>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Toskani Consent Form</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1WSUNjCJA9Y0lFAKErYM3ZjmGnCQ2CIaBPJli7ai0gKU/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Toskani Consent Form</u></a></p>
                         </td>
                         <td class="border border-gray-200 px-4 py-3 align-top wrap-break-words dark:border-white/10">
-                            <p class="min-h-5"><u>Consentimiento del Paciente para Toskani</u></p>
+                            <p class="min-h-5"><a href="https://docs.google.com/document/d/1PIyV4QP8ZT7RD-R9cwtW1qRZYddz77hTHF5Eugqc610/edit?tab=t.0" target="_blank" rel="noopener noreferrer" class="underline decoration-[#02a676]/50 underline-offset-4 transition-colors hover:text-[#02a676] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#02a676]"><u>Consentimiento del Paciente para Toskani</u></a></p>
                         </td>
                     </tr>
                 </tbody>
