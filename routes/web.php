@@ -25,6 +25,7 @@ Route::middleware([
     Route::view('/measurement_converter', 'measurement_converter')->name('measurement_converter');
     Route::view('/qr', 'qr')->name('qr.index');
     Route::view('/daily_ops', 'daily_ops')->name('daily_ops');
+    Route::view('/cheat_sheet_front_desk', 'cheat_sheet_front_desk')->name('cheat_sheet_front_desk');
 
     Route::redirect('/settings', '/settings/profile');
     Volt::route('/settings/profile', 'settings.profile')->name('settings.profile');
