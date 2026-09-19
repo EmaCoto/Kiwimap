@@ -56,6 +56,12 @@
             </flux:navlist>
 
             <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('resources.title')" class="grid">
+                    <flux:navlist.item icon="book-open-text" :href="route('resources.index')" :current="request()->routeIs('resources.*')" wire:navigate>{{ __('resources.library') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
+            <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('User Management')" class="grid">
                     <flux:navlist.item icon="group-user" :href="route('users.index')" :current="request()->routeIs('users.index')" wire:navigate>{{ __('Users') }}</flux:navlist.item>
                     <flux:navlist.item icon="cake" :href="route('users.celebrations')" :current="request()->routeIs('users.celebrations')" wire:navigate>{{ __('Celebrations') }}</flux:navlist.item>

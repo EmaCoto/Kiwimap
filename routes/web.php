@@ -26,6 +26,8 @@ Route::middleware([
     Route::view('/qr', 'qr')->name('qr.index');
     Route::view('/daily_ops', 'daily_ops')->name('daily_ops');
     Route::view('/cheat_sheet_front_desk', 'cheat_sheet_front_desk')->name('cheat_sheet_front_desk');
+    Route::view('/resources', 'resources')->name('resources.index');
+    Route::get('/resources/{resource}', [\App\Http\Controllers\ResourceController::class, 'show'])->name('resources.file');
 
     Route::redirect('/settings', '/settings/profile');
     Volt::route('/settings/profile', 'settings.profile')->name('settings.profile');
