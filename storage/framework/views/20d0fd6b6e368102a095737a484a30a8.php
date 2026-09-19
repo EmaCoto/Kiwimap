@@ -116,6 +116,19 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
       </div>
 
       <div>
+        <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Vencimiento Curso HIPAA</label>
+        <input type="date" wire:model.defer="hipaa_course_expiration_date" class="w-full bg-white dark:bg-[#123338]/20 border border-gray-200 dark:border-white/10 rounded-xl p-3 text-sm font-bold text-[#123338] dark:text-white focus:ring-2 focus:ring-[#6fa31c] outline-none">
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__errorArgs = ['hipaa_course_expiration_date'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <p class="text-[10px] font-black text-rose-600 uppercase tracking-tighter mt-1 ml-1"><?php echo e($message); ?></p> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+      </div>
+
+      <div>
         <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-2 ml-1">Ubicación / País</label>
         <select wire:model.defer="country_code" class="w-full bg-white dark:bg-[#123338]/20 border border-gray-200 dark:border-white/10 rounded-xl p-3 text-sm font-bold text-[#123338] dark:text-white focus:ring-2 focus:ring-[#6fa31c] outline-none">
           <option value="">— Seleccionar —</option>
@@ -127,7 +140,7 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
         </select>
       </div>
 
-      <div class="flex items-center gap-3 bg-[#6fa31c]/5 rounded-2xl px-4 py-3 border border-[#6fa31c]/10 self-end h-[50px]">
+      <div class="flex items-center gap-3 bg-[#6fa31c]/5 rounded-2xl px-4 py-3 border border-[#6fa31c]/10 self-end h-12.5">
         <input type="checkbox" wire:model.defer="has_id_badge" class="w-5 h-5 rounded border-gray-300 text-[#6fa31c] focus:ring-[#6fa31c]">
         <label class="text-[10px] font-black text-[#123338] dark:text-[#6fa31c] uppercase tracking-widest cursor-pointer">ID Badge Entregado</label>
       </div>
@@ -210,7 +223,7 @@ unset($__errorArgs, $__bag); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendB
       <a href="<?php echo e($redirect ?? route('users.index')); ?>" class="px-6 py-3 rounded-2xl bg-gray-100 dark:bg-white/5 text-[10px] font-black text-gray-500 uppercase tracking-widest hover:bg-gray-200 dark:hover:bg-white/10 transition-all shadow-sm">
         Cancelar
       </a>
-      <button type="submit" class="flex items-center px-8 py-3 rounded-2xl bg-gradient-to-t from-[#123338] to-[#1a444a] text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 active:scale-95 transition-all">
+      <button type="submit" class="flex items-center px-8 py-3 rounded-2xl bg-linear-to-t from-[#123338] to-[#1a444a] text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 active:scale-95 transition-all">
         <?php echo e($isEdit ? 'Actualizar Registro' : 'Crear Usuario'); ?>
 
       </button>

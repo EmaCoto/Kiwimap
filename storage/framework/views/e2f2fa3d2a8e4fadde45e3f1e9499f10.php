@@ -1,5 +1,5 @@
 <div x-data x-show="$wire.open" x-cloak class="fixed inset-0 z-50 flex items-start justify-center bg-[#123338]/40 backdrop-blur-sm">
-  <div class="mt-10 w-full max-w-[650px] rounded-3xl bg-white dark:bg-[#0d1516] p-8 shadow-2xl border border-white/20">
+  <div class="mt-10 w-full max-w-162.5 rounded-3xl bg-white dark:bg-[#0d1516] p-8 shadow-2xl border border-white/20">
 
     
     <div class="flex items-center justify-between mb-8">
@@ -88,6 +88,22 @@
         <div class="group">
           <div class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1 group-hover:text-[#6fa31c] transition-colors">Aniversario Grupo</div>
           <div class="text-sm font-bold text-gray-700 dark:text-gray-300"><?php echo e($user->anniversary_group_long ?: '—'); ?></div>
+        </div>
+
+        <?php
+          $hipaaExpired = $user->hipaa_course_expiration_date?->lt(today());
+        ?>
+        <div class="group">
+          <div class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1 group-hover:text-[#6fa31c] transition-colors">Vencimiento Curso HIPAA</div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <div class="text-sm font-bold <?php echo e($hipaaExpired ? 'text-rose-600' : 'text-gray-700 dark:text-gray-300'); ?>"><?php echo e($user->hipaa_course_expiration_long ?: '—'); ?></div>
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($user->hipaa_course_expiration_date): ?>
+              <span class="px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest <?php echo e($hipaaExpired ? 'bg-rose-500/10 text-rose-600' : 'bg-[#02a676]/10 text-[#02a676]'); ?>">
+                <?php echo e($hipaaExpired ? 'Vencido' : 'Vigente'); ?>
+
+              </span>
+            <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+          </div>
         </div>
 
         <div class="group">

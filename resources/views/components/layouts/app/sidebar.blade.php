@@ -52,6 +52,7 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group heading="KiwiMEDSPA" class="grid">
                     <flux:navlist.item icon="book-open-text" :href="route('cheat_sheet_front_desk')" :current="request()->routeIs('cheat_sheet_front_desk')" wire:navigate>Cheat Sheet Front Desk</flux:navlist.item>
+                    <flux:navlist.item icon="book-open-text" :href="route('podium.index')" :current="request()->routeIs('podium.*')" wire:navigate>Charts in Podium</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

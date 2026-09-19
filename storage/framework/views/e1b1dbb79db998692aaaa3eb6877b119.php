@@ -96,7 +96,7 @@
 
 
         
-        <div class="bg-white dark:bg-[#123338]/10 rounded-2xl shadow-2xl shadow-black/[0.02] border border-gray-100 dark:border-white/5 overflow-hidden">
+        <div class="bg-white dark:bg-[#123338]/10 rounded-2xl shadow-2xl shadow-black/2 border border-gray-100 dark:border-white/5 overflow-hidden">
             <div class="overflow-x-auto no-scrollbar">
                 <table class="w-full text-left border-collapse">
                     <thead>
@@ -109,14 +109,14 @@
                     </thead>
                     <tbody class="divide-y divide-gray-50 dark:divide-white/5">
                         
-                        <tr class="group hover:bg-[#123338]/[0.02] dark:hover:bg-white/[0.02] transition-colors">
+                        <tr class="group hover:bg-[#123338]/2 dark:hover:bg-white/2 transition-colors">
                             <td class="px-6 py-6 text-[11px] font-black text-[#123338] dark:text-gray-200 uppercase  tracking-widest"><?php echo e(__('Bronze Membership')); ?></td>
                             <td class="px-6 py-6 text-[11px] tracking-widest font-black text-[#02a676]"><?php echo __('$149 / Initial Visit <br> $89/month'); ?></td>
                             <td class="px-6 py-6 text-[10px] font-bold text-gray-500 dark:text-gray-200 uppercase leading-relaxed tracking-widest"><?php echo __('- Perfect for those seeking essential care <br> - Includes one visit per month'); ?></td>
                             <td class="px-6 py-6 text-[9px] font-black text-[#c93d00] uppercase tracking-widest opacity-80"><?php echo e(__('Does not cover weight loss consultations')); ?></td>
                         </tr>
                         
-                        <tr class="group hover:bg-[#123338]/[0.02] dark:hover:bg-white/[0.02] transition-colors">
+                        <tr class="group hover:bg-[#123338]/2 dark:hover:bg-white/2 transition-colors">
                             <td class="px-6 py-6 text-[11px] font-black text-[#123338] dark:text-gray-200 uppercase  tracking-widest"><?php echo e(__('Silver Membership')); ?></td>
                             <td class="px-6 py-6 text-[11px] tracking-widest font-black text-[#02a676]">
                                 <?php echo __('$210 / Initial Visit <br> $99 / month'); ?>
@@ -132,7 +132,7 @@
                             </td>
                         </tr>
                         
-                        <tr class="group hover:bg-[#123338]/[0.02] dark:hover:bg-white/[0.02] transition-colors">
+                        <tr class="group hover:bg-[#123338]/2 dark:hover:bg-white/2 transition-colors">
                             <td class="px-6 py-6 text-[11px] font-black text-[#123338] dark:text-gray-200 uppercase  tracking-tight"><?php echo e(__('Gold Membership')); ?></td>
                             <td class="px-6 py-6 text-[11px] tracking-widest font-black text-[#02a676]">
                                 <?php echo __('$210 / Initial Visit <br> $149 / month'); ?>
@@ -147,13 +147,29 @@
 
                             </td>
                         </tr>
+                        
+                        <tr class="group hover:bg-[#123338]/2 dark:hover:bg-white/2 transition-colors">
+                            <td class="px-6 py-6 text-[11px] font-black text-[#123338] dark:text-gray-200 uppercase  tracking-tight"><?php echo e(__('Weight Loss Membership')); ?></td>
+                            <td class="px-6 py-6 text-[11px] tracking-widest font-black text-[#02a676]">
+                                <?php echo __('$149 / Initial Visit <br> $99 / month'); ?>
+
+                            </td>
+                            <td class="px-6 py-6 text-[10px] font-bold text-gray-500 dark:text-gray-200 uppercase leading-relaxed tracking-widest">
+                                <?php echo e(__('')); ?>
+
+                            </td>
+                            <td class="px-6 py-6 text-[9px] font-black text-gray-700 dark:text-gray-200 uppercase tracking-widest">
+                                <?php echo e(__('Use the same  Form/Intake that Weightloss Initial Visit and Fu accordingly')); ?>
+
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
         
-        <div class="bg-white dark:bg-[#123338]/10 rounded-2xl shadow-2xl shadow-black/[0.02] border border-gray-100 dark:border-white/5 overflow-hidden mt-4">
+        <div class="bg-white dark:bg-[#123338]/10 rounded-2xl shadow-2xl shadow-black/2 border border-gray-100 dark:border-white/5 overflow-hidden mt-4">
             <div class="overflow-x-auto no-scrollbar">
                 <table class="w-full text-left border-collapse">
                     <thead>
@@ -167,8 +183,8 @@
                     <tbody class="divide-y divide-gray-50 dark:divide-white/5">
                         <?php
                             $services = [
-                                [__('Weight Loss Initial Visit'), __('$245 per visit'), __('Will usually need to see provider every 4-6 weeks'), __('Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form')],
-                                [__('Weight Loss Follow up'), __('$145 per visit'), __('Always review the forms for initial visit are completed'), __('Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form')],
+                                [__('Weight Loss Initial Visit'), __('$245 per visit'), __('Will usually need to see provider every 4-6 weeks'), __('Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form, Consent weightloss')],
+                                [__('Weight Loss Follow up'), __('$145 per visit'), __('Always review the forms for initial visit are completed'), __('Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form, Consent weightloss')],
                                 [__('General Health'), __('$148.50 per visit'), __('Sick patients with urinary symptoms, cough, cold, sore throats, rash, sinus/nasal concerns or other sick symptoms'), __('Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form')],
                                 [__('Mental Health (Anxiety/Depression) Initial visit'), __('$149 per visit'), __(''), __('Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form')],
                                 [__('Mental Health Follow up'), __('$149 per visit'), __(''), __('PHQ-9, GAD-7')],
@@ -180,16 +196,23 @@
                                 [__('Contraception'), __('$99 per visit'), __(''), __('Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form')],
                                 [__('Follow up'), __('same as per visit'), __('Patient has a second different visit reason. Everything must be fully written on english.'), __('Always review the corresponding forms are completed. Still the forms can be sent in spanish (patient preferred language).')],
                                 [__('Patient with multiple health concerns'), __('$??? per visit'), __(''), __('Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form')],
-                                [__('Comprehensive Appointment'), __('$250'), __('This service provides a thorough evaluation of a patient’s medical conditions. If requested, and clinically appropriate, a clinical summary may be provided to help the patient understand the findings and next steps.'), __('Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form, PHQ-9, GAD-7')]
+                                [__('Comprehensive Appointment'), __('$250'), __('This service provides a thorough evaluation of a patient’s medical conditions. If requested, and clinically appropriate, a clinical summary may be provided to help the patient understand the findings and next steps.'), __('Basic information, Este-HIPAA Release Form, State of telemedicine Informed Consent (Select by state), Medication & Allergies, Credit Card Authorization Form, PHQ-9, GAD-7')],
+                                [__('Post-Consultation Form or Medical Letter Completion'), __('$30'), __("Administrative fee for forms or medical letters requested after the patient’s consultation. Payment is required before the request is processed. All requests are subject to physician review and must be supported by the patient’s medical record.\n\nThe physician may decline to complete or sign any form or letter if the request is not clinically justified, is not supported by sufficient documentation, or falls outside the scope of the services provided."), __('')]
                             ];
                         ?>
 
                         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <tr class="group hover:bg-[#123338]/[0.02] dark:hover:bg-white/[0.02] transition-colors">
-                            <td class="px-6 py-4 text-[12px] font-black text-[#123338] dark:text-gray-200 uppercase  leading-tight"><?php echo e($s[0]); ?></td>
-                            <td class="px-6 py-4 text-[12px] tracking-widest font-black text-[#02a676] "><?php echo e($s[1]); ?></td>
-                            <td class="px-6 py-4 text-[10px] font-bold text-gray-700 dark:text-gray-200 uppercase tracking-widest"><?php echo e($s[2]); ?></td>
-                            <td class="px-6 py-4 text-[10px] font-bold text-gray-700  dark:text-gray-200 uppercase tracking-widest leading-relaxed">
+                        <tr class="group hover:bg-[#123338]/2 dark:hover:bg-white/2 transition-colors">
+                            <td class="px-6 py-4 text-[12px] font-black text-[#123338] dark:text-gray-200 uppercase leading-tight"><?php echo e($s[0]); ?></td>
+                            <td class="px-6 py-4 text-[12px] tracking-widest font-black text-[#02a676]"><?php echo e($s[1]); ?></td>
+
+                            
+                            <td class="px-6 py-4 text-[10px] font-bold text-gray-700 dark:text-gray-200 uppercase tracking-widest">
+                                <?php echo nl2br(e($s[2])); ?>
+
+                            </td>
+
+                            <td class="px-6 py-4 text-[10px] font-bold text-gray-700 dark:text-gray-200 uppercase tracking-widest leading-relaxed">
                                 <?php echo e($s[3]); ?>
 
                             </td>

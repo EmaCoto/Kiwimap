@@ -124,8 +124,8 @@
 
           <div class="rounded-2xl border <?php echo e($border); ?> p-4 transition-all hover:bg-gray-50 dark:hover:bg-white/[0.07]">
             <div class="flex items-center gap-3">
-              <div class="flex-shrink-0">
-                <img src="<?php echo e($avatar); ?>" class="h-10 w-10 rounded-lg object-cover grayscale-[40%]" alt="<?php echo e(__('Avatar')); ?>">
+              <div class="shrink-0">
+                <img src="<?php echo e($avatar); ?>" class="h-10 w-10 rounded-lg object-cover grayscale-40" alt="<?php echo e(__('Avatar')); ?>">
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-2 flex-wrap">
